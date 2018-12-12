@@ -1,7 +1,6 @@
 # go
-[[plugins]]
-repo = 'zchee/nvim-go'
-build = 'make'
+[[plugins]] 
+repo = 'fatih/vim-go'
 on_ft = 'go'
 
 [[plugins]]
@@ -10,5 +9,5 @@ build = 'make'
 on_ft = 'go'
 depends = ['deoplete.nvim']
 hook_source = '''
-  let g:deoplete#source#go#gocode_binary = $GOPATH . '/bin/gocode'
+  let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
 '''

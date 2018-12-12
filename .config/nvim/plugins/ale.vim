@@ -23,5 +23,5 @@ let g:ale_linters = {
 nnoremap [ale] <Nop>
 nmap ,a [ale]
 " エラー行にジャンプ
-nmap <silent> [ale]<C-P> <Plug>(ale_previous)
-nmap <silent> [ale]<C-N> <Plug>(ale_next)
+nmap <silent> [ale]<C-p> <Plug>(ale_previous)
+nmap <silent> [ale]<C-n> <Plug>(ale_next)

@@ -14,3 +14,8 @@ on_ft = ['python']
 repo = 'zchee/deoplete-jedi'
 depends = ['deoplete.nvim', 'vim-virtualenv']
 on_ft = ['python']
+
+# formatter
+[[plugins]]
+repo = 'ambv/black'
+on_ft = ['python']
