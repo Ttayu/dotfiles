@@ -1,0 +1,83 @@
+# dein.vim
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# カーソル位置のコンテキストに合わせてftを切り替える
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = ['context_filetype.vim']
+
+# カーソル位置のコンテキストのftを判断する
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+# colorscheme
+[[plugins]]
+repo = 'jacoborus/tender.vim'
+
+# カスタムバーの改造
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+  source ~/.config/nvim/plugins/lightline.vim
+'''
+
+# インデントの可視化
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+hook_source = '''
+  let g:indentLine_char = '|'
+  let g:indentLine_showFirstIndentLevel = 1
+'''
+
+# ファイルビュー
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+  source ~/.config/nvim/plugins/nerdtree.vim
+'''
+
+# 閉じ括弧の自動補完
+[[plugins]]
+repo = 'cohama/lexima.vim'
+on_event = 'InsertEnter'
+hook_source = '''
+  let g:lexima_enable_basic_rules = 1
+'''
+
+# 標準で用意されているsnippet
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'honza/vim-snippets'
+
+# 関数や変数のジャンプ機能
+[[plugins]]
+repo = 'lighttiger2505/gtags.vim'
+hook_add = '''
+  " Options
+  let g:Gtags_Auto_map = 0
+  let g:Gtags_OpenQuickfixWindow = 1
+  " Keymap
+  " 関数一覧表示
+  nnoremap <silent> F :Gtags -f %<CR>
+  " カーソル位置の関数を検索する
+  nnoremap <silent> J :GtagsCursor<CR>
+  " 参照元へジャンプ
+  nnoremap <silent> K :<C-u>exe("Gtags ".expand('<cword>'))<CR>
+  " 参照先へジャンプ
+  nnoremap <silent> R :<C-u>exe("Gtags -r ".expand('<cword>'))<CR>
+'''
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+# 非同期でプログラムを実行
+[[plugins]]
+repo = 'Shougo/vimproc'
+build = 'make'
+
+# ウィンドウサイズの変更
+[[plugins]]
+repo = 'simeji/winresizer'
