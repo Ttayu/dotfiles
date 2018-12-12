@@ -91,7 +91,7 @@
   eval "$(pyenv init -)"
   export PIPENV_VENV_IN_PROJECT=true
   # go
-  export GOPATH=$HOME/go
+  export GOPATH=$HOME/.config/go
   export GOROOT=$( go env GOROOT )
   export PATH=$GOPATH/bin:$PATH
   export PATH=$PATH:/usr/sbin/
