@@ -1,0 +1,5 @@
+/.config/configstore/
+.git
+# for git module
+.tmux
+.zplug
