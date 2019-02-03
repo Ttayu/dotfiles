@@ -1,9 +1,9 @@
 #!/usr/local/bin/zsh
-set -euo pipefail
-source lib/echos.sh
-
 DOT_DIRECTORY="${HOME}/dotfiles"
 DOT_CONFIG_DIRECTORY=".config"
+
+set -euo pipefail
+source ${DOT_DIRECTORY}/lib/echos.sh
 
 info "link home directory dotfiles"
 cd ${DOT_DIRECTORY}
@@ -11,6 +11,7 @@ cd ${DOT_DIRECTORY}
 for f in .??*
 do
   # 無視したいファイルやディレクトリ
+  [ "$f" = ".gitignore" ] && continue
   [ "$f" = ".git" ] && continue
   [ "$f" = ".config" ] && continue
   [ "$f" = "configstore" ] && continue

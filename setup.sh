@@ -28,7 +28,7 @@ function command_exists() {
 }
 
 : "install other packages by brew" && {
-  packages=( neovim tmux fzf tree wget autojump direnv pyenv pipenv golang )
+  packages=( neovim tmux fzf tree jq wget autojump direnv pyenv pipenv golang global)
   for package in ${packages[@]}; do
     if ! brew list | grep $package &> /dev/null; then
       info "installing ${package}..."
@@ -48,5 +48,9 @@ function command_exists() {
     warn "zplug is already installed"
   fi
 }
- 
+
+: "set git config" && {
+  git config --global core.excludesFile ./.gitignore_global
+}
+
 ok "Complete!"

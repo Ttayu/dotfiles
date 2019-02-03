@@ -26,6 +26,10 @@
     use:"*darwin*amd64*"
   # tmux用の拡張
   zplug "junegunn/fzf", as:command, use:bin/fzf-tmux
+  # Ctrl-Rで履歴検索、Ctrl-Tでファイル名検索補完できる
+  zplug "junegunn/fzf", use:shell/key-bindings.zsh
+  # cd **[TAB], vim **[TAB]などでファイル名を補完できる
+  zplug "junegunn/fzf", use:shell/completion.zsh
   # fzfでよく使う関数の詰め合わせ
   zplug "mollifier/anyframe"
   # ターミナルのディレクトリ移動を高速化する
@@ -56,9 +60,11 @@
   alias vz="vim ~/.zshrc"
   alias reload='exec $SHELL -l'
 }
+
 : "zsh settings" && {
   # コマンドのオプションや引数を補完する
   autoload -Uz compinit && compinit
+
   bindkey "^[[A" history-search-backward
   bindkey "^[[B" history-search-forward
   bindkey "^P" history-search-backward
@@ -77,18 +83,30 @@
   setopt magic_equal_subst
   # 語の途中でカーソル位置で補完
   setopt complete_in_word
-  # 明確なドットの指定なしで.ファイルを開く
-  setopt glob_dots
   # cdを使わずに移動
   setopt auto_cd
+  # 補完候補が複数あるときに一覧表示
+  setopt auto_list
+  # 補完候補が複数あるときに自動的に一覧表示
+  setopt auto_menu
+  # 曖昧に補完する
+  # m:{a-z}={A-Z}: 大文字と小文字を区別しない
+  # r:|[._-]=*: 「.」「_」「-」の前にワイルドカード「*」があるものとして補完
   # 補完時に大文字小文字を区別しない
-  zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+  zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z} r:|[._-]=*' 
+  # 補完方法の設定．指定した順番に実行する
+  zstyle ':completion:*' completer \
+    _oldlist _complete _match _history _ignored _approximate _prefix
+  #ファイル補完候補に色を付ける
+  zstyle ':completion:*' list-colors $PS_COLORS
 }
+
 : "enable environment" && {
   # python
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
+  eval  "$(pipenv --completion)"
   export PIPENV_VENV_IN_PROJECT=true
   # go
   export GOPATH=$HOME/.config/go
@@ -98,3 +116,4 @@
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS='--height 40% --reverse --border'

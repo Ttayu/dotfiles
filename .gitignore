@@ -1,4 +1,6 @@
 /.config/configstore/
+/.py3/
+!/.py3/Pipfile
 .git
 # for git module
 .tmux

@@ -51,5 +51,6 @@ set incsearch
 set wrapscan
 " 検索語をハイライトを表示
 set hlsearch
-" using fzf plugins
-set rtp+=/usr/local/opt/fzf
+
+" preview window のサイズを固定
+set previewheight=2
