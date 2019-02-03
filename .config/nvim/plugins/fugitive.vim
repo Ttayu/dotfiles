@@ -1,6 +1,5 @@
-
 nnoremap [fugitive] <Nop>
-nmap ,g [fugitive]
+nmap <Leader>g [fugitive]
 nnoremap [fugitive]s :<C-u>Gstatus<CR>
 nnoremap [fugitive]c :<C-u>Gcommit<CR>
 nnoremap [fugitive]C :<C-u>Gcommit --amend<CR>

@@ -9,8 +9,8 @@ nnoremap <silent> sv :vsplit<CR>
 
 "tab関連
 nnoremap st :tabnew<CR>
-nnoremap sp :tabprevious<CR>
-nnoremap sn :tabnext<CR>
+nnoremap sp :w<CR>:tabprevious<CR>
+nnoremap sn :w<CR>:tabnext<CR>
 nnoremap sw :tabclose<CR>
 
 " 行末移動
@@ -21,6 +21,8 @@ noremap ; :
 noremap : ;
 inoremap ; :
 inoremap : ;
+cnoremap : ;
+cnoremap ; :
 
 " ウィンドウ移動
 nnoremap <C-h> <C-w>h
@@ -59,6 +61,11 @@ inoremap <C-b> <BS>
 nnoremap x "_x
 nnoremap s "_s
 
+" 全コピー
+nnoremap Y ggyG
+" 全削除して貼り付け
+nnoremap P gg"_dGp
+
 " Ctrl+] で右にエスケープ
 inoremap <C-]> <Esc><Right>
 
@@ -74,12 +81,11 @@ nnoremap <silent> <Space><CR> :nohlsearch<CR><Esc>
 " 行を移動
 " Alt-k -> ˚
 " Alt-j -> ∆
-nnoremap ˚ "zdd<Up>"zP
-nnoremap ∆ "zdd"zp
+nnoremap <M-k> "zdd<Up>"zP
+nnoremap <M-j> "zdd"zp
 
 " 複数行を移動
 " Alt-k -> ˚
 " Alt-j -> ∆
-vnoremap ˚ "zx<Up>"zP`[V`]
-vnoremap ∆ "zx"zp`[V`]
-
+vnoremap <M-k> "zx<Up>"zP`[V`]
+vnoremap <M-j> "zx"zp`[V`]

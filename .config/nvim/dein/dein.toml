@@ -15,12 +15,18 @@ repo = 'Shougo/context_filetype.vim'
 [[plugins]]
 repo = 'jacoborus/tender.vim'
 
-# カスタムバーの改造
+# ステータスラインの改造
 [[plugins]]
 repo = 'itchyny/lightline.vim'
+depends = ['vim-fugitive', 'lightline-ale']
 hook_add = '''
   source ~/.config/nvim/plugins/lightline.vim
 '''
+
+# lightlineにaleのstatusを表示する補助プラグイン
+[[plugins]]
+repo = 'maximbaz/lightline-ale'
+depends = ['lightline.vim', 'ale']
 
 # インデントの可視化
 [[plugins]]
@@ -28,6 +34,8 @@ repo = 'Yggdroot/indentLine'
 hook_source = '''
   let g:indentLine_char = '|'
   let g:indentLine_showFirstIndentLevel = 1
+  let g:indentLine_faster = 1
+  let g:vim_json_syntax_conceal = 0
 '''
 
 # ファイルビュー
@@ -41,9 +49,6 @@ hook_add = '''
 [[plugins]]
 repo = 'cohama/lexima.vim'
 on_event = 'InsertEnter'
-hook_source = '''
-  let g:lexima_enable_basic_rules = 1
-'''
 
 # 標準で用意されているsnippet
 [[plugins]]
@@ -81,3 +86,22 @@ build = 'make'
 # ウィンドウサイズの変更
 [[plugins]]
 repo = 'simeji/winresizer'
+
+# コメントアウト補助
+[[plugins]]
+repo = 'tyru/caw.vim'
+hook_add = '''
+  " 行の最初の文字の前にコメント文字をトグル
+  nmap <Leader>c <Plug>(caw:hatpos:toggle)j
+  vmap <Leader>c <Plug>(caw:hatpos:toggle)j
+  " 行頭にコメントをトグル
+  nmap <Leader>C <Plug>(caw:zeropos:toggle)j
+  vmap <Leader>C <Plug>(caw:zeropos:toggle)j
+'''
+
+# class outline viewer
+[[plugins]]
+repo = 'majutsushi/tagbar'
+hook_add = '''
+  nnoremap <silent> <Leader>t :<C-u>TagbarToggle<CR>
+'''

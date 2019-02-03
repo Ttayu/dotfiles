@@ -6,8 +6,8 @@ let g:NERDTreeShowBookmarks = 1
 
 " ディレクトリ表示の設定
 let g:NERDTreeDirArrows = 1
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
+let g:NERDTreeDirArrowExpandable = ''
+let g:NERDTreeDirArrowCollapsible = '▼'
 
 " 親ディレクトリへ移動
 let g:NERDTreeMapUpdir = ''
