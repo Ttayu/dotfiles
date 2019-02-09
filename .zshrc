@@ -101,19 +101,33 @@
   zstyle ':completion:*' list-colors $PS_COLORS
 }
 
-: "enable environment" && {
-  # python
+: "wsl settings" && {
+  if [ "$(uname)" = 'Linux' ]; then
+    unsetopt BG_NICE
+    export DISPLAY=localhost:0.0
+  fi
+}
+
+: "python settings" && {
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
   eval  "$(pipenv --completion)"
   export PIPENV_VENV_IN_PROJECT=true
-  # go
+}
+
+: "golang settings" && {
   export GOPATH=$HOME/.config/go
   export GOROOT=$( go env GOROOT )
   export PATH=$GOPATH/bin:$PATH
-  export PATH=$PATH:/usr/sbin/
 }
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+: "fzf settings" && {
+  # not use brew
+  if [ "$(uname)" = 'Linux' ]; then
+    export FZFPATH=$HOME/.fzf
+    export PATH=$FZFPATH/bin:$PATH
+  fi
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+  export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+}

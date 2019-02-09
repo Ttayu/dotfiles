@@ -13,11 +13,14 @@ set clipboard+=unnamedplus
 
 " 行数の表示
 set number
-" 行数の相対位置の表示
-set relativenumber
-" 現在の行と列を強調
-set cursorline
-set cursorcolumn
+" Ubuntuだと重いのでオフ
+if has("mac")
+  " 行数の相対位置の表示
+  set relativenumber
+  " 現在の行と列を強調
+  set cursorline
+  set cursorcolumn
+endif
 " 括弧入力時の対応する括弧を表示
 set showmatch
 " ステータスラインを表示
