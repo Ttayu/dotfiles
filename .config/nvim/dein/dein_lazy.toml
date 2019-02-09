@@ -1,6 +1,6 @@
 # fzf for homebrew 
 [[plugins]]
-repo = '/usr/local/opt/fzf'
+repo = '~/.fzf'
 
 [[plugins]]
 repo = 'junegunn/fzf.vim'
@@ -43,12 +43,15 @@ repo = 'Shougo/denite.nvim'
 depends = ['neomru.vim']
 on_cmd = 'Denite'
 hook_source = '''
-  source ~/.config/nvim/plugins/denite.vim
+  source ~/.config/nvim/plugins/denite_source.vim
+'''
+hook_add = '''
+  source ~/.config/nvim/plugins/denite_add.vim
 '''
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
-on_if = 1
+# on_if = 1
 on_source = ['denite.nvim']
 
 # git操作
