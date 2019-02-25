@@ -1,5 +1,5 @@
 let s:pyls_path = fnamemodify(g:python3_host_prog, ':h') . '/'. 'pyls'
-if (executable(s:pyls_path))
+if executable(s:pyls_path)
   augroup LspPython
     autocmd!
     autocmd User lsp_setup call lsp#register_server({
@@ -10,13 +10,48 @@ if (executable(s:pyls_path))
   augroup END
 endif
 
-if (executable('bingo'))
+if executable('bingo')
   augroup LspGo
     autocmd!
     autocmd User lsp_setup call lsp#register_server({
           \ 'name': 'go-lang',
           \ 'cmd': {server_info->['bingo', '-disable-func-snippet', '-mode', 'stdio']},
           \ 'whitelist': ['go'],
+          \ })
+  augroup END
+endif
+
+if executable('typescript-language-server')
+  augroup LspTypeScript
+    autocmd!
+    autocmd User lsp_setup call lsp#register_server({
+          \ 'name': 'typescript-language-server',
+          \ 'cmd': { server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+          \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json')) },
+          \ 'whitelist': ['typescript', 'typescript.tsx'],
+          \  })
+  augroup END
+endif
+
+if executable('typescript-language-server')
+  augroup LspJavaScript
+    autocmd!
+    autocmd User lsp_setup call lsp#register_server({
+          \ 'name': 'javascript support using typescript-language-server',
+          \ 'cmd': { server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+          \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json')) },
+          \ 'whitelist': ['javascript', 'javascript.jsx'],
+          \  })
+  augroup END
+endif
+
+if executable('docker-langserver')
+  augroup LspDocker
+    autocmd!
+    autocmd User lsp_setup call lsp#register_server({
+          \ 'name': 'docker-langserver',
+          \ 'cmd': {server_info->[&shell, &shellcmdflag, 'docker-langserver --stdio']},
+          \ 'whitelist': ['dockerfile'],
           \ })
   augroup END
 endif
