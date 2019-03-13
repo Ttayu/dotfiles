@@ -22,6 +22,7 @@ if dein#load_state(s:dein_dir)
   let s:lsp_toml = g:rc_dir . '/dein_lsp.toml'
   let s:python_toml = g:rc_dir . '/dein_python.toml'
   let s:go_toml = g:rc_dir . '/dein_go.toml'
+  let s:js_toml = g:rc_dir . '/dein_js.toml'
 
   " TOML を読み込み、キャッシュしておく
   call dein#load_toml(s:toml,      {'lazy': 0})
@@ -29,6 +30,7 @@ if dein#load_state(s:dein_dir)
   call dein#load_toml(s:lsp_toml, {'lazy': 1})
   call dein#load_toml(s:python_toml, {'lazy': 1})
   call dein#load_toml(s:go_toml, {'lazy': 1})
+  call dein#load_toml(s:js_toml, {'lazy': 1})
 
   " 設定終了
   call dein#end()
