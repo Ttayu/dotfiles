@@ -1,6 +1,6 @@
-# fzf for homebrew 
+#fzf for homebrew 
 [[plugins]]
-repo = '~/.fzf'
+repo = '/usr/local/opt/fzf'
 
 [[plugins]]
 repo = 'junegunn/fzf.vim'

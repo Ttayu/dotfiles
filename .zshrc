@@ -57,7 +57,10 @@
   alias ll="ls -a"
   alias l="ls -la"
   alias vim="nvim"
+  alias v="vim"
   alias vz="vim ~/.zshrc"
+  alias cn="cd ~/.config/nvim"
+  alias vn="v ~/.config/nvim"
   alias reload='exec $SHELL -l'
 }
 
@@ -120,6 +123,10 @@
   export GOPATH=$HOME/.config/go
   export GOROOT=$( go env GOROOT )
   export PATH=$GOPATH/bin:$PATH
+}
+
+: "javascript settings" && {
+  export PATH="$PATH:`yarn global bin`"
 }
 
 : "fzf settings" && {

@@ -23,11 +23,13 @@ let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 0
 let g:ale_open_list = 0
 let g:ale_keep_list_window_open = 0
+" 指定していないlinterは利用しない
+let g:ale_linters_explicit = 1
 
 
 " 有効にするlinter
 let g:ale_linters = {
-      \ 'javascript': ['eslint'],
+      \ 'javascript': ['eslint', 'flow'],
       \ 'python': ['flake8', 'mypy'],
       \ 'go': ['gometalinter'],
       \ 'json': ['jq']
@@ -38,11 +40,16 @@ let g:ale_go_gometalinter_options = '--fast --vendor --disable-all --enable=goli
 let g:ale_python_flake8_options = ' --max-line-length=88'
 " 型情報のないパッケージは無視する
 let g:ale_python_mypy_options = '--ignore_missing_imports=True'
+
 " 有効にするFixer
 let g:ale_fixers = {
+      \ 'javascript': ['prettier'],
+      \ 'html': ['prettier'],
+      \ 'css': ['prettier'],
       \ 'python': ['autopep8', 'black', 'isort'],
       \ 'json': ['jq']
       \ }
+let g:ale_javascript_prettier_use_local_config = 1
 
 " ALE用プレフィックス
 nnoremap [ale] <Nop>
