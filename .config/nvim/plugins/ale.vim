@@ -30,6 +30,7 @@ let g:ale_linters_explicit = 1
 " 有効にするlinter
 let g:ale_linters = {
       \ 'javascript': ['eslint', 'flow'],
+      \ 'typescript': ['tslint'],
       \ 'python': ['flake8', 'mypy'],
       \ 'go': ['gometalinter'],
       \ 'json': ['jq']
@@ -44,6 +45,7 @@ let g:ale_python_mypy_options = '--ignore_missing_imports=True'
 " 有効にするFixer
 let g:ale_fixers = {
       \ 'javascript': ['prettier'],
+      \ 'typescript': ['prettier'],
       \ 'html': ['prettier'],
       \ 'css': ['prettier'],
       \ 'python': ['autopep8', 'black', 'isort'],
