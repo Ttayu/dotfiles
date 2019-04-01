@@ -57,3 +57,6 @@ set hlsearch
 
 " preview window のサイズを固定
 set previewheight=2
+
+" {{{}}}で折りたたむ
+set foldmethod=marker
