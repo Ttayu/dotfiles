@@ -1,15 +1,11 @@
-#fzf for homebrew 
 [[plugins]]
-repo = '/usr/local/opt/fzf'
-
-[[plugins]]
-repo = 'junegunn/fzf.vim'
-depends = 'fzf'
-hook_add = '''
-    command! -bang -nargs=* Rg
-      \ call fzf#vim#grep(
-      \   'rg --line-number --no-heading '.shellescape(<q-args>), 0,
-      \   fzf#vim#with_preview({'options': '--exact --reverse'}, 'right:50%:wrap'))
+repo = 'raghur/fruzzy'
+on_source = ['denite.nvim']
+hook_source = '''
+  let g:fruzzy#sortonempty = 0
+'''
+hook_post_update = '''
+  call fruzzy#install()
 '''
 
 # linter実行プラグイン
@@ -26,7 +22,7 @@ depends = 'context_filetype.vim'
 on_event = 'InsertEnter'
 hook_source = '''
   source ~/.config/nvim/plugins/deoplete.vim
-'''
+# '''
 
 # neosnippet
 [[plugins]]
@@ -35,6 +31,30 @@ depends = ['vim-snippets', 'neosnippet-snippets', 'context_filetype.vim']
 on_event = 'InsertEnter'
 hook_add = '''
   source ~/.config/nvim/plugins/neosnippet.vim
+'''
+
+# file viewer
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+hook_add = '''
+  source ~/.config/nvim/plugins/defx.vim
+'''
+hook_source = '''
+  call defx#custom#option('_', {
+        \ 'toggle': 1,
+        \ 'split': 'vertical',
+        \ 'winwidth': 20,
+        \ 'direction': 'topleft'
+        \ })
+  call defx#custom#column('mark', {
+        \ 'readonly_icon': '✗',
+        \ 'selected_icon': '✓',
+        \ })
+  call defx#custom#column('filename', {
+        \ 'directory_icon': '',
+        \ 'opened_icon': '▼',
+        \ 'root_icon': ' ',
+        \ }) 
 '''
 
 # ファイルランチャー
