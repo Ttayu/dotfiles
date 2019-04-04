@@ -62,6 +62,8 @@ function! s:defx_my_settings() abort
         \ defx#do_action('cd', getcwd())
   nnoremap <silent><buffer><expr> q
         \ defx#do_action('quit')
+  nnoremap <silent><buffer><expr> <Esc>
+        \ defx#do_action('quit')
   nnoremap <silent><buffer><expr> i
         \ defx#do_action('toggle_select') . 'j'
   nnoremap <silent><buffer><expr> *
