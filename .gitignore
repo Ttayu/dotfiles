@@ -1,6 +1,5 @@
 /.config/configstore/
-/.py3/
-!/.py3/Pipfile
+*/.venv
 .git
 # for git module
 .tmux
