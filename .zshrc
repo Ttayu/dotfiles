@@ -57,10 +57,22 @@
   alias ll="ls -a"
   alias l="ls -la"
   alias vim="nvim"
-  alias v="vim"
-  alias vz="vim ~/.zshrc"
-  alias cn="cd ~/.config/nvim"
-  alias vn="v ~/.config/nvim"
+  alias v="nvim"
+  alias vz="nvim ~/.zshrc"
+  alias ...='cd ../..'
+  alias ....='cd ../../..'
+  alias g='git'
+  alias ga='git add'
+  alias gd='git diff'
+  alias gs='git status'
+  alias gp='git push'
+  alias gb='git branch'
+  alias gco='git checkout'
+  alias gf='git fetch'
+  alias gc='git commit'
+  alias h='cd ~'
+  alias cn="cd ~/dotfiles/.config/nvim"
+  alias vn="v ~/dotfiles/.config/nvim/init.vim"
   alias reload='exec $SHELL -l'
 }
 
@@ -139,3 +151,4 @@
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
   export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 }
+# export PATH="/usr/local/opt/llvm/bin:$PATH"
