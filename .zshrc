@@ -69,7 +69,7 @@
   alias gb='git branch'
   alias gco='git checkout'
   alias gf='git fetch'
-  alias gc='git commit'
+  alias gc='git commit -m'
   alias h='cd ~'
   alias cn="cd ~/dotfiles/.config/nvim"
   alias vn="v ~/dotfiles/.config/nvim/init.vim"
@@ -151,4 +151,3 @@
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
   export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 }
-# export PATH="/usr/local/opt/llvm/bin:$PATH"
