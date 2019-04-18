@@ -116,3 +116,13 @@ on_ft = ['md', 'markdown']
 repo = 'Shougo/neco-vim'
 on_ft = ['vim']
 depends = ['deoplete.nvim']
+
+# cmake
+[[plugins]]
+repo = 'deoplete-plugins/deoplete-clang'
+on_ft = ['cmake']
+depends = ['deoplete.nvim']
+hook_source = '''
+  let g:deoplete#sources#clang#libclang_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
+  let g:deoplete#sources#clang#clang_header = '/Library/Developer/CommandLineTools/usr/lib/clang'
+'''

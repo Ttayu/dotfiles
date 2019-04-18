@@ -3,7 +3,7 @@ repo = 'prabirshrestha/async.vim'
 
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
-on_ft = ['python', 'go', 'typescript', 'dockerfile', 'javascript', 'javascript.jsx']
+on_ft = ['python', 'go', 'typescript', 'dockerfile', 'javascript', 'javascript.jsx', 'cpp']
 depends = ['async.vim']
 hook_source = '''
   source ~/.config/nvim/plugins/lsp.vim
@@ -11,4 +11,4 @@ hook_source = '''
 
 [[plugins]]
 repo = 'lighttiger2505/deoplete-vim-lsp'
-on_ft = ['python', 'go', 'typescript', 'dockerfile', 'javascript', 'javascript.jsx']
+on_ft = ['python', 'go', 'typescript', 'dockerfile', 'javascript', 'javascript.jsx', 'cpp']
