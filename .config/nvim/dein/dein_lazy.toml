@@ -46,7 +46,7 @@ hook_source = '''
         \ 'split': 'vertical',
         \ 'winwidth': 20,
         \ 'direction': 'topleft',
-        \ 'ignored_files':  ".*,*/node_modules/*,_*"
+        \ 'ignored_files':  ".git,*/node_modules/*,_*,.DS_Store"
         \ })
   call defx#custom#column('mark', {
         \ 'readonly_icon': '✗',
@@ -93,7 +93,6 @@ hook_add = '''
 # gtagsを非同期で自動更新
 [[plugins]]
 repo = 'jsfaint/gen_tags.vim'
-on_ft = ['python', 'go','vim']
 hook_add = '''
   " ctags, gtagsを自動で生成，更新
   let g:gen_tags#ctags_auto_gen = 1

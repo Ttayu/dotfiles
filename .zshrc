@@ -56,6 +56,11 @@
   alias ls="ls -G"
   alias ll="ls -a"
   alias l="ls -la"
+  alias t="tmux"
+  alias tl="tmux ls"
+  alias ta="tmux attach"
+  alias tk="tmux kill-session"
+  alias td="tmux detach"
   alias vim="nvim"
   alias v="nvim"
   alias vz="nvim ~/.zshrc"
@@ -113,8 +118,12 @@
   # 補完方法の設定．指定した順番に実行する
   zstyle ':completion:*' completer \
     _oldlist _complete _match _history _ignored _approximate _prefix
-  #ファイル補完候補に色を付ける
-  zstyle ':completion:*' list-colors $PS_COLORS
+  # ファイル補完候補に色を付ける
+  zstyle ':completion:*:default' list-colors ""
+  # 補完候補をメニューから選択
+  zstyle ':completion:*:default' menu select=2
+  # 補完候補をキャッシュ
+  zstyle ':completion:*' use-cache yes
 }
 
 : "wsl settings" && {

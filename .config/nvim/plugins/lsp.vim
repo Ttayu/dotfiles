@@ -81,6 +81,9 @@ if executable('ccls')
   augroup END
 endif
 
+" use ale instead of lsp
+let g:lsp_diagnostics_enabled = 0
+
 nnoremap [lsp] <Nop>
 nmap <Leader>l [lsp]
 nnoremap [lsp]a :<C-u>LspCodeAction<CR>
