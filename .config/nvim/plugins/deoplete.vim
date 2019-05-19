@@ -12,7 +12,6 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 inoremap <expr><C-g> deoplete#refresh()
 inoremap <expr><C-e> deoplete#cancel_popup()
-inoremap <silent><expr><C-l> deoplete#complete_common_string()
 
 " close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
