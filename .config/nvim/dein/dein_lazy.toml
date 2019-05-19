@@ -53,7 +53,7 @@ hook_source = '''
         \ 'split': 'vertical',
         \ 'winwidth': 20,
         \ 'direction': 'topleft',
-        \ 'ignored_files':  ".git,.DS_Store,node_modules/*,*cache*"
+        \ 'ignored_files':  ".git,.DS_Store,node_modules/*,*cache*",
         \ })
   call defx#custom#column('mark', {
         \ 'readonly_icon': '✗',

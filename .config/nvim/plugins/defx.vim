@@ -1,4 +1,4 @@
-nnoremap <silent> ,n :<C-u>Defx<CR>
+nnoremap <silent> ,n :<C-u>Defx -listed<CR>
 
 " vimを閉じたらdefxも同時に閉じる
 autocmd WinEnter * if &filetype == 'defx' && winnr('$') == 1 | q | endif
