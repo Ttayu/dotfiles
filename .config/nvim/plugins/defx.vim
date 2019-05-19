@@ -4,6 +4,7 @@ nnoremap <silent> ,n :<C-u>Defx<CR>
 autocmd WinEnter * if &filetype == 'defx' && winnr('$') == 1 | q | endif
 
 autocmd FileType defx call s:defx_my_settings()
+
 function! s:defx_my_settings() abort
   " Define mappings
   nnoremap <silent><buffer><expr> <CR>
