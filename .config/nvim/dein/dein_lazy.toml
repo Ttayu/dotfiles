@@ -22,16 +22,23 @@ depends = 'context_filetype.vim'
 on_event = 'InsertEnter'
 hook_source = '''
   source ~/.config/nvim/plugins/deoplete.vim
-# '''
+'''
 
 # neosnippet
 [[plugins]]
 repo = 'Shougo/neosnippet'
 depends = ['vim-snippets', 'neosnippet-snippets', 'context_filetype.vim']
-on_event = 'InsertEnter'
-hook_add = '''
+on_event = 'InsertCharPre'
+on_ft = 'snippet'
+hook_source = '''
   source ~/.config/nvim/plugins/neosnippet.vim
 '''
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'honza/vim-snippets'
 
 # file viewer
 [[plugins]]
@@ -46,7 +53,7 @@ hook_source = '''
         \ 'split': 'vertical',
         \ 'winwidth': 20,
         \ 'direction': 'topleft',
-        \ 'ignored_files':  ".git,*/node_modules/*,_*,.DS_Store"
+        \ 'ignored_files':  ".git,.DS_Store,node_modules/*,*cache*"
         \ })
   call defx#custom#column('mark', {
         \ 'readonly_icon': '✗',
@@ -59,10 +66,14 @@ hook_source = '''
         \ }) 
 '''
 
+[[plugins]]
+repo = 'Shougo/neoyank.vim'
+on_event = 'TextYankPost'
+on_source = ['denite.nvim']
+
 # ファイルランチャー
 [[plugins]]
 repo = 'Shougo/denite.nvim'
-depends = ['neomru.vim']
 on_cmd = 'Denite'
 hook_source = '''
   source ~/.config/nvim/plugins/denite_source.vim
@@ -70,11 +81,6 @@ hook_source = '''
 hook_add = '''
   source ~/.config/nvim/plugins/denite_add.vim
 '''
-
-[[plugins]]
-repo = 'Shougo/neomru.vim'
-# on_if = 1
-on_source = ['denite.nvim']
 
 # git操作
 [[plugins]]
@@ -114,7 +120,6 @@ on_ft = ['md', 'markdown']
 [[plugins]]
 repo = 'Shougo/neco-vim'
 on_ft = ['vim']
-depends = ['deoplete.nvim']
 
 # cmake
 [[plugins]]
@@ -125,3 +130,8 @@ hook_source = '''
   let g:deoplete#sources#clang#libclang_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
   let g:deoplete#sources#clang#clang_header = '/Library/Developer/CommandLineTools/usr/lib/clang'
 '''
+
+# zsh
+[[plugins]]
+repo = 'deoplete-plugins/deoplete-zsh'
+on_ft = ['zsh', 'sh']

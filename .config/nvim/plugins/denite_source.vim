@@ -1,7 +1,8 @@
 call denite#custom#option('default', {
      \ 'auto_accel': v:true,
      \ 'promt': '>',
-     \ 'source_names': 'floating',
+     \ 'source_names': 'short',
+     \ 'split': 'floating',
      \ })
 
 " jjでノーマルへ
@@ -21,8 +22,8 @@ call denite#custom#map('normal', 'v', '<denite:do_action:vsplit>', 'noremap')
 call denite#custom#map('insert', '<C-t>', '<denite:do_action:tabopen>', 'noremap')
 
 " file_rec検索時にfuzzymatchを有効にし、検索対象から指定のファイルを除外
-call denite#custom#source('file/rec', 'matchers', ['matcher/fruzzy', 'matcher/project_files', 'matcher_ignore_globs'])
-call denite#custom#source('file/old', 'matchers', ['matcher/fruzzy', 'matcher/project_files', 'matcher_ignore_globs'])
+call denite#custom#source('file/rec', 'matchers', ['matcher/fruzzy'])
+call denite#custom#source('file/old', 'matchers', ['matcher/fruzzy', 'matcher/project_files'])
 
 " 検索対象外のファイル指定
-call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [ '.git/', '__pycache__/', 'venv/'])
+call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [ '.git/', '*cache*', 'venv/'])
