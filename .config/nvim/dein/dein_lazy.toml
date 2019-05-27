@@ -27,7 +27,7 @@ hook_source = '''
 # neosnippet
 [[plugins]]
 repo = 'Shougo/neosnippet'
-depends = ['vim-snippets', 'neosnippet-snippets', 'context_filetype.vim']
+depends = ['neosnippet-snippets', 'context_filetype.vim']
 on_event = 'InsertCharPre'
 on_ft = 'snippet'
 hook_source = '''
@@ -36,9 +36,6 @@ hook_source = '''
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
-
-[[plugins]]
-repo = 'honza/vim-snippets'
 
 # file viewer
 [[plugins]]
