@@ -86,12 +86,15 @@ let g:lsp_diagnostics_enabled = 0
 
 nnoremap [lsp] <Nop>
 nmap <Leader>l [lsp]
+inoremap [lsp] <Nop>
+imap <Leader>l [lsp]
 nnoremap [lsp]a :<C-u>LspCodeAction<CR>
 nnoremap [lsp]c :<C-u>LspDeclaration<CR>
 nnoremap [lsp]d :<C-u>LspDefinition<CR>
 nnoremap [lsp]f :<C-u>LspDocumentFormat<CR>
 nnoremap [lsp]s :<C-u>LspDocumentSymbol<CR>
 nnoremap [lsp]h :<C-u>LspHover<CR>
+inoremap [lsp]h <C-o>:<C-u>LspHover<CR>
 nnoremap [lsp]i :<C-u>LspImplementation<CR>
 nnoremap [lsp]x :<C-u>LspReferences<CR>
 nnoremap [lsp]m :<C-u>LspStatus<CR>

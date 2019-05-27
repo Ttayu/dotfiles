@@ -1,13 +1,20 @@
 " Denite用prefix
 nnoremap [denite] <Nop>
 nmap <Leader>d [denite]
+inoremap [denite] <Nop>
+imap <Leader>d [denite]
 
 nnoremap <silent> [denite]r
-        \ :<C-u>Denite -buffer-name=register
-        \ register neoyank<CR>
-xnoremap <silent> [denite]r
-        \ :<C-u>Denite -default-action=replace -buffer-name=register
-        \ register neoyank<CR>
+      \ :<C-u>Denite -buffer-name=register
+      \ register neoyank<CR>
+inoremap <silent> [denite]r
+      \ <C-o>:<C-u>Denite -default-action=append -buffer-name=register
+      \ register neoyank<CR>
+nnoremap <silent> [denite]s
+      \ :<C-u>Denite neosnippet -highlight-mode-insert=Search<CR>
+inoremap <silent> [denite]s
+      \ <C-o>:<C-u>Denite neosnippet -default-action=append
+      \ -highlight-mode-insert=Search<CR>
 
 " プロジェクト内のファイル検索
 nnoremap <silent> [denite]p :<C-u>Denite file/rec -highlight-mode-insert=Search<CR>
@@ -22,4 +29,5 @@ nnoremap <silent> [denite]h :<C-u>Denite command_history<CR>
 " dotfiles配下をカレントにしてfile_recを起動
 nnoremap <silent> [denite]v :<C-u>Denite file/rec:~/dotfiles/.config/nvim<CR>
 " ファイル内検索をDeniteに置き換える
-nnoremap <silent> / :<C-u>Denite -buffer-name=search -auto-resize line<CR>
+nnoremap <silent> / :<C-u>Denite -buffer-name=search -auto-resize line 
+      \ -highlight-mode-insert=Search<CR>
