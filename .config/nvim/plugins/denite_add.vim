@@ -26,6 +26,8 @@ nnoremap <silent> [denite]b :<C-u>Denite buffer -highlight-mode-insert=Search<CR
 nnoremap <silent> [denite]c :<C-u>Denite outline -highlight-mode-insert=Search<CR>
 " コマンドラインの履歴の実行
 nnoremap <silent> [denite]h :<C-u>Denite command_history<CR>
+" grep
+nnoremap <silent> [denite]g :<C-u>Denite grep<CR>
 " dotfiles配下をカレントにしてfile_recを起動
 nnoremap <silent> [denite]v :<C-u>Denite file/rec:~/dotfiles/.config/nvim<CR>
 " ファイル内検索をDeniteに置き換える
