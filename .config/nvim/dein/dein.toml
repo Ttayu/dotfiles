@@ -12,7 +12,8 @@ repo = 'Shougo/context_filetype.vim'
 
 # colorscheme
 [[plugins]]
-repo = 'jacoborus/tender.vim'
+# repo = 'jacoborus/tender.vim'
+repo = 'morhetz/gruvbox'
 
 # ステータスラインの改造
 [[plugins]]
