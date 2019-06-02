@@ -1,10 +1,28 @@
 scriptencoding utf-8
-nnoremap <silent> ,n :<C-u>Defx -listed<CR>
+augroup DefxSettings
+  autocmd!
+  autocmd FileType defx call s:defx_my_settings()
+  " vimを閉じたらdefxも同時に閉じる
+  autocmd WinEnter * if &filetype == 'defx' && winnr('$') == 1 | q | endif
+augroup END
 
-" vimを閉じたらdefxも同時に閉じる
-autocmd vimrc WinEnter * if &filetype == 'defx' && winnr('$') == 1 | q | endif
-
-autocmd vimrc FileType defx call s:defx_my_settings()
+call defx#custom#option('_', {
+      \ 'auto_cd': v:true,
+      \ 'toggle': v:true,
+      \ 'split': 'vertical',
+      \ 'winwidth': 20,
+      \ 'direction': 'topleft',
+      \ 'ignored_files':  '.git,.DS_Store,node_modules/*,*cache*',
+      \ })
+call defx#custom#column('mark', {
+      \ 'readonly_icon': '✗',
+      \ 'selected_icon': '✓',
+      \ })
+call defx#custom#column('filename', {
+      \ 'directory_icon': '',
+      \ 'opened_icon': '▼',
+      \ 'root_icon': ' ',
+      \ }) 
 
 function! s:defx_my_settings() abort
   " Define mappings
