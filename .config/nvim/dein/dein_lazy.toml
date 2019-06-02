@@ -41,26 +41,10 @@ repo = 'Shougo/neosnippet-snippets'
 [[plugins]]
 repo = 'Shougo/defx.nvim'
 hook_add = '''
-  source ~/.config/nvim/plugins/defx.vim
+  nnoremap <silent> ,n :<C-u>Defx<CR>
 '''
 hook_source = '''
-  call defx#custom#option('_', {
-        \ 'auto_cd': 1,
-        \ 'toggle': 1,
-        \ 'split': 'vertical',
-        \ 'winwidth': 20,
-        \ 'direction': 'topleft',
-        \ 'ignored_files':  ".git,.DS_Store,node_modules/*,*cache*",
-        \ })
-  call defx#custom#column('mark', {
-        \ 'readonly_icon': '✗',
-        \ 'selected_icon': '✓',
-        \ })
-  call defx#custom#column('filename', {
-        \ 'directory_icon': '',
-        \ 'opened_icon': '▼',
-        \ 'root_icon': ' ',
-        \ }) 
+  source ~/.config/nvim/plugins/defx.vim
 '''
 
 [[plugins]]
