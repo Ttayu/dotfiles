@@ -12,8 +12,8 @@ let g:ale_lint_on_enter = 1
 let g:ale_fix_on_enter = 1
 " ファイルを保存したときにlint実行
 let g:ale_lint_on_save = 1
-" ファイル保存した時にfix実行
-let g:ale_fix_on_save = 1
+" ファイル保存した時にfix実行しない．
+let g:ale_fix_on_save = 0
 " 編集中のlintはしない
 let g:ale_lint_on_text_changed = 'never'
 " ステータスラインにどう表示するか
