@@ -1,3 +1,6 @@
+" file eoncoding
+set encoding=utf-8
+scriptencoding utf-8
 " バックアップファイルを作らない
 set nobackup
 " スワップファイルを作らない
@@ -14,7 +17,7 @@ set clipboard+=unnamedplus
 " 行数の表示
 set number
 " Ubuntuだと重いのでオフ
-if has("mac")
+if has('mac')
   " 行数の相対位置の表示
   set relativenumber
   " 現在の行と列を強調

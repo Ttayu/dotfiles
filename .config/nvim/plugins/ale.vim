@@ -1,4 +1,5 @@
-let g:ale_virtualenv_dir_names = [join(split(g:python3_host_prog, '/')[0:-3], '/')]
+scriptencoding utf-8
+let g:ale_virtualenv_dir_names = [fnamemodify(g:python3_host_prog, ':h:h')]
 " エラー行に表示するマーク
 let g:ale_sign_error = '✖'
 let g:ale_sign_warning = '⚠'
@@ -8,8 +9,6 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_sign_column_always = 1
 " ファイルを開いたときにlint実行
 let g:ale_lint_on_enter = 1
-" ファイルを開いたときにfix実行
-let g:ale_fix_on_enter = 1
 " ファイルを保存したときにlint実行
 let g:ale_lint_on_save = 1
 " ファイル保存した時にfix実行しない．
@@ -33,14 +32,16 @@ let g:ale_linters = {
       \ 'typescript': ['tslint'],
       \ 'python': ['flake8', 'mypy'],
       \ 'go': ['gometalinter'],
-      \ 'json': ['jq']
+      \ 'vim': ['vint'],
       \ }
 " gometalinter
 let g:ale_go_gometalinter_options = '--fast --vendor --disable-all --enable=golint --enable=vet --enable=goimports --enable=errcheck --enable=goconst --enable=goimports --enable=staticcheck'
 " blackの最大長に合わせる
 let g:ale_python_flake8_options = ' --max-line-length=88'
 " 型情報のないパッケージは無視する
-let g:ale_python_mypy_options = '--ignore_missing_imports=True'
+let g:ale_python_mypy_options = '--ignore-missing-imports'
+" pipでインストールしたいくつかのモジュールは明示的に指定しないと動かない
+let g:ale_vim_vint_executable = fnamemodify(g:python3_host_prog, ':h') . '/vint'
 
 " 有効にするFixer
 let g:ale_fixers = {
@@ -49,7 +50,7 @@ let g:ale_fixers = {
       \ 'html': ['prettier'],
       \ 'css': ['prettier'],
       \ 'python': ['autopep8', 'black', 'isort'],
-      \ 'json': ['jq']
+      \ 'json': ['jq', 'prettier']
       \ }
 let g:ale_javascript_prettier_use_local_config = 1
 

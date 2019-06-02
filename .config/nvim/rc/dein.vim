@@ -1,3 +1,4 @@
+scriptencoding utf-8
 " プラグインが実際にインストールされるディレクトリ
 let s:dein_dir = expand('~/.cache/dein')
 " dein.vim 本体
