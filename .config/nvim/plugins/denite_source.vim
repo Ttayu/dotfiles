@@ -1,25 +1,43 @@
+scriptencoding utf-8
+augroup DeniteSettings
+  autocmd!
+  autocmd FileType denite call s:denite_my_settings()
+  autocmd FileType denite-filter call s:denite_filter_my_settings()
+  " vimを閉じたらdeniteも同時に閉じる
+  autocmd WinEnter * if &filetype == 'denite' && winnr('$') == 1 | q | endif
+  autocmd WinEnter * if &filetype == 'denite-filter' && winnr('$') == 1 | q | endif
+augroup END
+
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> q denite#do_map('quit')
+  nnoremap <silent><buffer><expr> <ESC> denite#do_map('quit')
+  nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> @ denite#do_map('toggle_select').'j'
+endfunction
+
+function! s:denite_filter_my_settings() abort
+  nnoremap <silent><buffer><expr> q denite#do_map('quit')
+  nnoremap <silent><buffer><expr> <ESC> denite#do_map('quit')
+  imap <buffer> jj <Plug>(denite_filter_update)
+  inoremap <silent><buffer> <C-j>
+        \ <ESC><C-w>p:call cursor(line('.')+1, 0)<CR><C-w>pA
+  inoremap <silent><buffer> <C-k>
+        \ <ESC><C-w>p:call cursor(line('.')-1, 0)<CR><C-w>pA
+endfunction
+
 call denite#custom#option('default', {
-     \ 'auto_accel': v:true,
-     \ 'promt': '>',
+     \ 'prompt': '>',
      \ 'source_names': 'short',
      \ 'split': 'floating',
+     \ 'start_filter': v:true,
+     \ 'winheight': 12,
+     \ 'vertical_preview': v:true,
+     \ 'filter_updatetime': 10,
+     \ 'unique': v:true,
+     \ 'statusline': v:false,
      \ })
-
-" jjでノーマルへ
-call denite#custom#map('insert', 'jj', '<denite:enter_mode:normal>', 'noremap')
-
-" 上下移動を<C-j>, <C-k>
-call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
-
-" 横割りオープンを<C-s>
-call denite#custom#map('insert', '<C-s>', '<denite:do_action:split>', 'noremap')
-call denite#custom#map('normal', 's', '<denite:do_action:split>', 'noremap')
-" 縦割りオープンを<C-v>
-call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>', 'noremap')
-call denite#custom#map('normal', 'v', '<denite:do_action:vsplit>', 'noremap')
-" タブオープンを<C-t>
-call denite#custom#map('insert', '<C-t>', '<denite:do_action:tabopen>', 'noremap')
 
 " file_rec検索時にfuzzymatchを有効にし、検索対象から指定のファイルを除外
 call denite#custom#source('file/rec', 'matchers', ['matcher/fruzzy'])

@@ -30,6 +30,7 @@ repo = 'Shougo/neosnippet'
 depends = ['neosnippet-snippets', 'context_filetype.vim']
 on_event = 'InsertCharPre'
 on_ft = 'snippet'
+on_source = ['denite.nvim']
 hook_source = '''
   source ~/.config/nvim/plugins/neosnippet.vim
 '''
@@ -56,11 +57,11 @@ on_source = ['denite.nvim']
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 on_cmd = 'Denite'
-hook_source = '''
-  source ~/.config/nvim/plugins/denite_source.vim
-'''
 hook_add = '''
   source ~/.config/nvim/plugins/denite_add.vim
+'''
+hook_source = '''
+  source ~/.config/nvim/plugins/denite_source.vim
 '''
 
 # git操作
