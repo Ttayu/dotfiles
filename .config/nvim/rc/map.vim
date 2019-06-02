@@ -1,5 +1,6 @@
+scriptencoding utf-8
 " リーダー
-let g:mapleader = ","
+let g:mapleader = ','
 " sはclで代用できるため
 nnoremap s <Nop>
 

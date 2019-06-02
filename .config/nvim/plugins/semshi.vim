@@ -1,3 +1,4 @@
+scriptencoding utf-8
 " f-strings と formatを併用すると変数の位置がおかしくなってしまうバグがある．
 " https://github.com/numirias/semshi/issues/31
 function MyCustomHighlights()
@@ -15,7 +16,7 @@ function MyCustomHighlights()
   hi semshiErrorSign       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
   hi semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
 endfunction
-autocmd FileType python call MyCustomHighlights()
+autocmd vimrc FileType python call MyCustomHighlights()
 
 " 強調しないリスト
 let g:semshi#excluded_hl_groups = ['local', 'attribute']

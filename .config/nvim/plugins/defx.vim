@@ -1,9 +1,10 @@
+scriptencoding utf-8
 nnoremap <silent> ,n :<C-u>Defx -listed<CR>
 
 " vimを閉じたらdefxも同時に閉じる
-autocmd WinEnter * if &filetype == 'defx' && winnr('$') == 1 | q | endif
+autocmd vimrc WinEnter * if &filetype == 'defx' && winnr('$') == 1 | q | endif
 
-autocmd FileType defx call s:defx_my_settings()
+autocmd vimrc FileType defx call s:defx_my_settings()
 
 function! s:defx_my_settings() abort
   " Define mappings

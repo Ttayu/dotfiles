@@ -1,3 +1,4 @@
+scriptencoding utf-8
 inoremap <expr><C-g> deoplete#refresh()
 inoremap <expr><C-e> deoplete#cancel_popup()
 
@@ -41,6 +42,6 @@ call deoplete#custom#option({
       \ })
 
 " insert modeから抜けた時にpreviewを閉じる
-autocmd InsertLeave * silent! pclose!
+autocmd vimrc InsertLeave * silent! pclose!
 
 call deoplete#enable()

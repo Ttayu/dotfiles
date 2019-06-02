@@ -1,3 +1,4 @@
+scriptencoding utf-8
 if ! exists('g:lightline')
   let g:lightline = {}
 endif
@@ -23,13 +24,13 @@ let g:lightline.active = {
       \   ['fileformat', 'fileencoding', 'filetype']
       \ ],
       \ }
-let g:lightline.separator =  { 'left': "", 'right': "" }
-let g:lightline.subseparator = { 'left': "", 'right': "" }
+let g:lightline.separator =  { 'left': '', 'right': '' }
+let g:lightline.subseparator = { 'left': '', 'right': '' }
 
 " setting ale
 let g:lightline#ale#indicator_errors = '✖ '
 let g:lightline#ale#indicator_warnings = '⚠ '
-let g:lightline#ale#indicator_ok = "✔"
+let g:lightline#ale#indicator_ok = '✔'
 
 let g:lightline.component_expand = {
       \  'linter_checking': 'lightline#ale#checking',

@@ -14,6 +14,7 @@ isort = "*"
 yapf = "*"
 python-language-server = "*"
 pynvim = "*"
+vim-vint = "*"
 
 [requires]
 python_version = "3.7"
