@@ -21,6 +21,7 @@ function! s:denite_filter_my_settings() abort
   nnoremap <silent><buffer><expr> q denite#do_map('quit')
   nnoremap <silent><buffer><expr> <ESC> denite#do_map('quit')
   imap <buffer> jj <Plug>(denite_filter_update)
+  inoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
   inoremap <silent><buffer> <C-j>
         \ <ESC><C-w>p:call cursor(line('.')+1, 0)<CR><C-w>pA
   inoremap <silent><buffer> <C-k>
