@@ -15,3 +15,6 @@ xmap <silent><TAB> <Plug>(neosnippet_expand_target)
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
+
+" need to use hard tab for indentation in snippet file.
+autocmd vimrc FileType neosnippet setlocal noexpandtab
