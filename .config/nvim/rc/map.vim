@@ -32,8 +32,8 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " 行頭，行末移動
-noremap <Space>h  ^
-noremap <Space>l  $
+noremap H  ^
+noremap L  $
 
 " 括弧移動
 noremap <Space>m %
