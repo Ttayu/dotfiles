@@ -43,24 +43,6 @@ hook_source = '''
 repo = 'cohama/lexima.vim'
 on_event = 'InsertEnter'
 
-# 関数や変数のジャンプ機能
-[[plugins]]
-repo = 'lighttiger2505/gtags.vim'
-hook_add = '''
-  " Options
-  let g:Gtags_Auto_map = 0
-  let g:Gtags_OpenQuickfixWindow = 1
-  " Keymap
-  " 関数一覧表示
-  nnoremap <silent> F :Gtags -f %<CR>
-  " カーソル位置の関数を検索する
-  nnoremap <silent> J :GtagsCursor<CR>
-  " 参照元へジャンプ
-  nnoremap <silent> K :<C-u>exe("Gtags ".expand('<cword>'))<CR>
-  " 参照先へジャンプ
-  nnoremap <silent> R :<C-u>exe("Gtags -r ".expand('<cword>'))<CR>
-'''
-
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 
@@ -83,11 +65,4 @@ hook_add = '''
   " 行頭にコメントをトグル
   nmap <Leader>C <Plug>(caw:zeropos:toggle)j
   vmap <Leader>C <Plug>(caw:zeropos:toggle)j
-'''
-
-# class outline viewer
-[[plugins]]
-repo = 'majutsushi/tagbar'
-hook_add = '''
-  nnoremap <silent> <Leader>t :<C-u>TagbarToggle<CR>
 '''
