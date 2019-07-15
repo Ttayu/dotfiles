@@ -160,4 +160,15 @@
   fi
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
   export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+  export FZF_CTRL_T_COMMAND="rg --files --hidden --follow --glob '!.git/*'"
+  export FZF_CTRL_T_OPTS="--preview 'bat  --color=always --style=header,grid --line-range :100 {}'"
+  fkill() {
+    local pid
+    pid=$(ps -a | sed 1d | fzf -m | awk '{print $2}')
+
+    if [ "x$pid" != "x" ]
+    then
+      echo $pid | xargs kill -${1:-9}
+    fi
+  }
 }
