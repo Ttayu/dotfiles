@@ -5,6 +5,12 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
 depends = ['context_filetype.vim']
+hook_add = '''
+ let g:precious_enable_switchers = {
+       \  'defx': {'setfiletype': 0},
+       \  'denite': {'setfiletype': 0}
+       \  }
+'''
 
 # カーソル位置のコンテキストのftを判断する
 [[plugins]]
