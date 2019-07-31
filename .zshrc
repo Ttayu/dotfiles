@@ -162,13 +162,14 @@
   export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
   export FZF_CTRL_T_COMMAND="rg --files --hidden --follow --glob '!.git/*'"
   export FZF_CTRL_T_OPTS="--preview 'bat  --color=always --style=header,grid --line-range :100 {}'"
+  export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
   fkill() {
     local pid
-    pid=$(ps -a | sed 1d | fzf -m | awk '{print $2}')
+    pid=$(ps -a | sed 1d | fzf -m | awk '{print $1}')
 
     if [ "x$pid" != "x" ]
     then
-      echo $pid | xargs kill -${1:-9}
+      kill $pid
     fi
   }
 }
