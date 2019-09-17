@@ -21,6 +21,7 @@ function! s:denite_filter_my_settings() abort
   nnoremap <silent><buffer><expr> q denite#do_map('quit')
   nnoremap <silent><buffer><expr> <ESC> denite#do_map('quit')
   imap <buffer> jj <Plug>(denite_filter_update)
+  inoremap <silent><buffer><expr> <C-c> denite#do_map('quit')
   inoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
   inoremap <silent><buffer> <C-j>
         \ <ESC><C-w>p:call cursor(line('.')+1, 0)<CR><C-w>pA
@@ -28,12 +29,17 @@ function! s:denite_filter_my_settings() abort
         \ <ESC><C-w>p:call cursor(line('.')-1, 0)<CR><C-w>pA
 endfunction
 
+let s:denite_win_width_percent = 0.85
+let s:denite_win_height_percent = 0.7
 call denite#custom#option('default', {
      \ 'prompt': '>',
      \ 'source_names': 'short',
      \ 'split': 'floating',
+     \ 'winwidth': float2nr(&columns * s:denite_win_width_percent),
+     \ 'wincol': float2nr((&columns - (&columns * s:denite_win_width_percent)) / 2),
+     \ 'winheight': float2nr(&lines * s:denite_win_height_percent),
+     \ 'winrow': float2nr((&lines - (&lines * s:denite_win_height_percent)) / 2),
      \ 'start_filter': v:true,
-     \ 'winheight': 12,
      \ 'vertical_preview': v:true,
      \ 'filter_updatetime': 10,
      \ 'unique': v:true,
@@ -60,4 +66,3 @@ call denite#custom#source('file/old', 'matchers', ['matcher/fruzzy', 'matcher/pr
 
 " 検索対象外のファイル指定
 call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [ '.git/', '*cache*', 'venv/'])
-
