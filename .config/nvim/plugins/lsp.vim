@@ -81,8 +81,21 @@ if executable('ccls')
   augroup END
 endif
 
+if executable('rls')
+  augroup LspRust
+    autocmd!
+    autocmd User lsp_setup call lsp#register_server({
+          \ 'name': 'rls',
+          \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
+          \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
+          \ 'whitelist': ['rust'],
+          \ })
+  augroup END
+endif
+
 " use ale instead of lsp
 let g:lsp_diagnostics_enabled = 0
+let g:lsp_async_completion = 1
 
 nnoremap [lsp] <Nop>
 nmap <Leader>l [lsp]
