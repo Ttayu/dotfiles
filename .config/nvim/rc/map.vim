@@ -90,3 +90,13 @@ nnoremap <M-j> "zdd"zp
 " Alt-j -> ∆
 vnoremap <M-k> "zx<Up>"zP`[V`]
 vnoremap <M-j> "zx"zp`[V`]
+
+" terminal
+nnoremap <Leader>t :vsplit<CR>:set nonumber<CR>:set norelativenumber<CR>:terminal<CR>
+tnoremap <Esc> <C-\><C-n>
+tnoremap jj <C-\><C-n>
+" Switching windows in terminal
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l

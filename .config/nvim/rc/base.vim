@@ -60,6 +60,3 @@ set previewheight=2
 
 " {{{}}}で折りたたむ
 set foldmethod=marker
-
-" terminal
-tnoremap <Esc> <C-\><C-n>
