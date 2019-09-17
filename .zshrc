@@ -152,6 +152,10 @@
   export PATH="$PATH:`yarn global bin`"
 }
 
+: "rust settings" && {
+  export PATH="$PATH:$HOME/.cargo/bin"
+}
+
 : "fzf settings" && {
   # not use brew
   if [ "$(uname)" = 'Linux' ]; then

@@ -33,6 +33,7 @@ let g:ale_linters = {
       \ 'python': ['flake8', 'mypy'],
       \ 'go': ['gometalinter'],
       \ 'vim': ['vint'],
+      \ 'rust': ['cargo']
       \ }
 " gometalinter
 let g:ale_go_gometalinter_options = '--fast --vendor --disable-all --enable=golint --enable=vet --enable=goimports --enable=errcheck --enable=goconst --enable=goimports --enable=staticcheck'
@@ -50,7 +51,8 @@ let g:ale_fixers = {
       \ 'html': ['prettier'],
       \ 'css': ['prettier'],
       \ 'python': ['autopep8', 'black', 'isort'],
-      \ 'json': ['jq', 'prettier']
+      \ 'json': ['jq', 'prettier'],
+      \ 'rust': ['rustfmt'],
       \ }
 let g:ale_javascript_prettier_use_local_config = 1
 
