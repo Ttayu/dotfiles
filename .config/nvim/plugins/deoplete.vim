@@ -15,7 +15,7 @@ call deoplete#custom#source('look', 'filetypes', ['help', 'gitcommit'])
 call deoplete#custom#option('ignore_sources', {'_': ['around', 'buffer', 'tag']})
 
 call deoplete#custom#source('zsh', 'filetypes', ['zsh', 'sh'])
-
+call deoplete#custom#source('_', 'min_pattern_length', 1)
 call deoplete#custom#source('_', 'converters', [
       \ 'converter_remove_paren',
       \ 'converter_remove_overlap',
