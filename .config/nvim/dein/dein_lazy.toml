@@ -95,6 +95,14 @@ hook_add = '''
   autocmd vimrc BufEnter * if (&filetype == 'vista' || &filetype == 'vista_kind') && winnr('$') == 1 | q | endif
 '''
 
+[[plugins]]
+repo = 'rhysd/accelerated-jk'
+on_map = {n = '<Plug>'}
+hook_add = '''
+  nmap <silent>j <Plug>(accelerated_jk_gj)
+  nmap <silent>k <Plug>(accelerated_jk_gk)
+'''
+
 # syntax
 # toml
 [[plugins]]

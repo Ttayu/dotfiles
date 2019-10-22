@@ -9,7 +9,7 @@ function! s:my_cr_function() abort
 endfunction
 
 call deoplete#custom#source('_', 'matchers',
-      \ ['matcher_fuzzy', 'matcher_length'])
+      \ ['matcher_full_fuzzy', 'matcher_length'])
 
 call deoplete#custom#source('look', 'filetypes', ['help', 'gitcommit'])
 call deoplete#custom#option('ignore_sources', {'_': ['around', 'buffer', 'tag']})
