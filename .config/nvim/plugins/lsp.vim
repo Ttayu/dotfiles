@@ -96,6 +96,10 @@ endif
 " use ale instead of lsp
 let g:lsp_diagnostics_enabled = 0
 let g:lsp_async_completion = 1
+let g:lsp_highlight_references_enabled = 1
+set foldmethod=expr
+set foldexpr=lsp#ui#vim#folding#foldexpr()
+set foldtext=lsp#ui#vim#folding#foldtext()
 
 nnoremap [lsp] <Nop>
 nmap <Leader>l [lsp]
