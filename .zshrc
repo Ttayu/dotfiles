@@ -7,6 +7,8 @@
   # theme
   # zplug "wfxr/spaceship-zsh-theme", use:spaceship.zsh, as:theme
   zplug "iboyperson/pastel", as:theme
+  # auto close and delete mathing delimiters
+  zplug "hlissner/zsh-autopair", defer:1
   # 構文のハイライト compiniti以降に読み込む必要がある
   zplug "zsh-users/zsh-syntax-highlighting", defer:2
   # history関係
@@ -17,7 +19,7 @@
   zplug "plugins/git", from:oh-my-zsh, if:"which git 1>/dev/null"
   # 補完ファイル
   zplug "zsh-users/zsh-completions"
-  # zplug "chrissicool/zsh-256color"
+  zplug "chrissicool/zsh-256color"
   # command line fuzzy finder
   zplug "junegunn/fzf-bin", \
     from:gh-r, \
@@ -53,7 +55,7 @@
 }
 
 : "common aliases" && {
-  alias ls="ls -G"
+  alias ls="ls -G --color=auto"
   alias ll="ls -a"
   alias l="ls -la"
   alias t="tmux"
@@ -124,14 +126,6 @@
   zstyle ':completion:*:default' menu select=2
   # 補完候補をキャッシュ
   zstyle ':completion:*' use-cache yes
-}
-
-: "wsl settings" && {
-  if [ "$(uname)" = 'Linux' ]; then
-    unsetopt BG_NICE
-    export DISPLAY=localhost:0.0
-    export LIBGL_ALWAYS_INDIRECT=1
-  fi
 }
 
 : "python settings" && {
