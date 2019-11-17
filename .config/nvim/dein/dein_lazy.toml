@@ -89,9 +89,12 @@ hook_add = '''
 # viewer for LSP symbols
 [[plugins]]
 repo = 'liuchengxu/vista.vim'
+depends = ['vim-lsp']
 hook_add = '''
   let g:vista_close_on_jump = 1
-  nnoremap <silent> <leader>v :<C-u>Vista vim_lsp<CR>
+  let g:vista#renderer#enable_icon = 1
+  let g:vista_default_executive = 'vim_lsp'
+  nnoremap <silent> <leader>v :<C-u>Vista!!<CR>
   autocmd vimrc BufEnter * if (&filetype == 'vista' || &filetype == 'vista_kind') && winnr('$') == 1 | q | endif
 '''
 

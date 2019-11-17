@@ -15,7 +15,7 @@ let g:lightline.active = {
       \ 'left': [
       \   ['mode', 'paste'],
       \   ['fugitive'],
-      \   ['readonly', 'filename', 'modified'],
+      \   ['readonly', 'filename', 'modified', 'method'],
       \ ],
       \ 'right': [
       \   ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok'],
@@ -44,4 +44,9 @@ let g:lightline.component_type = {
       \     'linter_errors': 'error',
       \     'linter_ok': 'left',
       \ }
-
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+let g:lightline.component_function = {
+      \ 'method': 'NearestMethodOrFunction'
+      \ }
