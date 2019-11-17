@@ -1,15 +1,18 @@
+# 1. Copy this to ~/.config/systemd/user/xkeysnail.service
+# 2. systemctl --user enable xkeysnail
+
 [Unit]
 Description=xkeysnail
 
 [Service]
 KillMode=process
-ExecStart=/usr/local/bin/xkeysnail /etc/opt/xkeysnail/config.py
+ExecStart=/usr/local/bin/xkeysnail  ~/dotfiles/.config/key_remap/linux/config.py
 ExecStartPre=/usr/bin/xhost +SI:localuser:root
 Type=simple
 Restart=always
 
 # Update DISPLAY to be the same as `echo $DISPLAY` on your graphical terminal.
-Environment=DISPLAY=:0
+Environment=DISPLAY=:0.0
 
 [Install]
 WantedBy=default.target

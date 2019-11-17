@@ -2,6 +2,9 @@ import re
 
 from xkeysnail.transform import *
 
+define_modmap({Key.CAPSLOCK: Key.LEFT_CTRL})
+
+
 # something remap
 define_multipurpose_modmap(
     {
