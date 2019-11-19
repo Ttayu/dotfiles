@@ -143,6 +143,7 @@ repo = 'lervag/vimtex'
 on_ft = 'tex'
 hook_add = '''
   let g:vimtex_compiler_latexmk_engines = {'_': '-pdfdvi'}
+  let g:tex_flavor = 'latex'
   if has('mac')
     let g:vimtex_view_general_viewer = 'skim'
   else
