@@ -136,3 +136,16 @@ hook_source = '''
 [[plugins]]
 repo = 'deoplete-plugins/deoplete-zsh'
 on_ft = ['zsh', 'sh']
+
+# latex
+[[plugins]]
+repo = 'lervag/vimtex'
+on_ft = 'tex'
+hook_add = '''
+  let g:vimtex_compiler_latexmk_engines = {'_': '-pdfdvi'}
+  if has('mac')
+    let g:vimtex_view_general_viewer = 'skim'
+  else
+    let g:vimtex_view_general_viewer = 'evince'
+  endif
+'''
