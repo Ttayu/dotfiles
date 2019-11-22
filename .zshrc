@@ -36,6 +36,8 @@
   zplug "mollifier/anyframe"
   # ターミナルのディレクトリ移動を高速化する
   zplug "b4b4r07/enhancd", use:"init.sh"
+  # terminal divider
+  zplug "greymd/tmux-xpanes"
   # Install plugins if there are plugins that have not been installed
   if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -148,6 +150,14 @@
 
 : "rust settings" && {
   export PATH="$PATH:$HOME/.cargo/bin"
+}
+
+: "java/kotlin settings" && {
+  source "/Users/yuki-tana/.sdkman/bin/sdkman-init.sh"
+  eval "$(jenv init -)"
+  export ANDROID_HOME=$HOME/Library/Android/sdk
+  # export ANDROID_SDK_ROOT=$ANDROID_HOME/sdk
+  # export PATH=$ANDROID_SDK_ROOT/tools/bin:$ANDROID_SDK_ROOT/tools/emulator:$PATH
 }
 
 : "fzf settings" && {

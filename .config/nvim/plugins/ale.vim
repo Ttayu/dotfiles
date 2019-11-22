@@ -33,7 +33,8 @@ let g:ale_linters = {
       \ 'python': ['flake8', 'mypy'],
       \ 'go': ['gometalinter'],
       \ 'vim': ['vint'],
-      \ 'rust': ['cargo']
+      \ 'rust': ['cargo'],
+      \ 'kotlin': ['ktlint', 'languageserver']
       \ }
 " gometalinter
 let g:ale_go_gometalinter_options = '--fast --vendor --disable-all --enable=golint --enable=vet --enable=goimports --enable=errcheck --enable=goconst --enable=goimports --enable=staticcheck'
@@ -43,6 +44,7 @@ let g:ale_python_flake8_options = ' --max-line-length=88'
 let g:ale_python_mypy_options = '--ignore-missing-imports'
 " pipでインストールしたいくつかのモジュールは明示的に指定しないと動かない
 let g:ale_vim_vint_executable = fnamemodify(g:python3_host_prog, ':h') . '/vint'
+let g:ale_kotlin_languageserver_executable = $HOME . '/lsp/kotlin-language-server/server/bin/kotlin-language-server'
 
 " 有効にするFixer
 let g:ale_fixers = {

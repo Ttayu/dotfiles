@@ -93,6 +93,48 @@ if executable('rls')
   augroup END
 endif
 
+if executable('java') && filereadable(expand('~/lsp/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.300.v20190213-1655.jar'))
+  augroup LspJava
+    autocmd!
+    autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'eclipse.jdt.ls',
+        \ 'cmd': {server_info->[
+        \     'java',
+        \     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+        \     '-Dosgi.bundles.defaultStartLevel=4',
+        \     '-Declipse.product=org.eclipse.jdt.ls.core.product',
+        \     '-Dlog.level=ALL',
+        \     '-noverify',
+        \     '-Dfile.encoding=UTF-8',
+        \     '-Xmx1G',
+        \     '-jar',
+        \     expand('~/lsp/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.300.v20190213-1655.jar'),
+        \     '-configuration',
+        \     expand('~/lsp/eclipse.jdt.ls/config_mac'),
+        \     '-data',
+        \     getcwd()
+        \ ]},
+        \ 'whitelist': ['java'],
+        \ })
+  augroup END
+endif
+
+
+if executable('kotlin') && executable(expand('~/lsp/kotlin-language-server/server/bin/kotlin-language-server'))
+  augroup LspKotlin
+    autocmd!
+    autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'kotlin-language-server',
+        \ 'cmd': {server_info->[
+        \     &shell,
+        \     &shellcmdflag,
+        \     expand('~/lsp/kotlin-language-server/server/bin/kotlin-language-server')
+        \ ]},
+        \ 'whitelist': ['kotlin']
+        \ })
+  augroup END
+endif
+
 " use ale instead of lsp
 let g:lsp_diagnostics_enabled = 0
 let g:lsp_async_completion = 1
