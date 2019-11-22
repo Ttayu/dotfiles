@@ -5,7 +5,11 @@ on_ft = ['typescript']
 
 [[plugins]]
 repo = 'pangloss/vim-javascript'
-on_ft = ['javascript']
+on_ft = ['javascript', 'typescript']
+
+[[plugins]]
+repo = 'Ttayu/vim-typescript'
+on_ft = ['typescript']
 
 [[plugins]]
 repo = 'fleischie/vim-styled-components'

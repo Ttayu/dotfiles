@@ -63,9 +63,9 @@ nnoremap x "_x
 nnoremap s "_s
 
 " 全コピー
-nnoremap Y ggyG
+nnoremap <Space>y ggyG
 " 全削除して貼り付け
-nnoremap P gg"_dGp
+nnoremap <Space>p gg"_dGp
 
 " Ctrl+] で右にエスケープ
 inoremap <C-]> <Esc><Right>
@@ -92,11 +92,12 @@ vnoremap <M-k> "zx<Up>"zP`[V`]
 vnoremap <M-j> "zx"zp`[V`]
 
 " terminal
-nnoremap <Leader>t :vsplit<CR>:set nonumber<CR>:set norelativenumber<CR>:terminal<CR>
+nnoremap <Leader>t :vsplit<CR>:terminal<CR>:set nonumber<CR>:set norelativenumber<CR>
 tnoremap <Esc> <C-\><C-n>
 tnoremap jj <C-\><C-n>
 " Switching windows in terminal
 tnoremap <C-h> <C-\><C-n><C-w>h
 tnoremap <C-j> <C-\><C-n><C-w>j
 tnoremap <C-k> <C-\><C-n><C-w>k
-tnoremap <C-l> <C-\><C-n><C-w>l
+" for reflesh terminal
+" tnoremap <C-l> <C-\><C-n><C-w>l
