@@ -29,7 +29,9 @@ let g:ale_linters_explicit = 1
 " 有効にするlinter
 let g:ale_linters = {
       \ 'javascript': ['eslint', 'flow'],
+      \ 'javascriptreact': ['eslint', 'flow'],
       \ 'typescript': ['tslint'],
+      \ 'typescriptreact': ['tslint'],
       \ 'python': ['flake8', 'mypy'],
       \ 'go': ['gometalinter'],
       \ 'vim': ['vint'],
@@ -49,7 +51,9 @@ let g:ale_kotlin_languageserver_executable = $HOME . '/lsp/kotlin-language-serve
 " 有効にするFixer
 let g:ale_fixers = {
       \ 'javascript': ['prettier'],
+      \ 'javascriptreact': ['prettier'],
       \ 'typescript': ['prettier'],
+      \ 'typescriptreact': ['prettier'],
       \ 'html': ['prettier'],
       \ 'css': ['prettier'],
       \ 'python': ['autopep8', 'black', 'isort'],
