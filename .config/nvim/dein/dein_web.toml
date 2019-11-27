@@ -1,54 +1,48 @@
 # typescript
 [[plugins]]
-repo = 'leafgarland/typescript-vim'
-on_ft = ['typescript']
-
-[[plugins]]
 repo = 'pangloss/vim-javascript'
-on_ft = ['javascript', 'typescript']
-
-[[plugins]]
-repo = 'Ttayu/vim-typescript'
-on_ft = ['typescript']
+on_ft = ['javascript', 'javascriptreact', 'typescript', 'typescriptreact']
 
 [[plugins]]
 repo = 'fleischie/vim-styled-components'
-on_ft = ['javascript', 'typescript']
+on_ft = ['javascript', 'javascriptreact', 'typescript', 'typescriptreact']
 
 [[plugins]]
 repo = 'maxmellon/vim-jsx-pretty'
-on_ft = ['javascript', 'typescript']
+on_ft = ['javascript', 'javascriptreact', 'typescript', 'typescriptreact']
 
 [[plugins]]
 repo = 'Valloric/MatchTagAlways'
-on_ft = ['html', 'javascript', 'typescript']
+on_ft = ['html', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact']
 hook_source = '''
   let g:mta_filetypes = {
         \ 'html': 1,
         \ 'javascript': 1,
+        \ 'javascriptreact': 1,
         \ 'typescript': 1,
+        \ 'typescriptreact': 1,
         \ }
 '''
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
-on_ft = ['html', 'css', 'javascript', 'typescript']
+on_ft = ['html', 'css', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact']
 hook_add = '''
   let g:user_emmet_install_global = 0
   let g:user_emmet_settings = {
        \ 'javascript': {
-       \   'extends': 'jsx',
+       \   'extends': ['jsx', 'javascriptreact'],
        \ },
        \ 'typescript': {
-       \   'extends': 'jsx',
+       \   'extends': ['jsx', 'typescriptreact'],
        \ },
        \}
-  autocmd FileType html,css,javascript,javascript.jsx,typescript EmmetInstall
+  autocmd FileType html,css,javascript,javascript.jsx,javascriptreact,typescript,typescriptreact EmmetInstall
 '''
 
 [[plugins]]
 repo = 'jparise/vim-graphql'
-on_ft = ['graphql', 'qql', 'Relay.QL', 'js', 'typescript']
+on_ft = ['graphql', 'qql', 'Relay.QL', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact']
 
 [[plugins]]
 repo = 'othree/html5.vim'
