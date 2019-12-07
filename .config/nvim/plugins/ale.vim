@@ -30,8 +30,8 @@ let g:ale_linters_explicit = 1
 let g:ale_linters = {
       \ 'javascript': ['eslint', 'flow'],
       \ 'javascriptreact': ['eslint', 'flow'],
-      \ 'typescript': ['tslint'],
-      \ 'typescriptreact': ['tslint'],
+      \ 'typescript': ['eslint'],
+      \ 'typescriptreact': ['eslint'],
       \ 'python': ['flake8', 'mypy'],
       \ 'go': ['gometalinter'],
       \ 'vim': ['vint'],

@@ -1,11 +1,17 @@
+[[plugins]]
+repo = 'HerringtonDarkholme/yats.vim'
+on_ft = ['typescript', 'typescriptreact']
+
 # typescript
 [[plugins]]
 repo = 'pangloss/vim-javascript'
 on_ft = ['javascript', 'javascriptreact', 'typescript', 'typescriptreact']
 
-[[plugins]]
-repo = 'fleischie/vim-styled-components'
-on_ft = ['javascript', 'javascriptreact', 'typescript', 'typescriptreact']
+# reactのサポートがまだ完全ではないため
+# https://github.com/styled-components/vim-styled-components/issues/73
+# [[plugins]]
+# repo = 'fleischie/vim-styled-components'
+# on_ft = ['javascript', 'javascriptreact', 'typescript', 'typescriptreact']
 
 [[plugins]]
 repo = 'maxmellon/vim-jsx-pretty'
@@ -31,13 +37,13 @@ hook_add = '''
   let g:user_emmet_install_global = 0
   let g:user_emmet_settings = {
        \ 'javascript': {
-       \   'extends': ['jsx', 'javascriptreact'],
+       \   'extends': 'jsx',
        \ },
        \ 'typescript': {
-       \   'extends': ['jsx', 'typescriptreact'],
+       \   'extends': 'jsx',
        \ },
        \}
-  autocmd FileType html,css,javascript,javascript.jsx,javascriptreact,typescript,typescriptreact EmmetInstall
+  autocmd FileType html,css,javascript,javascript,javascriptreact,typescript,typescriptreact EmmetInstall
 '''
 
 [[plugins]]
