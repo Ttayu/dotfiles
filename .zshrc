@@ -128,32 +128,32 @@
   # 補完方法の設定．指定した順番に実行する
   zstyle ':completion:*' completer \
     _oldlist _complete _match _history _ignored _approximate _prefix
-      # ファイル補完候補に色を付ける
-      zstyle ':completion:*:default' list-colors ""
-      # 補完候補をメニューから選択
-      zstyle ':completion:*:default' menu select=2
-      # 補完候補をキャッシュ
-      zstyle ':completion:*' use-cache yes
-      export WORDCHARS='*?_.[]~-=&;!#$%^(){}<>' 
-    }
+  # ファイル補完候補に色を付ける
+  zstyle ':completion:*:default' list-colors ""
+  # 補完候補をメニューから選択
+  zstyle ':completion:*:default' menu select=2
+  # 補完候補をキャッシュ
+  zstyle ':completion:*' use-cache yes
+  export WORDCHARS='*?_.[]~-=&;!#$%^(){}<>' 
+}
 
-  : "python settings" && {
-    export PYENV_ROOT="$HOME/.pyenv"
-      export PATH="$PYENV_ROOT/bin:$PATH"
-      eval "$(pyenv init -)"
-      eval  "$(pipenv --completion)"
-      export PIPENV_VENV_IN_PROJECT=true
-    }
+: "python settings" && {
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+  eval  "$(pipenv --completion)"
+  export PIPENV_VENV_IN_PROJECT=true
+}
 
-  : "golang settings" && {
-    export GOPATH=$HOME/.config/go
-      export GOROOT=$( go env GOROOT )
-      export PATH=$GOPATH/bin:$PATH
-    }
+: "golang settings" && {
+  export GOPATH=$HOME/.config/go
+  export GOROOT=$( go env GOROOT )
+  export PATH=$GOPATH/bin:$PATH
+}
 
-  : "javascript settings" && {
-    export PATH="$PATH:`yarn global bin`"
-  }
+: "javascript settings" && {
+  export PATH="$PATH:`yarn global bin`"
+}
 
 : "rust settings" && {
   export PATH="$PATH:$HOME/.cargo/bin"
