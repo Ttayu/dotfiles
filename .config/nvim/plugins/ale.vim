@@ -31,7 +31,7 @@ let g:ale_linters = {
       \ 'javascript': ['eslint', 'flow'],
       \ 'javascriptreact': ['eslint', 'flow'],
       \ 'typescript': ['eslint'],
-      \ 'typescriptreact': ['eslint'],
+      \ 'typescriptreact': ['eslint', 'tsserver'],
       \ 'python': ['flake8', 'mypy'],
       \ 'go': ['gometalinter'],
       \ 'vim': ['vint'],
