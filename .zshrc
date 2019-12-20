@@ -54,10 +54,18 @@
   HISTSIZE=10000
   SAVEHIST=10000
   setopt share_history
+  # 重複を記録しない
+  setopt hist_ignore_dups
+  setopt hist_ignore_space
+  setopt hist_reduce_blanks
 }
 
 : "common aliases" && {
-  alias ls="ls -G --color=auto"
+  if [[ "$OSTYPE" =~ ^darwin ]]; then
+    alias ls="ls -G"
+  else
+    alias ls="ls --color"
+  fi
   alias ll="ls -a"
   alias l="ls -la"
   alias t="tmux"
@@ -93,8 +101,6 @@
   bindkey "^[[B" history-search-forward
   bindkey "^P" history-search-backward
   bindkey "^N" history-search-forward
-  # 重複を記録しない
-  setopt hist_ignore_dups
   # ディレクトリ名の補完で末尾の/を自動的に付加
   setopt auto_param_slash
   # ファイル名の展開でディレクトリにマッチした場合末尾に/を付加
@@ -122,31 +128,32 @@
   # 補完方法の設定．指定した順番に実行する
   zstyle ':completion:*' completer \
     _oldlist _complete _match _history _ignored _approximate _prefix
-  # ファイル補完候補に色を付ける
-  zstyle ':completion:*:default' list-colors ""
-  # 補完候補をメニューから選択
-  zstyle ':completion:*:default' menu select=2
-  # 補完候補をキャッシュ
-  zstyle ':completion:*' use-cache yes
-}
+      # ファイル補完候補に色を付ける
+      zstyle ':completion:*:default' list-colors ""
+      # 補完候補をメニューから選択
+      zstyle ':completion:*:default' menu select=2
+      # 補完候補をキャッシュ
+      zstyle ':completion:*' use-cache yes
+      export WORDCHARS='*?_.[]~-=&;!#$%^(){}<>' 
+    }
 
-: "python settings" && {
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init -)"
-  eval  "$(pipenv --completion)"
-  export PIPENV_VENV_IN_PROJECT=true
-}
+  : "python settings" && {
+    export PYENV_ROOT="$HOME/.pyenv"
+      export PATH="$PYENV_ROOT/bin:$PATH"
+      eval "$(pyenv init -)"
+      eval  "$(pipenv --completion)"
+      export PIPENV_VENV_IN_PROJECT=true
+    }
 
-: "golang settings" && {
-  export GOPATH=$HOME/.config/go
-  export GOROOT=$( go env GOROOT )
-  export PATH=$GOPATH/bin:$PATH
-}
+  : "golang settings" && {
+    export GOPATH=$HOME/.config/go
+      export GOROOT=$( go env GOROOT )
+      export PATH=$GOPATH/bin:$PATH
+    }
 
-: "javascript settings" && {
-  export PATH="$PATH:`yarn global bin`"
-}
+  : "javascript settings" && {
+    export PATH="$PATH:`yarn global bin`"
+  }
 
 : "rust settings" && {
   export PATH="$PATH:$HOME/.cargo/bin"
