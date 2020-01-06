@@ -9,8 +9,7 @@ augroup END
 call defx#custom#option('_', {
       \ 'auto_cd': v:true,
       \ 'toggle': v:true,
-      \ 'split': 'vertical',
-      \ 'winwidth': 20,
+      \ 'split': 'floating',
       \ 'direction': 'topleft',
       \ 'ignored_files':  '.git,.DS_Store,node_modules/*,*cache*',
       \ })
