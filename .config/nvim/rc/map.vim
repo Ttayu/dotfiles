@@ -9,10 +9,10 @@ nnoremap <silent> ss :split<CR>
 nnoremap <silent> sv :vsplit<CR>
 
 "tab関連
-nnoremap st :tabnew<CR>
-nnoremap sp :w<CR>:tabprevious<CR>
-nnoremap sn :w<CR>:tabnext<CR>
-nnoremap sw :tabclose<CR>
+nnoremap <silent> st :tabnew<CR>
+nnoremap <silent> sp :w<CR>:tabprevious<CR>
+nnoremap <silent> sn :w<CR>:tabnext<CR>
+nnoremap <silent> sw :tabclose<CR>
 
 " 行末移動
 nmap <Bar> $:let pos = getpos(".")<CR>:join<CR>:call setpos('.', pos)<CR>
