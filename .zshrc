@@ -94,13 +94,18 @@
 }
 
 : "zsh settings" && {
+  bindkey -e
   # コマンドのオプションや引数を補完する
   autoload -Uz compinit && compinit
 
+  bindkey '^[[Z' reverse-menu-complete
   bindkey "^[[A" history-search-backward
   bindkey "^[[B" history-search-forward
   bindkey "^P" history-search-backward
   bindkey "^N" history-search-forward
+  bindkey "^[[1;5C" forward-word
+  bindkey "^[[1;5D" backward-word
+  
   # ディレクトリ名の補完で末尾の/を自動的に付加
   setopt auto_param_slash
   # ファイル名の展開でディレクトリにマッチした場合末尾に/を付加
@@ -146,6 +151,7 @@
 }
 
 : "golang settings" && {
+  export PATH=$PATH:/usr/local/go/bin
   export GOPATH=$HOME/.config/go
   export GOROOT=$( go env GOROOT )
   export PATH=$GOPATH/bin:$PATH
