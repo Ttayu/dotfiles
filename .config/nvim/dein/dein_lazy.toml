@@ -146,7 +146,8 @@ hook_add = '''
   let g:tex_flavor = 'latex'
   let g:vimtex_quickfix_open_on_warning = 0
   if has('mac')
-    let g:vimtex_view_general_viewer = 'skim'
+    let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+    let g:vimtex_view_general_options = '@line @pdf @tex'
   else
     let g:vimtex_view_general_viewer = 'evince'
   endif
