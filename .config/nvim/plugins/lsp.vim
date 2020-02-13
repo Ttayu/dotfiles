@@ -1,4 +1,21 @@
 let s:pyls_path = fnamemodify(g:python3_host_prog, ':h') . '/'. 'pyls'
+let s:pyls_config = {'pyls': {'plugins': {
+      \   'pycodestyle': {'enabled': v:false},
+      \   'mccabe': {'enabled': v:false},
+      \   'pyflakes': {'enabled': v:false},
+      \   'pydocstyle': {'enabled': v:false},
+      \   'pylint': {'enabled': v:false},
+      \   'flake8': {'enabled': v:false},
+      \   'rope_completion': {'enabled': v:false},
+      \   'yapf': {'enabled': v:false},
+      \     'jedi' : {'extra_paths' : [] },
+      \     'jedi_completion'     : { 'enabled': v:true, 'include_params': v:true },
+      \     'jedi_definition'     : { 'enabled': v:true, 'follow_imports': v:true, 'follow_builtin_imports': v:true },
+      \     'jedi_hover'          : { 'enabled': v:true },
+      \     'jedi_references'     : { 'enabled': v:true },
+      \     'jedi_signature_help' : { 'enabled': v:true },
+      \     'jedi_symbols'        : { 'enabled': v:true },
+      \ }}}
 if executable(s:pyls_path)
   augroup LspPython
     autocmd!
@@ -6,6 +23,7 @@ if executable(s:pyls_path)
           \ 'name': 'pyls',
           \ 'cmd': {server_info->[expand(s:pyls_path)]},
           \ 'whitelist': ['python'],
+          \ 'workspace_config': s:pyls_config,
           \ })
   augroup END
 endif
@@ -139,9 +157,6 @@ endif
 let g:lsp_diagnostics_enabled = 0
 let g:lsp_async_completion = 1
 let g:lsp_highlight_references_enabled = 1
-" set foldmethod=expr
-" set foldexpr=lsp#ui#vim#folding#foldexpr()
-" set foldtext=lsp#ui#vim#folding#foldtext()
 
 nnoremap [lsp] <Nop>
 nmap <Leader>l [lsp]
@@ -153,8 +168,9 @@ nnoremap [lsp]d :<C-u>LspDefinition<CR>
 nnoremap [lsp]f :<C-u>LspDocumentFormat<CR>
 nnoremap [lsp]s :<C-u>LspDocumentSymbol<CR>
 nnoremap [lsp]h :<C-u>LspHover<CR>
-inoremap [lsp]h <C-o>:<C-u>LspHover<CR>
+inoremap [lsp]h <Esc>:<C-u>LspSignatureHelp<CR><Insert>
 nnoremap [lsp]i :<C-u>LspImplementation<CR>
+nnoremap [lsp]p :<C-u>LspPeekDefinition<CR>
 nnoremap [lsp]x :<C-u>LspReferences<CR>
 nnoremap [lsp]m :<C-u>LspStatus<CR>
 nnoremap [lsp]r :<C-u>LspRename<CR>
