@@ -13,10 +13,10 @@
 }
 
 : "install Zinit plugin" && {
-  zinit wait lucid for \
+  zinit wait'0a' lucid nocompletions for \
     atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
         zdharma/fast-syntax-highlighting \
-    blockf \
+    blockf atpull'zinit creinstall -q .' \
         zsh-users/zsh-completions \
     atload"!_zsh_autosuggest_start" \
         zsh-users/zsh-autosuggestions
@@ -33,10 +33,10 @@
   zinit load junegunn/fzf
 
   # Helps you with cd. Alternative to autojump.
-  zinit light "b4b4r07/enhancd"
+  zinit light b4b4r07/enhancd
 
   # Divide terminal
-  zinit light "greymd/tmux-xpanes"
+  zinit light greymd/tmux-xpanes
 
   # Auto close and delete matching delimiters
   zinit ice wait lucid
@@ -46,6 +46,9 @@
   zinit light davidparsson/zsh-pyenv-lazy
   zinit ice lucid wait"1"
   zinit light shihyuho/zsh-jenv-lazy
+
+  zinit ice wait'1' as"completion" lucid
+  zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 }
 
 : "history settings" && {
@@ -95,7 +98,7 @@
 : "zsh settings" && {
   bindkey -e
   # コマンドのオプションや引数を補完する
-  autoload -Uz compinit && compinit
+  # autoload -Uz compinit && compinit
 
   export EDITOR=nvim
   bindkey '^[[Z' reverse-menu-complete
@@ -167,6 +170,7 @@
 }
 
 : "fzf settings" && {
+  if [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
   export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
   export FZF_CTRL_T_COMMAND="rg --files --no-ignore --hidden --follow --glob '!.git/*'"
   export FZF_CTRL_T_OPTS="--preview 'bat  --color=always --style=header,grid --line-range :100 {}'"
