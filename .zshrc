@@ -1,52 +1,51 @@
-: "enable zplug" && {
-  # zplug
-  source ~/.zplug/init.zsh
-  zplug 'zplug/zplug', hook-build:'zplug --self-manage'
-  # タスクを非同期で実行する
-  zplug "mafredri/zsh-async"
-  # theme
-  # zplug "wfxr/spaceship-zsh-theme", use:spaceship.zsh, as:theme
-  zplug "iboyperson/pastel", as:theme
-  # auto close and delete mathing delimiters
-  zplug "hlissner/zsh-autopair", defer:1
-  # 構文のハイライト compiniti以降に読み込む必要がある
-  zplug "zsh-users/zsh-syntax-highlighting", defer:2
-  # history関係
-  zplug "zsh-users/zsh-history-substring-search", defer:3
-  # タイプ補完
-  zplug "zsh-users/zsh-autosuggestions"
-  # gitのエイリアス
-  zplug "plugins/git", from:oh-my-zsh, if:"which git 1>/dev/null"
-  # 補完ファイル
-  zplug "zsh-users/zsh-completions"
-  zplug "chrissicool/zsh-256color"
-  # command line fuzzy finder
-  zplug "junegunn/fzf-bin", \
-    from:gh-r, \
-    as:command, \
-    rename-to:fzf, \
-    use:"*darwin*amd64*"
-  # tmux用の拡張
-  zplug "junegunn/fzf", as:command, use:bin/fzf-tmux
-  # Ctrl-Rで履歴検索、Ctrl-Tでファイル名検索補完できる
-  zplug "junegunn/fzf", use:shell/key-bindings.zsh
-  # cd **[TAB], vim **[TAB]などでファイル名を補完できる
-  zplug "junegunn/fzf", use:shell/completion.zsh
-  # fzfでよく使う関数の詰め合わせ
-  zplug "mollifier/anyframe"
-  # ターミナルのディレクトリ移動を高速化する
-  zplug "b4b4r07/enhancd", use:"init.sh"
-  # terminal divider
-  zplug "greymd/tmux-xpanes"
-  # Install plugins if there are plugins that have not been installed
-  if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-      echo; zplug install
-    fi
+: "Added by Zinit's installer" && {
+  ### Added by Zinit's installer
+  if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+      print -P "%F{33}▓▒░ %F{34}Installation successful.%f" || \
+      print -P "%F{160}▓▒░ The clone has failed.%f"
   fi
-  # Then, source plugins and add commands to $PATH
-  zplug load
+  source "$HOME/.zinit/bin/zinit.zsh"
+  autoload -Uz _zinit
+  (( ${+_comps} )) && _comps[zinit]=_zinit
+}
+
+: "install Zinit plugin" && {
+  zinit wait lucid for \
+    atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+        zdharma/fast-syntax-highlighting \
+    blockf \
+        zsh-users/zsh-completions \
+    atload"!_zsh_autosuggest_start" \
+        zsh-users/zsh-autosuggestions
+
+  zinit light 'chrissicool/zsh-256color'
+  zinit light iboyperson/pastel
+
+  # Binary release in archive, from GitHub-releases page.
+  # After automatic unpacking it provides program "fzf".
+  zinit ice from"gh-r" as"program"
+  zinit load junegunn/fzf-bin
+
+  zinit ice pick"shell/completion.zsh" src"shell/key-bindings.zsh"
+  zinit load junegunn/fzf
+
+  # Helps you with cd. Alternative to autojump.
+  zinit light "b4b4r07/enhancd"
+
+  # Divide terminal
+  zinit light "greymd/tmux-xpanes"
+
+  # Auto close and delete matching delimiters
+  zinit ice wait lucid
+  zinit load hlissner/zsh-autopair
+
+  zinit ice lucid wait'1'
+  zinit light davidparsson/zsh-pyenv-lazy
+  zinit ice lucid wait"1"
+  zinit light shihyuho/zsh-jenv-lazy
 }
 
 : "history settings" && {
@@ -98,6 +97,7 @@
   # コマンドのオプションや引数を補完する
   autoload -Uz compinit && compinit
 
+  export EDITOR=nvim
   bindkey '^[[Z' reverse-menu-complete
   bindkey "^[[A" history-search-backward
   bindkey "^[[B" history-search-forward
@@ -105,7 +105,7 @@
   bindkey "^N" history-search-forward
   bindkey "^[[1;5C" forward-word
   bindkey "^[[1;5D" backward-word
-  
+
   # ディレクトリ名の補完で末尾の/を自動的に付加
   setopt auto_param_slash
   # ファイル名の展開でディレクトリにマッチした場合末尾に/を付加
@@ -133,6 +133,7 @@
   # 補完方法の設定．指定した順番に実行する
   zstyle ':completion:*' completer \
     _oldlist _complete _match _history _ignored _approximate _prefix
+
   # ファイル補完候補に色を付ける
   zstyle ':completion:*:default' list-colors ""
   # 補完候補をメニューから選択
@@ -146,8 +147,6 @@
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH"
   export PATH="$HOME/.poetry/bin:$PATH"
-  eval "$(pyenv init -)"
-  eval  "$(pipenv --completion)"
   export PIPENV_VENV_IN_PROJECT=true
 }
 
@@ -158,36 +157,23 @@
   export PATH=$GOPATH/bin:$PATH
 }
 
-: "javascript settings" && {
-  export PATH="$PATH:`yarn global bin`"
-}
-
 : "rust settings" && {
   export PATH="$PATH:$HOME/.cargo/bin"
 }
 
 : "java/kotlin settings" && {
-  source "/Users/yuki-tana/.sdkman/bin/sdkman-init.sh"
-  eval "$(jenv init -)"
+  # source "/Users/yuki-tana/.sdkman/bin/sdkman-init.sh"
   export ANDROID_HOME=$HOME/Library/Android/sdk
-  # export ANDROID_SDK_ROOT=$ANDROID_HOME/sdk
-  # export PATH=$ANDROID_SDK_ROOT/tools/bin:$ANDROID_SDK_ROOT/tools/emulator:$PATH
 }
 
 : "fzf settings" && {
-  # not use brew
-  if [ "$(uname)" = 'Linux' ]; then
-    export FZFPATH=$HOME/.fzf
-    export PATH=$FZFPATH/bin:$PATH
-  fi
-  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
   export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
-  export FZF_CTRL_T_COMMAND="rg --files --hidden --follow --glob '!.git/*'"
+  export FZF_CTRL_T_COMMAND="rg --files --no-ignore --hidden --follow --glob '!.git/*'"
   export FZF_CTRL_T_OPTS="--preview 'bat  --color=always --style=header,grid --line-range :100 {}'"
   export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
   fkill() {
     local pid
-    pid=$(ps -a | sed 1d | fzf -m | awk '{print $1}')
+    pid=$(ps -ax | sed 1d | fzf -m | awk '{print $1}')
 
     if [ "x$pid" != "x" ]
     then
