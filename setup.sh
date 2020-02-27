@@ -39,13 +39,13 @@ function command_exists() {
   done
 }
  
-: "install zplug" && {
-  ZPLUG_DIR=$HOME/.zplug
-  if [ ! -e $ZPLUG_DIR ]; then
-    info "installing zplug..."
-    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+: "install zinit" && {
+  ZINIT_DIR=$HOME/.zinit
+  if [ ! -e $ZINIT_DIR ]; then
+    info "installing zinit..."
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
   else
-    warn "zplug is already installed"
+    warn "zinit is already installed"
   fi
 }
 
