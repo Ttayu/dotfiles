@@ -6,6 +6,7 @@ repo = 'prabirshrestha/vim-lsp'
 on_ft = ['python', 'go', 'typescript',  'typescriptreact','dockerfile', 'javascript', 'javascript.jsx', 'javascriptreact', 'cpp', 'rust', 'java', 'kotlin']
 depends = ['async.vim']
 hook_add = '''
+  set foldlevel=100
   set foldmethod=expr
     \ foldexpr=lsp#ui#vim#folding#foldexpr()
     \ foldtext=lsp#ui#vim#folding#foldtext()
