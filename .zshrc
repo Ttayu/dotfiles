@@ -53,8 +53,8 @@
 
 : "history settings" && {
   HISTFILE=$HOME/.zsh_history
-  HISTSIZE=10000
-  SAVEHIST=10000
+  HISTSIZE=100000
+  SAVEHIST=100000
   setopt share_history
   # 重複を記録しない
   setopt hist_ignore_dups

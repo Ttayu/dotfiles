@@ -10,25 +10,15 @@ function command_exists() {
   if ! command_exists brew; then
     info "installing brew..."
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    brew update
+    brew upgrade
   else
     warn "brew is already installed"
   fi
 }
 
-: "install zsh by brew" && {
-  BREW_ZSH_PATH="/usr/local/bin/zsh"
-  if ! brew list | grep zsh &> /dev/null; then
-    info "installing zsh..."
-    brew install zsh zsh-completions
-    sudo sh -c 'echo $(brew --prefix)/bin/zsh >> /etc/shells'
-    chsh -s $(brew --prefix)/bin/zsh
-  else
-    warn "zsh is already installed"
-  fi
-}
-
 : "install other packages by brew" && {
-  packages=( neovim tmux fzf tree jq wget autojump direnv pyenv pipenv golang global)
+  packages=( git neovim tmux tree jq wget pyenv pipenv golang ribgrep bat fd exa )
   for package in ${packages[@]}; do
     if ! brew list | grep $package &> /dev/null; then
       info "installing ${package}..."
@@ -37,6 +27,15 @@ function command_exists() {
       warn "${package} is already installed"
     fi
   done
+}
+
+: "install poetry" && {
+  if ! command_exists poetry; then
+    info "installing poetry..."
+    curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python3
+  else
+    warn "poetry is already installed"
+  fi
 }
  
 : "install zinit" && {
