@@ -33,7 +33,9 @@
   zinit load junegunn/fzf
 
   # Helps you with cd. Alternative to autojump.
+  zinit ice wait lucid atload"zicompinit; zicdreplay" blockf 
   zinit light b4b4r07/enhancd
+  export ENHANCD_COMPLETION_BEHAVIOR=list
 
   # Divide terminal
   zinit light greymd/tmux-xpanes
@@ -42,9 +44,7 @@
   zinit ice wait lucid
   zinit load hlissner/zsh-autopair
 
-  zinit ice lucid wait'1'
   zinit light davidparsson/zsh-pyenv-lazy
-  zinit ice lucid wait"1"
   zinit light shihyuho/zsh-jenv-lazy
 
   zinit ice wait'1' as"completion" lucid
