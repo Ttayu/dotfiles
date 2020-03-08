@@ -97,8 +97,12 @@
 
 : "zsh settings" && {
   bindkey -e
+  if [[ -f $HOME/.zfunc ]]; then
+    mkdir $HOME/.zfunc
+  fi
+  fpath+=~/.zfunc # for poetry (python)
   # コマンドのオプションや引数を補完する
-  # autoload -Uz compinit && compinit
+  autoload -Uz compinit && compinit
 
   export EDITOR=nvim
   bindkey '^[[Z' reverse-menu-complete
