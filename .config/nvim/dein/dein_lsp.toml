@@ -16,6 +16,6 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'Ttayu/deoplete-vim-lsp'
+repo = 'lighttiger2505/deoplete-vim-lsp'
 depends = ['deoplete.nvim']
 on_ft = ['python', 'go', 'typescript',  'typescriptreact','dockerfile', 'javascript', 'javascript.jsx', 'javascriptreact', 'cpp', 'rust', 'java', 'kotlin']
