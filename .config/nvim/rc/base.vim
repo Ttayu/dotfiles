@@ -60,3 +60,6 @@ set previewheight=2
 
 " {{{}}}で折りたたむ
 set foldmethod=marker
+
+" enable mouse scrolling
+set mouse=n
