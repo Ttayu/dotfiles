@@ -18,7 +18,7 @@ function command_exists() {
 }
 
 : "install other packages by brew" && {
-  packages=( git neovim tmux tree jq wget pyenv pipenv golang ribgrep bat fd exa )
+  packages=( neovim tmux tree jq wget pyenv ripgrep bat fd exa )
   for package in ${packages[@]}; do
     if ! brew list | grep $package &> /dev/null; then
       info "installing ${package}..."
