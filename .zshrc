@@ -178,19 +178,27 @@ function command_exists() {
   export ANDROID_HOME=$HOME/Library/Android/sdk
 }
 
+: "C++ settings" && {
+  if command_exists llvm; then
+    export PATH="/usr/local/opt/llvm/bin:$PATH"
+    export LDFLAGS="-L/usr/local/opt/llvm/lib"
+    export CPPFLAGS="-I/usr/local/opt/llvm/include"
+  fi
+}
+
 : "fzf settings" && {
   if [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-  export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
-  export FZF_CTRL_T_COMMAND="rg --files --no-ignore --hidden --follow --glob '!.git/*'"
-  export FZF_CTRL_T_OPTS="--preview 'bat  --color=always --style=header,grid --line-range :100 {}'"
-  export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
-  fkill() {
-    local pid
-    pid=$(ps -ax | sed 1d | fzf -m | awk '{print $1}')
+    export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+    export FZF_CTRL_T_COMMAND="rg --files --no-ignore --hidden --follow --glob '!.git/*'"
+    export FZF_CTRL_T_OPTS="--preview 'bat  --color=always --style=header,grid --line-range :100 {}'"
+    export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+    fkill() {
+      local pid
+      pid=$(ps -ax | sed 1d | fzf -m | awk '{print $1}')
 
-    if [ "x$pid" != "x" ]
-    then
-      kill $pid
-    fi
-  }
+      if [ "x$pid" != "x" ]
+      then
+        kill $pid
+      fi
+    }
 }
