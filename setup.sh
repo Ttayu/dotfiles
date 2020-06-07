@@ -29,10 +29,21 @@ function command_exists() {
   done
 }
 
+: "install tmux plugins manager" && {
+  TPM_DIR=$HOME/.tmux/plugins/tpm
+  if [ ! -e $TPM_DIR ]; then
+    info "installing tmux plugins manager"
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  else
+    warn "tpm is already installed"
+  fi
+}
+
 : "install poetry" && {
   if ! command_exists poetry; then
     info "installing poetry..."
     curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python3
+    poetry config virtualenvs.in-project true
   else
     warn "poetry is already installed"
   fi
