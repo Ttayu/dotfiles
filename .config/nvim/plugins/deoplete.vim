@@ -33,7 +33,6 @@ call deoplete#custom#option('keyword_patterns', {
       \ })
 
 call deoplete#custom#option({
-      \ 'auto_complete_delay': 10,
       \ 'auto_refresh_delay': 10,
       \ 'camel_case': v:true,
       \ 'ignore_case': v:true,
