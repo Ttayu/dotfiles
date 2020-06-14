@@ -34,4 +34,4 @@ nnoremap <silent> [denite]g :<C-u>Denite grep<CR>
 " dotfiles配下をカレントにしてfile_recを起動
 nnoremap <silent> [denite]v :<C-u>Denite file/rec:~/dotfiles/.config/nvim<CR>
 " ファイル内検索をDeniteに置き換える
-nnoremap <silent> / :<C-u>Denite -auto-resize line<CR>
+nnoremap <silent> / :<C-u>Denite -start-filter -auto-resize line<CR>

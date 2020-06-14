@@ -39,7 +39,6 @@ call denite#custom#option('default', {
      \ 'wincol': float2nr((&columns - (&columns * s:denite_win_width_percent)) / 2),
      \ 'winheight': float2nr(&lines * s:denite_win_height_percent),
      \ 'winrow': float2nr((&lines - (&lines * s:denite_win_height_percent)) / 2),
-     \ 'start_filter': v:true,
      \ 'vertical_preview': v:true,
      \ 'filter_updatetime': 10,
      \ 'unique': v:true,
