@@ -12,7 +12,7 @@ call deoplete#custom#source('_', 'matchers',
       \ ['matcher_full_fuzzy', 'matcher_length'])
 
 call deoplete#custom#source('look', 'filetypes', ['help', 'gitcommit'])
-call deoplete#custom#option('ignore_sources', {'_': ['around', 'buffer', 'tag']})
+call deoplete#custom#option('ignore_sources', {'_': ['around', 'buffer', 'tag', 'ale']})
 
 call deoplete#custom#source('zsh', 'filetypes', ['zsh', 'sh'])
 call deoplete#custom#source('_', 'min_pattern_length', 0)
