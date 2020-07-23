@@ -25,7 +25,6 @@ let g:ale_keep_list_window_open = 0
 " 指定していないlinterは利用しない
 let g:ale_linters_explicit = 1
 
-
 " 有効にするlinter
 let g:ale_linters = {
       \ 'javascript': ['eslint', 'flow'],
@@ -66,8 +65,8 @@ let g:ale_javascript_prettier_use_local_config = 1
 nnoremap [ale] <Nop>
 nmap <Leader>a [ale]
 " エラー行にジャンプ
-nmap <silent> [ale]e <Plug>(ale_previous)
-nmap <silent> [ale]E <Plug>(ale_next)
+nmap <silent> [ale]E <Plug>(ale_previous)
+nmap <silent> [ale]e <Plug>(ale_next)
 " Lintを実行
 nmap <silent> [ale]l <Plug>(ale_lint)
 " Fixを実行
