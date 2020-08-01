@@ -32,7 +32,7 @@ let g:ale_linters = {
       \ 'typescript': ['eslint'],
       \ 'typescriptreact': ['eslint', 'tsserver'],
       \ 'python': ['flake8', 'mypy'],
-      \ 'go': ['gometalinter'],
+      \ 'go': ['golangci-lint'],
       \ 'vim': ['vint'],
       \ 'rust': ['cargo'],
       \ 'kotlin': ['ktlint', 'languageserver']
@@ -56,6 +56,7 @@ let g:ale_fixers = {
       \ 'html': ['prettier'],
       \ 'css': ['prettier'],
       \ 'python': ['autopep8', 'black', 'isort'],
+      \ 'go': ['gofmt', 'goimports'],
       \ 'json': ['jq', 'prettier'],
       \ 'rust': ['rustfmt'],
       \ }

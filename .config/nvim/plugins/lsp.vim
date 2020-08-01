@@ -33,7 +33,7 @@ if executable('gopls')
     autocmd!
     autocmd User lsp_setup call lsp#register_server({
           \ 'name': 'golang',
-          \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
+          \ 'cmd': {server_info->['gopls']},
           \ 'whitelist': ['go'],
           \ })
   augroup END
