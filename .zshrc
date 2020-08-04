@@ -137,6 +137,7 @@ function command_exists() {
   # 補完候補が複数あるときに自動的に一覧表示
   setopt auto_menu
   setopt no_beep
+  setopt nonomatch
   # 曖昧に補完する
   # m:{a-z}={A-Z}: 大文字と小文字を区別しない
   # r:|[._-]=*: 「.」「_」「-」の前にワイルドカード「*」があるものとして補完
@@ -164,6 +165,8 @@ function command_exists() {
   bindkey -M emacs "^[j" down-line-or-history
   bindkey -M emacs "^[k" up-line-or-history
   bindkey -M emacs "^[l" forward-char
+
+  LS_COLORS="${LS_COLORS}:ow=01;34"; export LS_COLORS
 }
 
 : "python settings" && {
