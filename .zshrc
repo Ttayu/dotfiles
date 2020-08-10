@@ -167,6 +167,8 @@ function command_exists() {
   bindkey -M emacs "^[l" forward-char
 
   LS_COLORS="${LS_COLORS}:ow=01;34"; export LS_COLORS
+  _ls_colors="ow=01;34"
+  zstyle ':completion:*:default' list-colors "${(s.:.)_ls_colors}"
 }
 
 : "python settings" && {

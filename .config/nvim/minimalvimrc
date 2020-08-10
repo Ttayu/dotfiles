@@ -1,0 +1,173 @@
+" file eoncoding
+set encoding=utf-8
+scriptencoding utf-8
+" バックアップファイルを作らない
+set nobackup
+" スワップファイルを作らない
+set noswapfile
+" 編集中のファイルが変更されたら自動で読みなす
+set autoread
+" バッファが編集中でもその他のファイルを開けるように
+set hidden
+" 入力中のコマンドをステータスに表示する
+set showcmd
+" clip board
+set clipboard+=unnamedplus
+
+" 行数の表示
+set number
+" 行数の相対位置の表示
+set relativenumber
+" 現在の行と列を強調
+set cursorline
+set cursorcolumn
+" 括弧入力時の対応する括弧を表示
+set showmatch
+" ステータスラインを表示
+set laststatus=2
+" コマンドラインの補完
+set wildmenu
+set wildmode=list:longest
+" カーソル位置が画面端から数字分内側に来るように自動でスクロールする
+set scrolloff=3
+" 縦分割の際に右に表示する
+set splitright
+
+" タブ，インデント幅
+set tabstop=2
+set shiftwidth=2
+set softtabstop=0
+set shiftround
+" タブ文字を半角スペースに
+set expandtab
+" 1つ前の行に基づいてインデント
+set smartindent
+set autoindent
+
+" 検索文字列が小文字の場合は大小文字区別なく検索
+set ignorecase
+" 検索に大文字が含まれている場合は区別して検索
+set smartcase
+" インクリメントサーチ
+set incsearch
+" 検索時に最後まで行ったら最初に戻る
+set wrapscan
+" 検索語をハイライトを表示
+set hlsearch
+
+" preview window のサイズを固定
+set previewheight=2
+
+" {{{}}}で折りたたむ
+set foldmethod=marker
+
+" enable mouse scrolling
+set mouse=n
+
+" リーダー
+let g:mapleader = ','
+" sはclで代用できるため
+nnoremap s <Nop>
+
+" ファイルの分割
+nnoremap <silent> ss :split<CR>
+nnoremap <silent> sv :vsplit<CR>
+
+"tab関連
+nnoremap <silent> st :tabnew<CR>
+nnoremap <silent> sp :w<CR>:tabprevious<CR>
+nnoremap <silent> sn :w<CR>:tabnext<CR>
+nnoremap <silent> sw :tabclose<CR>
+
+" 行末移動
+nmap <Bar> $:let pos = getpos(".")<CR>:join<CR>:call setpos('.', pos)<CR>
+
+" コロンとセミコロンを入れ替え
+noremap ; :
+noremap : ;
+inoremap ; :
+inoremap : ;
+cnoremap : ;
+cnoremap ; :
+
+" ウィンドウ移動
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" 行頭，行末移動
+noremap H  ^
+noremap L  $
+
+" 括弧移動
+noremap <Space>m %
+
+" 折り返し行移動
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+
+" jjで保存とエスケープ
+inoremap <silent> jj <ESC>:<C-u>w<CR>
+
+" insert modeで移動
+" 元々は<BS>
+inoremap <C-h> <Left>
+" 元々は改行
+inoremap <C-j> <Down>
+" 元vimrcに属するautocmdを初期化々はマルチバイト文字を入力
+inoremap <C-k> <Up>
+" 元々はinsert modeを抜ける
+inoremap <C-l> <Right>
+inoremap <C-b> <BS>
+
+" xやsではヤンクしない
+nnoremap x "_x
+nnoremap s "_s
+
+" 全コピー
+nnoremap <Space>y ggyG
+" 全削除して貼り付け
+nnoremap <Space>p gg"_dGp
+
+" Ctrl+] で右にエスケープ
+inoremap <C-]> <Esc><Right>
+
+" カーソル下の単語をハイライトする
+nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
+
+" カーソル下の単語をハイライトしてから置換する
+nmap # <Space><Space>;%s/<C-r>///g<Left><Left>
+
+" Space + Enterでハイライト解除
+nnoremap <silent> <Space><CR> :nohlsearch<CR><Esc>
+
+" 行を移動
+" Alt-k -> ˚
+" Alt-j -> ∆
+nnoremap <M-k> "zdd<Up>"zP
+nnoremap <M-j> "zdd"zp
+
+" 複数行を移動
+" Alt-k -> ˚
+" Alt-j -> ∆
+vnoremap <M-k> "zx<Up>"zP`[V`]
+vnoremap <M-j> "zx"zp`[V`]
+
+" terminal
+nnoremap <Leader>t :vsplit<CR>:terminal<CR>:set nonumber<CR>:set norelativenumber<CR>
+tnoremap <Esc> <C-\><C-n>
+tnoremap jj <C-\><C-n>
+" Switching windows in terminal
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+" for reflesh terminal
+" tnoremap <C-l> <C-\><C-n><C-w>l
+
+set t_Co=256
+set termguicolors
+set background=dark
+syntax enable
