@@ -32,7 +32,7 @@ let g:ale_linters = {
       \ 'typescript': ['eslint'],
       \ 'typescriptreact': ['eslint', 'tsserver'],
       \ 'python': ['flake8', 'mypy'],
-      \ 'go': ['golangci-lint'],
+      \ 'go': ['golangci-lint' ,'gobuild'],
       \ 'vim': ['vint'],
       \ 'rust': ['cargo'],
       \ 'kotlin': ['ktlint', 'languageserver']
