@@ -215,7 +215,7 @@ function command_exists() {
 
       if [ "x$pid" != "x" ]
       then
-        kill $pid
+        kill -KILL $pid
       fi
     }
 }
