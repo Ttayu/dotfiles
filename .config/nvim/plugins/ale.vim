@@ -37,6 +37,7 @@ let g:ale_linters = {
       \ 'rust': ['cargo'],
       \ 'kotlin': ['ktlint', 'languageserver'],
       \ 'r': ['lintr'],
+      \ 'cpp': ['ccls'],
       \ }
 " gometalinter
 let g:ale_go_gometalinter_options = '--fast --vendor --disable-all --enable=golint --enable=vet --enable=goimports --enable=errcheck --enable=goconst --enable=goimports --enable=staticcheck'
