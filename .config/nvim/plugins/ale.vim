@@ -35,7 +35,8 @@ let g:ale_linters = {
       \ 'go': ['golangci-lint' ,'gobuild'],
       \ 'vim': ['vint'],
       \ 'rust': ['cargo'],
-      \ 'kotlin': ['ktlint', 'languageserver']
+      \ 'kotlin': ['ktlint', 'languageserver'],
+      \ 'r': ['lintr'],
       \ }
 " gometalinter
 let g:ale_go_gometalinter_options = '--fast --vendor --disable-all --enable=golint --enable=vet --enable=goimports --enable=errcheck --enable=goconst --enable=goimports --enable=staticcheck'
@@ -59,6 +60,7 @@ let g:ale_fixers = {
       \ 'go': ['gofmt', 'goimports'],
       \ 'json': ['jq', 'prettier'],
       \ 'rust': ['rustfmt'],
+      \ 'r': ['styler']
       \ }
 let g:ale_javascript_prettier_use_local_config = 1
 

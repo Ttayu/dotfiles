@@ -111,7 +111,7 @@ if executable('rls')
   augroup END
 endif
 
-if executable('java') && filereadable(expand('~/lsp/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.300.v20190213-1655.jar'))
+if executable('java') && filereadable(expand('~/.lsp/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.300.v20190213-1655.jar'))
   augroup LspJava
     autocmd!
     autocmd User lsp_setup call lsp#register_server({
@@ -138,7 +138,7 @@ if executable('java') && filereadable(expand('~/lsp/eclipse.jdt.ls/plugins/org.e
 endif
 
 
-if executable('kotlin') && executable(expand('~/lsp/kotlin-language-server/server/bin/kotlin-language-server'))
+if executable('kotlin') && executable(expand('~/.lsp/kotlin-language-server/server/bin/kotlin-language-server'))
   augroup LspKotlin
     autocmd!
     autocmd User lsp_setup call lsp#register_server({
@@ -149,6 +149,22 @@ if executable('kotlin') && executable(expand('~/lsp/kotlin-language-server/serve
         \     expand('~/lsp/kotlin-language-server/server/bin/kotlin-language-server')
         \ ]},
         \ 'whitelist': ['kotlin']
+        \ })
+  augroup END
+endif
+
+if executable('R') && executable(expand('~/.lsp/R/languageserver/libs/languageserver.so'))
+  augroup LspR
+    autocmd!
+    autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'R-language-server',
+        \ 'cmd': {server_info->[
+        \     'R',
+        \     '--slave',
+        \     '-e',
+        \     'languageserver::run()',
+        \ ]},
+        \ 'whitelist': ['r']
         \ })
   augroup END
 endif
