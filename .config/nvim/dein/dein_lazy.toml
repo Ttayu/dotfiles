@@ -167,8 +167,11 @@ hook_add = '''
   let g:R_auto_start = 1
   let g:R_assing = 0
   let g:R_insert_mode_cmds = 1
-
 '''
+
+[[plugins]]
+repo = 'jackguo380/vim-lsp-cxx-highlight'
+on_ft = ['c', 'cpp', 'cuda']
 
 [[plugins]]
 repo = 'ncm2/float-preview.nvim'
