@@ -2,17 +2,23 @@ scriptencoding utf-8
 " f-strings と formatを併用すると変数の位置がおかしくなってしまうバグがある．
 " https://github.com/numirias/semshi/issues/31
 function MyCustomHighlights()
+  " hi semshiLocal           ctermfg=209 guifg=#ff875f
   hi semshiLocal           ctermfg=209 guifg=#673AB7
   hi semshiGlobal          ctermfg=214 guifg=#ffaf00
+  " hi semshiImported        ctermfg=214 guifg=#ffaf00 cterm=bold gui=bold
   hi semshiImported        ctermfg=255 guifg=#eeeeee
+  " hi semshiParameter       ctermfg=75  guifg=#5fafff
   hi semshiParameter       ctermfg=81  guifg=#dce775
   hi semshiParameterUnused ctermfg=117 guifg=#87d7ff cterm=underline gui=underline
   hi semshiFree            ctermfg=218 guifg=#ffafd7
+  " hi semshiBuiltin         ctermfg=207 guifg=#ff5fff
   hi semshiBuiltin         ctermfg=207 guifg=#A1887F
+  hi semshiAttribute       ctermfg=49  guifg=#00ffaf
+  " hi semshiSelf            ctermfg=249 guifg=#b2b2b2
   hi semshiSelf            ctermfg=249 guifg=#ffafd7
   hi semshiUnresolved      ctermfg=226 guifg=#ffff00 cterm=underline gui=underline
+  " hi semshiSelected        ctermfg=231 guifg=#ffffff ctermbg=161 guibg=#d7005f
   hi semshiSelected      ctermfg=15 guifg=#ffffff guibg=bg cterm=bold,underline gui=bold,underline
-
   hi semshiErrorSign       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
   hi semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
 endfunction
