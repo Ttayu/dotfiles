@@ -138,11 +138,8 @@ function command_exists() {
   setopt auto_menu
   setopt no_beep
   setopt nonomatch
-  # 曖昧に補完する
-  # m:{a-z}={A-Z}: 大文字と小文字を区別しない
-  # r:|[._-]=*: 「.」「_」「-」の前にワイルドカード「*」があるものとして補完
-  # 補完時に大文字小文字を区別しない
-  zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z} r:|[._-]=*' 
+  # fuzzy matching
+  zstyle ':completion:*' matcher-list 'r:[[:ascii:]]||[[:ascii:]]=** r:|=* m:{a-z\-}={A-Z\_}'
   # 補完方法の設定．指定した順番に実行する
   zstyle ':completion:*' completer \
     _oldlist _complete _match _history _ignored _approximate _prefix
