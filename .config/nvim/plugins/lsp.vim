@@ -22,7 +22,7 @@ if executable(s:pyls_path)
     autocmd User lsp_setup call lsp#register_server({
           \ 'name': 'pyls',
           \ 'cmd': {server_info->[expand(s:pyls_path)]},
-          \ 'whitelist': ['python'],
+          \ 'allowlist': ['python'],
           \ 'workspace_config': s:pyls_config,
           \ })
   augroup END
@@ -34,7 +34,7 @@ if executable('gopls')
     autocmd User lsp_setup call lsp#register_server({
           \ 'name': 'golang',
           \ 'cmd': {server_info->['gopls']},
-          \ 'whitelist': ['go'],
+          \ 'allowlist': ['go'],
           \ })
   augroup END
 endif
@@ -46,7 +46,7 @@ if executable('typescript-language-server')
           \ 'name': 'typescript support using typescript-language-server',
           \ 'cmd': { server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
           \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json')) },
-          \ 'whitelist': ['typescript', 'typescript.tsx', 'typescriptreact'],
+          \ 'allowlist': ['typescript', 'typescript.tsx', 'typescriptreact'],
           \  })
   augroup END
 endif
@@ -58,7 +58,7 @@ if executable('typescript-language-server')
           \ 'name': 'javascript support using typescript-language-server',
           \ 'cmd': { server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
           \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json')) },
-          \ 'whitelist': ['javascript', 'javascript.jsx', 'javascriptreact'],
+          \ 'allowlist': ['javascript', 'javascript.jsx', 'javascriptreact'],
           \  })
   augroup END
 endif
@@ -69,7 +69,7 @@ if executable('docker-langserver')
     autocmd User lsp_setup call lsp#register_server({
           \ 'name': 'docker-langserver',
           \ 'cmd': {server_info->[&shell, &shellcmdflag, 'docker-langserver --stdio']},
-          \ 'whitelist': ['dockerfile'],
+          \ 'allowlist': ['dockerfile'],
           \ })
   augroup END
 endif
@@ -81,7 +81,7 @@ if executable('flow')
         \ 'name': 'flow',
         \ 'cmd': {server_info->['flow', 'lsp']},
         \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), '.flowconfig'))},
-        \ 'whitelist': ['javascript', 'javascript.jsx'],
+        \ 'allowlist': ['javascript', 'javascript.jsx'],
         \ })
   augroup END
 endif
@@ -96,7 +96,7 @@ if executable('ccls')
          \ 'initialization_options': {
          \    'highlight': {'lsRanges': v:true},
          \  },
-         \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc', 'cuda'],
+         \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp', 'cc', 'cuda'],
          \ })
   augroup END
 endif
@@ -108,7 +108,7 @@ if executable('rls')
           \ 'name': 'rls',
           \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
           \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
-          \ 'whitelist': ['rust'],
+          \ 'allowlist': ['rust'],
           \ })
   augroup END
 endif
@@ -134,7 +134,7 @@ if executable('java') && filereadable(expand('~/.lsp/eclipse.jdt.ls/plugins/org.
         \     '-data',
         \     getcwd()
         \ ]},
-        \ 'whitelist': ['java'],
+        \ 'allowlist': ['java'],
         \ })
   augroup END
 endif
@@ -150,7 +150,7 @@ if executable('kotlin') && executable(expand('~/.lsp/kotlin-language-server/serv
         \     &shellcmdflag,
         \     expand('~/lsp/kotlin-language-server/server/bin/kotlin-language-server')
         \ ]},
-        \ 'whitelist': ['kotlin']
+        \ 'allowlist': ['kotlin']
         \ })
   augroup END
 endif
@@ -166,7 +166,7 @@ if executable('R') && executable(expand('~/.lsp/R/languageserver/libs/languagese
         \     '-e',
         \     'languageserver::run()',
         \ ]},
-        \ 'whitelist': ['r']
+        \ 'allowlist': ['r']
         \ })
   augroup END
 endif
@@ -175,6 +175,9 @@ endif
 let g:lsp_diagnostics_enabled = 0
 let g:lsp_async_completion = 1
 let g:lsp_highlight_references_enabled = 1
+let g:lsp_diagnostics_float_cursor = 1
+let g:lsp_virtual_text_enabled = 0
+let g:lsp_diagnostics_float_delay = 100
 
 nnoremap [lsp] <Nop>
 nmap <Leader>l [lsp]
