@@ -24,6 +24,7 @@ local config = {
     launch_menu = launch_menu,
     set_environment_variables = env,
     disable_default_key_bindings = true,
+    
     leader = { key="g", mods="CTRL" },
     keys = {
         { key = "-", mods = "LEADER", action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}} },
@@ -51,6 +52,11 @@ local config = {
         { key = "9", mods = "LEADER", action=wezterm.action{ActivateTab=8}},
         { key = "&", mods = "LEADER|SHIFT", action="CloseCurrentTab"},
         { key = "x", mods = "LEADER", action="CloseCurrentPane"},
+
+        -- Copy (to Clipboard) / Paste (from Clipboard or PrimarySelection)
+        {key="C", mods="CTRL|SHIFT", action="Copy"},
+        {key="V", mods="CTRL|SHIFT", action="Paste"},
+        {key="Insert", mods="SHIFT", action="PastePrimarySelection"},
     }
 }
 
