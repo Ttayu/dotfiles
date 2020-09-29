@@ -93,6 +93,10 @@ case "$extension" in
         try lynx   -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
         try elinks -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
         ;; # fall back to highlight/cat if the text browsers fail
+    # JSON data
+    json)
+        try jq . "$path" && { dump | bat --color always --language json; exit 4; }
+        ;;
 esac
 
 case "$mimetype" in
@@ -105,8 +109,9 @@ case "$mimetype" in
             pygmentize_format=terminal
             highlight_format=ansi
         fi
-        try safepipe highlight --out-format=${highlight_format} "$path" && { dump | trim; exit 5; }
-        try safepipe pygmentize -f ${pygmentize_format} "$path" && { dump | trim; exit 5; }
+        # try safepipe highlight --out-format=${highlight_format} "$path" && { dump | trim; exit 5; }
+        # try safepipe pygmentize -f ${pygmentize_format} "$path" && { dump | trim; exit 5; }
+        try safepipe bat -n --color always --paging never "$path" && { dump | trim; exit 5; }
         exit 2;;
     # Ascii-previews of images:
     image/*)
