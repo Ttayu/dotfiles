@@ -100,6 +100,7 @@ function command_exists() {
 }
 
 : "zsh settings" && {
+  typeset -U path PATH
   bindkey -e
   if [[ -f $HOME/.zfunc ]]; then
     mkdir $HOME/.zfunc
