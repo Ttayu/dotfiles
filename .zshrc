@@ -216,11 +216,21 @@ function command_exists() {
     export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
     fkill() {
       local pid
-      pid=$(ps -ax | sed 1d | fzf -m | awk '{print $1}')
+      pid=$(ps -aux | sed 1d | fzf -m | awk '{print $1}')
 
       if [ "x$pid" != "x" ]
       then
         kill -KILL $pid
       fi
     }
+    if command_exists nvidia-smi; then
+      gkill() {
+        local pid
+        pid=$(nvidia-smi | awk '/ C / {print $3}' | xargs -r ps -o user:20,pid,command, | grep $USER | fzf -m | awk '{print $2}')
+        if [ "x$pid" != "x" ]
+        then
+          kill -KILL $pid
+        fi
+      }
+    fi
 }
