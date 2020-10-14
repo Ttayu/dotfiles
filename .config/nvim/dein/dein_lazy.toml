@@ -71,11 +71,17 @@ hook_add = '''
   source ~/.config/nvim/plugins/fugitive.vim
 '''
 
-# quickrun
 [[plugins]]
-repo = 'thinca/vim-quickrun'
+repo = 'skywind3000/asyncrun.vim'
+on_cmd = 'AsyncRun'
 hook_add = '''
-  source ~/.config/nvim/plugins/quickrun.vim
+  let g:asyncrun_open = 6
+  nnoremap <silent> <C-c> :AsyncStop <CR>
+  augroup MyAsyncRun
+    autocmd!
+    autocmd FileType python nnoremap <silent> <C-q> :AsyncRun python -u %<CR>
+    autocmd FileType python vnoremap <silent> <C-q> :%AsyncRun python -u<CR>
+  augroup END
 '''
 
 # gtagsを非同期で自動更新
@@ -191,7 +197,7 @@ hook_source = '''
     endif
   endfunction
   call s:set_preview_docked()
-  augroup MyFloadPreview
+  augroup MyFloatPreview
     autocmd!
     autocmd VimResized * call s:set_preview_docked()
   augroup END
