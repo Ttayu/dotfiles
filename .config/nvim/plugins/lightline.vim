@@ -18,7 +18,7 @@ let g:lightline.active = {
       \   ['readonly', 'filename', 'modified', 'method'],
       \ ],
       \ 'right': [
-      \   ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok'],
+      \   ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok', 'asyncrun_failure', 'asyncrun_running'],
       \   ['lineinfo'],
       \   ['percent'],
       \   ['fileformat', 'fileencoding', 'filetype']
@@ -50,3 +50,34 @@ endfunction
 let g:lightline.component_function = {
       \ 'method': 'NearestMethodOrFunction'
       \ }
+
+call extend(g:lightline.component_expand, {
+      \   'asyncrun_failure': 'AsyncRunFailure',
+      \   'asyncrun_running': 'AsyncRunRunning',
+      \ })
+call extend(g:lightline.component_type, {
+      \   'asyncrun_failure': 'error',
+      \   'asyncrun_running': 'warning',
+      \ })
+
+function! AsyncRunFailure() abort
+  if g:asyncrun_status ==# 'failure'
+    return toupper(g:asyncrun_status)
+  else
+    return ''
+  endif
+endfunction
+
+function! AsyncRunRunning() abort
+  if g:asyncrun_status ==# 'running'
+    return toupper(g:asyncrun_status)
+  else
+    return ''
+  endif
+endfunction
+
+augroup AsyncRunUpdateLightline
+  autocmd!
+  autocmd User AsyncRunStop call lightline#update()
+  autocmd User AsyncRunStart call lightline#update()
+augroup END

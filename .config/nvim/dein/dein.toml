@@ -55,11 +55,6 @@ on_event = 'InsertEnter'
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 
-# 非同期でプログラムを実行
-[[plugins]]
-repo = 'Shougo/vimproc'
-build = 'make'
-
 # ウィンドウサイズの変更
 [[plugins]]
 repo = 'simeji/winresizer'
