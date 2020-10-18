@@ -179,6 +179,8 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'jackguo380/vim-lsp-cxx-highlight'
+repo = 'bfrg/vim-cpp-modern'
 on_ft = ['c', 'cpp', 'cuda']
+hook_add = '''
+  autocmd FileType cpp inoremap ;; ::
 '''
