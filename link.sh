@@ -22,6 +22,7 @@ info "link .config directory dotfiles"
 cd ${DOT_DIRECTORY}/${DOT_CONFIG_DIRECTORY}
 for file in `\find . -maxdepth 8 -type f`; do
   [ "$file" = "configstore" ] && continue
+  [ "$file" = "key_remap" ] && continue
   dest=${HOME}/${DOT_CONFIG_DIRECTORY}/${file:2}
   if [ -e ${dest} ]; then
     warn "[warn] ${dest}: skipped (already exists)"
