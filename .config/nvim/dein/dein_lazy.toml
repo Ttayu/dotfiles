@@ -181,27 +181,4 @@ hook_add = '''
 [[plugins]]
 repo = 'jackguo380/vim-lsp-cxx-highlight'
 on_ft = ['c', 'cpp', 'cuda']
-
-[[plugins]]
-repo = 'ncm2/float-preview.nvim'
-on_source = 'deoplete.nvim'
-depends = 'context_filetype.vim'
-hook_source = '''
-  let s:width = 100
-  function! s:set_preview_docked()
-    if winwidth('%') > s:width
-      let g:float_preview#docked = 0
-      let g:float_preview#max_width = 60
-      let g:float_preview#max_height = 20
-    else
-      let g:float_preview#docked = 1
-      let g:float_preview#max_width = winwidth('%')
-      let g:float_preview#max_height = 0
-    endif
-  endfunction
-  call s:set_preview_docked()
-  augroup MyFloatPreview
-    autocmd!
-    autocmd VimResized * call s:set_preview_docked()
-  augroup END
 '''
