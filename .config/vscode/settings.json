@@ -1,0 +1,306 @@
+{
+    "python.jediEnabled": false,
+    // "extensions.ignoreRecommendations": true,
+    "editor.wordWrap": "on",
+    "files.trimTrailingWhitespace": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "full",
+    "editor.autoClosingBrackets": "beforeWhitespace",
+    "editor.autoClosingQuotes": "beforeWhitespace",
+    // "editor.snippetSuggestions": "none",
+    "files.eol": "\n",
+    // vim settings
+    "vim.useSystemClipboard": true,
+    "vim.hlsearch": true,
+    "vim.easymotion": true,
+    "vim.surround": true,
+    "vim.visualstar": true,
+    "vim.useCtrlKeys": true,
+    "vim.leader": ",",
+    "vim.debug.silent": true,
+    "vim.autoindent": true,
+    // jj でインサートモードから抜ける
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>",
+                ":",
+                "w",
+                "<Enter>"
+            ]
+        },
+        {
+            "before": [
+                ",",
+                "s"
+            ],
+            "commands": [
+                "editor.action.triggerSuggest"
+            ]
+        }
+    ],
+    "vim.insertModeKeyBindingsNonRecursive": [
+        // セミコロンでもコロンの機能を呼ぶ
+        {
+            "before": [
+                ";"
+            ],
+            "after": [
+                ":"
+            ]
+        },
+        // コロンでもセミコロンの機能を呼ぶ
+        {
+            "before": [
+                ":"
+            ],
+            "after": [
+                ";"
+            ]
+        },
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "s"
+            ],
+            "after": [
+                ""
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                ",",
+                "l",
+                "f"
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.format"
+                }
+            ]
+        }
+        {
+            "before": [
+                ",",
+                "l",
+                "d"
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.goToDeclaration"
+                }
+            ]
+        }
+        {
+            "before": [
+                "u"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "undo"
+                }
+            ]
+        },
+        {
+            "before": [
+                "<C-r>"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "redo"
+                }
+            ]
+        },
+        {
+            "before": [
+                "j"
+            ],
+            "after": [
+                "g",
+                "j"
+            ]
+        },
+        {
+            "before": [
+                "k"
+            ],
+            "after": [
+                "g",
+                "k"
+            ]
+        },
+        {
+            "before": [
+                "<Leader>",
+                "s"
+            ],
+            "commands": [
+                ":split"
+            ]
+        },
+        {
+            "before": [
+                "<Leader>",
+                "v"
+            ],
+            "commands": [
+                ":vsplit"
+            ]
+        },
+        {
+            "before": [
+                ">"
+            ],
+            "commands": [
+                "editor.action.indentLines"
+            ]
+        }, //インデント調整(repeat可能)
+        {
+            "before": [
+                "<"
+            ],
+            "commands": [
+                "editor.action.outdentLines"
+            ]
+        },
+        {
+            "before": [
+                "H"
+            ],
+            "after": [
+                "0"
+            ]
+        }, //端に移動
+        {
+            "before": [
+                "L"
+            ],
+            "after": [
+                "$"
+            ]
+        }, //端に移動
+        {
+            "before": [
+                "<C-h>",
+            ],
+            "after": [
+                "<C-w>",
+                "h"
+            ]
+        }, //window移動
+        {
+            "before": [
+                "<C-j>",
+            ],
+            "after": [
+                "<C-w>",
+                "j"
+            ]
+        }, //window移動
+        {
+            "before": [
+                "<C-k>",
+                "k"
+            ],
+            "after": [
+                "<C-w>",
+                "k"
+            ]
+        }, //window移動
+        {
+            "before": [
+                "<C-l>",
+            ],
+            "after": [
+                "<C-w>",
+                "l"
+            ]
+        }, //window移動
+        // セミコロンでもコロンの機能を呼ぶ
+        {
+            "before": [
+                ";"
+            ],
+            "after": [
+                ":"
+            ]
+        },
+        // Escでハイライトを消す
+        {
+            "before": [
+                "<Esc>"
+            ],
+            "commands": [
+                ":nohl"
+            ]
+        },
+        {
+            "before": [
+                ",",
+                "c"
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.commentLine"
+                },
+            ]
+        },
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "j"
+            ],
+            "after": [
+                "g",
+                "j"
+            ]
+        },
+        {
+            "before": [
+                "<Leader>",
+                "c"
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.commentLine"
+                }
+            ]
+        },
+        {
+            "before": [
+                "H"
+            ],
+            "after": [
+                "0"
+            ]
+        }, //端に移動
+        {
+            "before": [
+                "L"
+            ],
+            "after": [
+                "$",
+                "h"
+            ]
+        },
+    ],
+    "editor.lineNumbers": "relative",
+    "workbench.colorTheme": "Gruvbox Dark (Hard)",
+    "explorer.confirmDelete": false,
+    "hediet.vscode-drawio.offline": true,
+    "python.languageServer": "Microsoft",
+    "markdown.preview.breaks": true,
+    "markdown.preview.scrollPreviewWithEditor": false,
+    "markdown.preview.scrollEditorWithPreview": false,
+    "markdown.marp.enableHtml": true
+}
