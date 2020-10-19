@@ -1,0 +1,112 @@
+// Place your key bindings in this file to override the defaults
+[
+  //----------------------------------------------------------
+  // サイドバーのトグル(*->サイドバーへの移動)
+  //----------------------------------------------------------
+  {
+    "key": "\\ v",
+    "command": "workbench.view.explorer",
+    "when": "!explorerViewletVisible && vim.mode != 'SearchInProgressMode' && vim.mode != 'Insert'"
+  },
+  {
+    "key": "\\ v",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "explorerViewletVisible && !searchViewletVisible && !inDebugMode && vim.mode != 'SearchInProgressMode' && vim.mode != 'Insert'"
+  },
+  {
+    "key": "\\ t",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "!terminalFocus && vim.mode != 'SearchInProgressMode' && vim.mode != 'Insert'"
+  },
+  {
+    "key": "\\ t",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminalFocus && vim.mode != 'SearchInProgressMode' && vim.mode != 'Insert'"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "cursorRight",
+    "when": "editorTextFocus && !editorReadOnly && vim.mode != 'Normal'"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "cursorLeft",
+    "when": "editorTextFocus && !editorReadOnly && vim.mode != 'Normal'"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "cursorDown",
+    "when": "editorTextFocus && !editorReadOnly && vim.mode != 'Normal'"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "cursorUp",
+    "when": "editorTextFocus && !editorReadOnly && vim.mode != 'Normal'"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "deleteLeft",
+    "when": "editorTextFocus && !editorReadOnly && vim.mode != 'Normal'"
+  },
+  // terminalから移動
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "terminalFocus"
+  },
+  // Explorerから移動
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "listFocus"
+  },
+  // サジェスチョン操作
+  {
+    "key": "ctrl+j",
+    "command": "selectNextSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "space",
+    "command": "editor.action.showHover",
+    "when": "editorTextFocus && vim.mode==Normal"
+  },
+  // shell内でバッティングしているキーバインドの修正
+  {
+      "key": "ctrl+f",
+      "command": "cursorRight",
+      "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "workbench.action.quickOpen",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "-workbench.action.quickOpen"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "-workbench.action.quickOpen"
+  },
+  {
+      "key": "ctrl+p",
+      "command": "workbench.action.quickOpen",
+      "when": "!terminalFocus"
+  },
+  {
+      "key": "ctrl+p",
+      "command": "-workbench.action.quickOpen"
+  },
+]
