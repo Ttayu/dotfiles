@@ -63,3 +63,11 @@ set foldmethod=marker
 
 " enable mouse scrolling
 set mouse=n
+
+set backupcopy=no
+
+augroup QuickFix
+  autocmd!
+  autocmd FileType qf nnoremap <silent><buffer>q :quit<CR>
+  autocmd WinEnter * if &filetype == 'qf' && winnr('$') == 1 | q | endif
+augroup END
