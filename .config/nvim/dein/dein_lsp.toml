@@ -1,6 +1,6 @@
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
-on_ft = ['python', 'go', 'typescript',  'typescriptreact','dockerfile', 'javascript', 'javascript.jsx', 'javascriptreact', 'cpp', 'rust', 'java', 'kotlin', 'r']
+on_ft = ['python', 'go', 'typescript',  'typescriptreact','dockerfile', 'javascript', 'javascript.jsx', 'javascriptreact', 'cpp', 'rust', 'java', 'kotlin', 'r', 'julia']
 hook_source = '''
   source ~/.config/nvim/plugins/lsp.vim
   " set foldlevel=100
@@ -12,4 +12,8 @@ hook_source = '''
 [[plugins]]
 repo = 'lighttiger2505/deoplete-vim-lsp'
 depends = ['deoplete.nvim']
-on_ft = ['python', 'go', 'typescript',  'typescriptreact','dockerfile', 'javascript', 'javascript.jsx', 'javascriptreact', 'cpp', 'rust', 'java', 'kotlin', 'r']
+on_ft = ['python', 'go', 'typescript',  'typescriptreact','dockerfile', 'javascript', 'javascript.jsx', 'javascriptreact', 'cpp', 'rust', 'java', 'kotlin', 'r', 'julia']
+
+[[plugins]]
+repo = 'machakann/vim-lsp-julia'
+on_ft = ['julia']
