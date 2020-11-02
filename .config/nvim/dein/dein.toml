@@ -70,3 +70,13 @@ hook_add = '''
   nmap <Leader>C <Plug>(caw:zeropos:toggle)j
   vmap <Leader>C <Plug>(caw:zeropos:toggle)j
 '''
+
+[[plugins]]
+repo = 'JuliaEditorSupport/julia-vim'
+on_ht = ['julia']
+hook_add = '''
+  let g:latex_to_unicode_tab = 0
+  let g:latex_to_unicode_eager = 0
+  let g:latex_to_unicode_suggestions = 0
+  let g:latex_to_unicode_file_types_blacklist = ".*"
+'''
