@@ -51,6 +51,9 @@ hook_add = '''
 [[plugins]]
 repo = 'cohama/lexima.vim'
 on_event = 'InsertEnter'
+hook_add = '''
+  let g:lexima_accept_pum_with_enter = 0
+'''
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
