@@ -2,12 +2,6 @@ scriptencoding utf-8
 inoremap <expr><C-g> deoplete#manual_complete()
 inoremap <expr><C-e> deoplete#cancel_popup()
 
-" close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function() abort
-  return pumvisible() ? deoplete#close_popup()."\<CR>" : "\<CR>"
-endfunction
-
 call deoplete#custom#source('_', 'matchers',
       \ ['matcher_full_fuzzy', 'matcher_length'])
 
