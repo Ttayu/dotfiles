@@ -1,5 +1,5 @@
 scriptencoding utf-8
-inoremap <expr><C-g> deoplete#refresh()
+inoremap <expr><C-g> deoplete#manual_complete()
 inoremap <expr><C-e> deoplete#cancel_popup()
 
 " close popup and save indent.
