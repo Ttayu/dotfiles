@@ -81,6 +81,7 @@ hook_add = '''
     autocmd!
     autocmd FileType python nnoremap <silent> <C-q> :AsyncRun python -u %<CR>
     autocmd FileType python vnoremap <silent> <C-q> :%AsyncRun python -u<CR>
+    command! -nargs=0 Pytest :AsyncRun pytest "%"
   augroup END
 '''
 
