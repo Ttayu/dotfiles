@@ -55,7 +55,6 @@ hook_add = '''
   let g:lexima_no_default_rules = 1
   call lexima#set_default_rules()
   inoremap <expr> <CR> pumvisible() ? (complete_info().selected == -1 ? '<C-y><CR>' : '<C-y>') : '<CR>'
-  inoremap <expr> <TAB> pumvisible() ? (complete_info().selected == -1 ? '<C-y><TAB>' : '<C-y>') : '<TAB>'
 '''
 
 [[plugins]]
