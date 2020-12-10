@@ -51,6 +51,9 @@ hook_add = '''
 [[plugins]]
 repo = 'Krasjet/auto.pairs'
 on_event = 'InsertEnter'
+hook_add = """
+  let g:AutoPairsMapCh = 0
+"""
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
