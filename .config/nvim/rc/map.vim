@@ -101,3 +101,12 @@ tnoremap <C-j> <C-\><C-n><C-w>j
 tnoremap <C-k> <C-\><C-n><C-w>k
 " for reflesh terminal
 " tnoremap <C-l> <C-\><C-n><C-w>l
+
+" Command line
+cnoremap <C-a> <Home>
+cnoremap <C-n> <Down>
+cnoremap <C-p> <Up>
+cnoremap <C-b> <BS>
+cnoremap <C-h> <Left>
+cnoremap <C-l> <Right>
+cnoremap <C-d> <Del>
