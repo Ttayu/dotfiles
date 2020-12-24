@@ -1,6 +1,7 @@
 scriptencoding utf-8
 inoremap <expr><C-g> deoplete#manual_complete()
 inoremap <expr><C-e> deoplete#cancel_popup()
+inoremap <expr> <CR> pumvisible() ? (complete_info().selected == -1 ? '<C-y><CR>' : '<C-y>') : '<CR>'
 
 call deoplete#custom#source('_', 'matchers',
       \ ['matcher_full_fuzzy', 'matcher_length'])
