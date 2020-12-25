@@ -14,17 +14,21 @@ else
 end
 
 local config = {
-    check_for_updates = false,
+    use_ime = true,
+    term = "xterm-256color",
+    check_for_updates = true,
     default_prog = default_prog,
     font = wezterm.font_with_fallback({
         "Cica",
     }),
-    color_scheme = "MaterialDark",
+    color_scheme = "Popping and Locking",
     font_size = 11.0,
     launch_menu = launch_menu,
     set_environment_variables = env,
     disable_default_key_bindings = true,
-    
+    hide_tab_bar_if_only_one_tab = true,
+    window_background_opacity = 0.95,
+
     leader = { key="g", mods="CTRL" },
     keys = {
         { key = "-", mods = "LEADER", action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}} },
@@ -50,8 +54,8 @@ local config = {
         { key = "7", mods = "LEADER", action=wezterm.action{ActivateTab=6}},
         { key = "8", mods = "LEADER", action=wezterm.action{ActivateTab=7}},
         { key = "9", mods = "LEADER", action=wezterm.action{ActivateTab=8}},
-        { key = "&", mods = "LEADER|SHIFT", action="CloseCurrentTab"},
-        { key = "x", mods = "LEADER", action="CloseCurrentPane"},
+        {key="&", mods="LEADER|SHIFT", action=wezterm.action{CloseCurrentTab={confirm=false}}},
+        {key="x", mods="LEADER", action=wezterm.action{CloseCurrentPane={confirm=false}}},
 
         -- Copy (to Clipboard) / Paste (from Clipboard or PrimarySelection)
         {key="C", mods="CTRL|SHIFT", action="Copy"},
