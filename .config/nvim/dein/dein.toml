@@ -53,6 +53,7 @@ repo = 'Krasjet/auto.pairs'
 on_event = 'InsertEnter'
 hook_add = """
   let g:AutoPairsMapCh = 0
+  inoremap <buffer> <silent> <C-b> <C-R>=AutoPairsDelete()<CR>
 """
 
 [[plugins]]
