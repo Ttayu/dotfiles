@@ -1,6 +1,7 @@
 # syntax highlight
 [[plugins]]
 repo = 'numirias/semshi'
+on_event = ["BufRead"]
 on_ft = ['python']
 hook_add = '''
   source ~/.config/nvim/plugins/semshi.vim
