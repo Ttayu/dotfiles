@@ -22,7 +22,7 @@ local config = {
         "Cica",
     }),
     color_scheme = "Popping and Locking",
-    font_size = 11.0,
+    font_size = 10.0,
     launch_menu = launch_menu,
     set_environment_variables = env,
     disable_default_key_bindings = true,
@@ -32,7 +32,7 @@ local config = {
     leader = { key="g", mods="CTRL" },
     keys = {
         { key = "-", mods = "LEADER", action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}} },
-        { key = "\\", mods = "LEADER", action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}} },
+        { key = "|", mods = "LEADER", action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}} },
         { key = "z", mods = "LEADER", action="TogglePaneZoomState" },
         { key = "c", mods = "LEADER", action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
         { key = "h", mods = "LEADER", action=wezterm.action{ActivatePaneDirection="Left"}},
@@ -58,9 +58,15 @@ local config = {
         {key="x", mods="LEADER", action=wezterm.action{CloseCurrentPane={confirm=false}}},
 
         -- Copy (to Clipboard) / Paste (from Clipboard or PrimarySelection)
-        {key="C", mods="CTRL|SHIFT", action="Copy"},
-        {key="V", mods="CTRL|SHIFT", action="Paste"},
-        {key="Insert", mods="SHIFT", action="PastePrimarySelection"},
+        {key="C", mods="CTRL|SHIFT", action=wezterm.action{CopyTo="ClipboardAndPrimarySelection"}},
+        {key="V", mods="CTRL|SHIFT", action=wezterm.action{PasteFrom="Clipboard"}},
+        {key="Insert", mods="SHIFT", action=wezterm.action{PasteFrom="PrimarySelection"}},
+
+        {key="0", mods="LEADER", action="ResetFontSize"},
+        {key="_", mods="LEADER|SHIFT", action="DecreaseFontSize"},
+        {key="+", mods="LEADER|SHIFT", action="IncreaseFontSize"},
+
+        {key="[", mods="LEADER", action="ActivateCopyMode"},
     }
 }
 
