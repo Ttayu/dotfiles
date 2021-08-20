@@ -4,6 +4,7 @@ repo = 'Shougo/dein.vim'
 # カーソル位置のコンテキストに合わせてftを切り替える
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
+on_event = ['CursorMoved', 'InsertEnter']
 depends = ['context_filetype.vim']
 hook_add = '''
  let g:precious_enable_switchers = {
@@ -47,15 +48,35 @@ hook_add = '''
   let g:indentLine_concealcursor = ''
 '''
 
-# 閉じ括弧の自動補完
 [[plugins]]
-repo = 'Krasjet/auto.pairs'
+repo = 'windwp/nvim-autopairs'
 on_event = 'InsertEnter'
-hook_add = """
-  let g:AutoPairsMapCh = 0
-  inoremap <buffer> <silent> <C-b> <C-R>=AutoPairsDelete()<CR>
-"""
+hook_add = '''
+  lua << EOF
+require('nvim-autopairs').setup()
 
+local remap = vim.api.nvim_set_keymap
+local npairs = require('nvim-autopairs')
+
+-- skip it, if you use another global object
+_G.MUtils= {}
+
+vim.g.completion_confirm_key = ""
+MUtils.completion_confirm=function()
+  if vim.fn.pumvisible() ~= 0  then
+    if vim.fn.complete_info()["selected"] ~= -1 then
+      return npairs.esc("<c-y>")
+    else
+      return npairs.check_break_line_char()
+    end
+  else
+    return npairs.check_break_line_char()
+  end
+end
+
+remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
+EOF
+'''
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 
@@ -83,4 +104,25 @@ hook_add = '''
   let g:latex_to_unicode_eager = 0
   let g:latex_to_unicode_suggestions = 0
   let g:latex_to_unicode_file_types_blacklist = ".*"
+'''
+
+[[plugins]]
+repo = 'phaazon/hop.nvim'
+hook_add = '''
+  nnoremap ff :HopWord<CR>
+  nnoremap fl :HopLine<CR>
+'''
+
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+on_event = 'BufRead'
+hook_add = '''
+lua << EOF
+  require('nvim-treesitter.configs').setup {
+    highlight = {
+      enable = true,
+      disable = {},
+    },
+  }
+EOF
 '''
