@@ -178,15 +178,12 @@ let g:lsp_diagnostics_float_delay = 100
 
 nnoremap [lsp] <Nop>
 nmap <Leader>l [lsp]
-inoremap [lsp] <Nop>
-imap <Leader>l [lsp]
 nnoremap [lsp]a :<C-u>LspCodeAction<CR>
 nnoremap [lsp]c :<C-u>LspDeclaration<CR>
 nnoremap [lsp]d :<C-u>LspDefinition<CR>
 nnoremap [lsp]f :<C-u>LspDocumentFormat<CR>
 nnoremap [lsp]s :<C-u>LspDocumentSymbol<CR>
 nnoremap [lsp]h :<C-u>LspHover<CR>
-inoremap [lsp]h <Esc>:<C-u>LspSignatureHelp<CR><Insert>
 nnoremap [lsp]i :<C-u>LspImplementation<CR>
 nnoremap [lsp]p :<C-u>LspPeekDefinition<CR>
 nnoremap [lsp]x :<C-u>LspReferences<CR>
