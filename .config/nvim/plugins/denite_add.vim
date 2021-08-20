@@ -2,21 +2,14 @@ scriptencoding utf-8
 " Denite用prefix
 nnoremap [denite] <Nop>
 nmap <Leader>d [denite]
-inoremap [denite] <Nop>
-imap <Leader>d [denite]
 
 " registerの検索
 nnoremap <silent> [denite]r
       \ :<C-u>Denite -buffer-name=register
       \ register neoyank<CR>
-inoremap <silent> [denite]r
-      \ <C-o>:<C-u>Denite -default-action=append -buffer-name=register
-      \ register neoyank<CR>
 " スニペットの検索
 nnoremap <silent> [denite]s
       \ :<C-u>Denite neosnippet<CR>
-inoremap <silent> [denite]s
-      \ <C-o>:<C-u>Denite neosnippet -default-action=append<CR>
 " プロジェクト内のファイル検索
 nnoremap <silent> [denite]p :<C-u>Denite file/rec<CR>
 " プロジェクト外のファイル検索
