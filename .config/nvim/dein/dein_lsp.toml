@@ -17,3 +17,7 @@ on_ft = ['python', 'go', 'typescript',  'typescriptreact','dockerfile', 'javascr
 [[plugins]]
 repo = 'machakann/vim-lsp-julia'
 on_ft = ['julia']
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+on_ft = ['python', 'go', 'typescript',  'typescriptreact','dockerfile', 'javascript', 'javascript.jsx', 'javascriptreact', 'cpp', 'rust', 'java', 'kotlin', 'r', 'julia']
