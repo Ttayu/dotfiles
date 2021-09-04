@@ -76,14 +76,6 @@ hook_add = '''
   augroup END
 '''
 
-# gtagsを非同期で自動更新
-[[plugins]]
-repo = 'jsfaint/gen_tags.vim'
-hook_add = '''
-  " ctags, gtagsを自動で生成，更新
-  let g:gen_tags#ctags_auto_gen = 1
-'''
-
 # viewer for LSP symbols
 [[plugins]]
 repo = 'liuchengxu/vista.vim'
