@@ -1,4 +1,45 @@
 [[plugins]]
+repo = 'JuliaEditorSupport/julia-vim'
+on_ht = ['julia']
+hook_add = '''
+  let g:latex_to_unicode_tab = 0
+  let g:latex_to_unicode_eager = 0
+  let g:latex_to_unicode_suggestions = 0
+  let g:latex_to_unicode_file_types_blacklist = ".*"
+'''
+
+[[plugins]]
+repo = 'lervag/vimtex'
+on_ft = ['tex']
+hook_add = '''
+  let g:vimtex_compiler_latexmk_engines = {'_': '-pdfdvi'}
+  let g:tex_flavor = 'latex'
+  let g:vimtex_quickfix_open_on_warning = 0
+  if has('mac')
+    let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+    let g:vimtex_view_general_options = '@line @pdf @tex'
+  else
+    let g:vimtex_view_general_viewer = 'evince'
+  endif
+'''
+
+[[plugins]]
+repo = 'udalov/kotlin-vim'
+on_ft = ['kotlin']
+hook_add = """
+  autocmd FileType kotlin setlocal sw=4 sts=4 ts=4 et
+"""
+
+[[plugins]]
+repo = 'jalvesaq/Nvim-R'
+on_ft = ['r']
+hook_add = '''
+  let g:R_auto_start = 1
+  let g:R_assing = 0
+  let g:R_insert_mode_cmds = 1
+'''
+
+[[plugins]]
 repo = 'HerringtonDarkholme/yats.vim'
 on_ft = ['typescript', 'typescriptreact']
 
