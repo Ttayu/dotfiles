@@ -1,0 +1,68 @@
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+depends = ['context_filetype.vim', 'denops.vim']
+on_event = 'InsertEnter'
+hook_source = '''
+ call ddc#custom#patch_global('sources', ['ddc-vim-lsp', 'around'])
+ call ddc#custom#patch_global('sourceOptions', {
+   \ '_': {
+   \   'ignoreCase': v:true,
+   \   'minAutoCompleteLength': 0,
+   \   'matchers': ['matcher_head'],
+   \   'sorters': ['sorter_rank'],
+   \   'converters': ['converter_remove_overlap'],
+   \ },
+   \ 'necovim': {'mark': 'vim'},
+   \ 'around': {
+   \   'mark': 'A',
+   \   'matchers': ['matcher_head', 'matcher_length'],
+   \ },
+   \ 'ddc-vim-lsp': {'mark': 'lsp', 'forceCompletionPattern': '\\.|:|->'},
+   \ })
+ call ddc#custom#patch_filetype(
+   \ ['help', 'markdown', 'gitcommit', 'toml'], 'sources',
+   \ ['around']
+   \ )
+ set completeopt-=preview
+ call ddc#enable()
+'''
+
+[[plugins]]
+repo = 'Shougo/ddc-around'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-zsh'
+on_ft = 'zsh'
+depends = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_head'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_length'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-sorter_rank'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-converter_remove_overlap'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'shun/ddc-vim-lsp'
+depends = ['vim-lsp']
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/neco-vim'
+on_ft = ['vim', 'toml', 'help']
+depends = ['ddc.vim']
+hook_source = '''
+  call ddc#custom#patch_filetype(
+        \ ['vim'], 'sources', ['necovim', 'around']
+        \ )
+'''
