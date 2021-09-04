@@ -1,10 +1,10 @@
 nnoremap [fugitive] <Nop>
 nmap <Leader>g [fugitive]
-nnoremap [fugitive]s :<C-u>Gstatus<CR>
-nnoremap [fugitive]c :<C-u>Gcommit<CR>
-nnoremap [fugitive]C :<C-u>Gcommit --amend<CR>
-nnoremap [fugitive]b :<C-u>Gblame<CR>
-nnoremap [fugitive]a :<C-u>Gwrite<CR>
-nnoremap [fugitive]d :<C-u>Gdiff<CR>
-nnoremap [fugitive]D :<C-u>Gdiff --staged<CR>
+nnoremap [fugitive]s :<C-u>Git status<CR>
+nnoremap [fugitive]c :<C-u>Git commit<CR>
+nnoremap [fugitive]C :<C-u>Git commit --amend<CR>
+nnoremap [fugitive]b :<C-u>Git blame<CR>
+nnoremap [fugitive]a :<C-u>Git write<CR>
+nnoremap [fugitive]d :<C-u>Git diff<CR>
+nnoremap [fugitive]D :<C-u>Git diff --staged<CR>
 vnoremap ,go :Gbrowse<CR>
