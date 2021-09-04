@@ -22,7 +22,6 @@ if dein#load_state(s:dein_dir)
   let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
   let s:ddc_toml = g:rc_dir . '/dein_ddc.toml'
   let s:lsp_toml = g:rc_dir . '/dein_lsp.toml'
-  let s:python_toml = g:rc_dir . '/dein_python.toml'
   let s:web_toml = g:rc_dir . '/dein_web.toml'
 
   " TOML を読み込み、キャッシュしておく
@@ -30,7 +29,6 @@ if dein#load_state(s:dein_dir)
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
   call dein#load_toml(s:ddc_toml, {'lazy': 1})
   call dein#load_toml(s:lsp_toml, {'lazy': 1})
-  call dein#load_toml(s:python_toml, {'lazy': 1})
   call dein#load_toml(s:web_toml, {'lazy': 1})
 
   " 設定終了
