@@ -15,15 +15,6 @@ hook_add = '''
   source ~/.config/nvim/plugins/ale.vim
 '''
 
-# vim用補完フレームワーク
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-depends = 'context_filetype.vim'
-on_event = 'InsertEnter'
-hook_source = '''
-  source ~/.config/nvim/plugins/deoplete.vim
-'''
-
 # neosnippet
 [[plugins]]
 repo = 'Shougo/neosnippet'
@@ -126,27 +117,7 @@ on_ft = ['md', 'markdown']
 hook_add = '''
   let g:vim_markdown_folding_disabled = 1
 '''
-
-# vim-script
-[[plugins]]
-repo = 'Shougo/neco-vim'
-on_ft = ['vim']
-
-# cmake
-[[plugins]]
-repo = 'deoplete-plugins/deoplete-clang'
-on_ft = ['cmake']
-depends = ['deoplete.nvim']
-hook_source = '''
-  let g:deoplete#sources#clang#libclang_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
-  let g:deoplete#sources#clang#clang_header = '/Library/Developer/CommandLineTools/usr/lib/clang'
-'''
-
-# zsh
-[[plugins]]
-repo = 'deoplete-plugins/deoplete-zsh'
-on_ft = ['zsh', 'sh']
-
+ 
 # latex
 [[plugins]]
 repo = 'lervag/vimtex'
