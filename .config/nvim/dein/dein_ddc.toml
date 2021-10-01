@@ -3,7 +3,7 @@ repo = 'Shougo/ddc.vim'
 depends = ['context_filetype.vim', 'denops.vim']
 on_event = 'InsertEnter'
 hook_source = '''
- call ddc#custom#patch_global('sources', ['ddc-vim-lsp', 'around', 'file'])
+ call ddc#custom#patch_global('sources', ['vim-lsp', 'around', 'file'])
  call ddc#custom#patch_global('sourceOptions', {
    \ '_': {
    \   'ignoreCase': v:true,
@@ -18,9 +18,10 @@ hook_source = '''
    \   'minAutoCompleteLength': 2,
    \   'matchers': ['matcher_head', 'matcher_length'],
    \ },
-   \ 'ddc-vim-lsp': {'mark': 'lsp', 'forceCompletionPattern': '\\.|:|->'},
+   \ 'vim-lsp': {'mark': 'lsp', 'forceCompletionPattern': '\\.|:|->'},
    \ 'file': {
    \   'mark': 'F',
+   \   'minAutoCompleteLength': 1000,
    \   'isVolatile': v:true,
    \   'forceCompletionPattern': '\S/\S*',
    \ },
