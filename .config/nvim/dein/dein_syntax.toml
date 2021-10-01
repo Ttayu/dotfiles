@@ -1,6 +1,6 @@
 [[plugins]]
 repo = 'JuliaEditorSupport/julia-vim'
-on_ht = ['julia']
+on_ft = ['julia']
 hook_add = '''
   let g:latex_to_unicode_tab = 0
   let g:latex_to_unicode_eager = 0
