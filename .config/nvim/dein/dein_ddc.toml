@@ -66,8 +66,7 @@ on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'Shougo/neco-vim'
-on_ft = ['vim', 'toml', 'help']
-depends = 'ddc.vim'
+on_source = 'ddc.vim'
 hook_source = '''
   call ddc#custom#patch_filetype(
         \ ['vim'], 'sources', ['necovim', 'around', 'file']
