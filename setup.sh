@@ -9,9 +9,7 @@ function command_exists() {
 : "install brew" && {
   if ! command_exists brew; then
     info "installing brew..."
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    brew update
-    brew upgrade
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   else
     warn "brew is already installed"
   fi
@@ -63,7 +61,7 @@ function command_exists() {
   ZINIT_DIR=$HOME/.zinit
   if [ ! -e $ZINIT_DIR ]; then
     info "installing zinit..."
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+    sh -c "$(curl -fsSL https://git.io/zinit-install)"
   else
     warn "zinit is already installed"
   fi
