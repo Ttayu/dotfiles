@@ -15,26 +15,24 @@ function command_exists() {
   fi
 }
 
-: "install tmux-256color on macOS" && {
-  if ! command_exists /usr/local/opt/ncurses/bin/infocmp ; then
-    info "installing ncurses..."
-    brew install ncurses
-  fi
-  /usr/local/opt/ncurses/bin/infocmp tmux-256color > ~/tmux-256color.info &&
-    tic -xe tmux-256color ~/tmux-256color.info  &&
-    rm ~/tmux-256color.info
-}
+if [ $(uname) == 'Darwin' ]; then
+  : "install tmux-256color on macOS" && {
+    if ! command_exists /usr/local/opt/ncurses/bin/infocmp ; then
+      info "installing ncurses..."
+      brew install ncurses
+    fi
+    /usr/local/opt/ncurses/bin/infocmp tmux-256color > ~/tmux-256color.info &&
+      tic -xe tmux-256color ~/tmux-256color.info  &&
+      rm ~/tmux-256color.info
+    }
+fi
 
 : "install other packages by brew" && {
-  packages=( neovim tmux tree jq wget pyenv ripgrep bat fd exa llvm cmake ccls)
-  for package in ${packages[@]}; do
-    if ! brew list | grep $package &> /dev/null; then
-      info "installing ${package}..."
-      brew install ${package}
-    else
-      warn "${package} is already installed"
-    fi
-  done
+  if [ $(uname) == 'Darwin' ]; then
+    brew bundle --file Brewfile.macos
+  elif [ $(uname) == 'Linux' ]; then
+    brew bundle --file Brewfile.linux
+  fi
 }
 
 : "install tmux plugins manager" && {
@@ -56,7 +54,7 @@ function command_exists() {
     warn "poetry is already installed"
   fi
 }
- 
+
 : "install zinit" && {
   ZINIT_DIR=$HOME/.zinit
   if [ ! -e $ZINIT_DIR ]; then
