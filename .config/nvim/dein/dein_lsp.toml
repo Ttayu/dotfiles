@@ -1,5 +1,6 @@
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
+on_event = 'BufRead'
 hook_source = '''
   source ~/.config/nvim/plugins/lsp.vim
   " set foldlevel=100
