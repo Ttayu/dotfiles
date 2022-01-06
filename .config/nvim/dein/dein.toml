@@ -101,6 +101,9 @@ hook_add = '''
 [[plugins]]
 repo = 'phaazon/hop.nvim'
 hook_add = '''
+lua << EOF
+  require'hop'.setup()
+EOF
   nnoremap ff :HopWord<CR>
   nnoremap fl :HopLine<CR>
 '''
