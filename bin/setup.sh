@@ -1,6 +1,8 @@
+#!/usr/bin/env zsh
 set -euo pipefail
 
-source lib/echos.sh
+DOT_DIRECTORY="${HOME}/dotfiles"
+source ${DOT_DIRECTORY}/bin/echos.sh
 
 function command_exists() {
   type "$1" &> /dev/null ;
@@ -15,23 +17,21 @@ function command_exists() {
   fi
 }
 
-if [ $(uname) == 'Darwin' ]; then
+if [ $(uname) = 'Darwin' ]; then
   : "install tmux-256color on macOS" && {
     if ! command_exists /usr/local/opt/ncurses/bin/infocmp ; then
       info "installing ncurses..."
       brew install ncurses
     fi
-    /usr/local/opt/ncurses/bin/infocmp tmux-256color > ~/tmux-256color.info &&
-      tic -xe tmux-256color ~/tmux-256color.info  &&
-      rm ~/tmux-256color.info
+      tic -xe tmux-256color ${DOT_DIRECTORY}/tmux-256color.info
     }
 fi
 
 : "install other packages by brew" && {
-  if [ $(uname) == 'Darwin' ]; then
-    brew bundle --file Brewfile.macos
-  elif [ $(uname) == 'Linux' ]; then
-    brew bundle --file Brewfile.linux
+  if [ $(uname) = 'Darwin' ]; then
+    brew bundle --file ${DOT_DIRECTORY}/Brewfile.macos
+  elif [ $(uname) = 'Linux' ]; then
+    brew bundle --file ${DOT_DIRECTORY}/Brewfile.linux
   fi
 }
 

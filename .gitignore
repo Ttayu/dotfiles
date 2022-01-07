@@ -3,9 +3,7 @@
 /.**
 
 # not ignore
-!/setup.sh
-!/link.sh
-!/lib
+!/bin/
 !/Brewfile.linux
 !/Brewfile.macos
 !/README.md
