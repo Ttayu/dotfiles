@@ -1,6 +1,22 @@
-/.config/configstore/
-*/.venv
-.git
-# for git module
-.tmux
-.zplug
+# all ignore
+/*
+/.**
+
+# not ignore
+!/setup.sh
+!/link.sh
+!/lib
+!/Brewfile.linux
+!/Brewfile.macos
+!/README.md
+!/tmux-256color.info
+!/.config/
+!/.config/**
+!/.gitignore
+!/.gitignore_global
+!/.globalrc
+!/.py3
+!/.Rprofile
+!/.tmux.conf
+!/.zshrc
+!/.zshenv
