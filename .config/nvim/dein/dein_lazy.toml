@@ -8,13 +8,6 @@ hook_post_update = '''
   call fruzzy#install()
 '''
 
-# linter実行プラグイン
-[[plugins]]
-repo = 'w0rp/ale'
-hook_add = '''
-  source ~/.config/nvim/plugins/ale.vim
-'''
-
 # neosnippet
 [[plugins]]
 repo = 'Shougo/neosnippet'

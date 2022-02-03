@@ -27,16 +27,16 @@ let g:lightline.active = {
 let g:lightline.separator =  { 'left': '', 'right': '' }
 let g:lightline.subseparator = { 'left': '', 'right': '' }
 
-" setting ale
-let g:lightline#ale#indicator_errors = '✖ '
-let g:lightline#ale#indicator_warnings = '⚠ '
-let g:lightline#ale#indicator_ok = '✔'
+" setting lsp
+let g:lightline#lsp#indicator_errors = '✖ '
+let g:lightline#lsp#indicator_warnings = '⚠ '
+let g:lightline#lsp#indicator_ok = '✔'
 
 let g:lightline.component_expand = {
-      \  'linter_checking': 'lightline#ale#checking',
-      \  'linter_warnings': 'lightline#ale#warnings',
-      \  'linter_errors': 'lightline#ale#errors',
-      \  'linter_ok': 'lightline#ale#ok',
+      \  'linter_checking': 'lightline#lsp#checking',
+      \  'linter_warnings': 'lightline#lsp#warnings',
+      \  'linter_errors': 'lightline#lsp#errors',
+      \  'linter_ok': 'lightline#lsp#ok',
       \ }
 let g:lightline.component_type = {
       \     'linter_checking': 'left',

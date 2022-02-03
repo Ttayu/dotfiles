@@ -34,15 +34,15 @@ hook_add = '''
 # ステータスラインの改造
 [[plugins]]
 repo = 'itchyny/lightline.vim'
-depends = ['vim-fugitive', 'lightline-ale']
+depends = ['vim-fugitive', 'lightline-lsp']
 hook_add = '''
   source ~/.config/nvim/plugins/lightline.vim
 '''
 
-# lightlineにaleのstatusを表示する補助プラグイン
+# lightlineにbuildin lspのstatusを表示する補助プラグイン
 [[plugins]]
-repo = 'maximbaz/lightline-ale'
-depends = ['lightline.vim', 'ale']
+repo = 'spywhere/lightline-lsp'
+depends = ['lightline.vim']
 
 # インデントの可視化
 [[plugins]]
