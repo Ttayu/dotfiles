@@ -130,4 +130,15 @@ lua << EOF
     },
   }
 EOF
+  " set foldmethod=expr
+  " set foldexpr=nvim_treesitter#foldexpr()
+'''
+
+[[plugins]]
+repo = 'anuvyklack/pretty-fold.nvim'
+hook_add = '''
+  lua << EOF
+  require('pretty-fold').setup{}
+  require('pretty-fold.preview').setup_keybinding()
+EOF
 '''
