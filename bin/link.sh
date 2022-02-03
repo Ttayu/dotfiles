@@ -20,7 +20,7 @@ done
 
 for f in ${DOT_CONFIG_DIRECTORY}/*
 do
-  ln -snfv ${DOT_DIRECTORY}/${f} ${HOME}/${f}
+  ln -snfv ${DOT_DIRECTORY}/${f} ${HOME}/${DOT_CONFIG_DIRECTORY}
 done
 
 ok "linked dotfiles complete!"
