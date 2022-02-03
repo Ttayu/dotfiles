@@ -1,8 +1,9 @@
 [[plugins]]
 repo = 'JuliaEditorSupport/julia-vim'
-on_ft = ['julia']
+on_ft = ['julia', 'r']
 hook_add = '''
-  let g:latex_to_unicode_tab = 0
+  let g:latex_to_unicode_tab = 1
+  let g:latex_to_unicode_auto = 1
   let g:latex_to_unicode_eager = 0
   let g:latex_to_unicode_suggestions = 0
   let g:latex_to_unicode_file_types_blacklist = ".*"
@@ -34,9 +35,8 @@ hook_add = """
 repo = 'jalvesaq/Nvim-R'
 on_ft = ['r']
 hook_add = '''
-  let g:R_auto_start = 1
-  let g:R_assing = 0
-  let g:R_insert_mode_cmds = 1
+  let g:R_auto_start = 0
+  let g:R_insert_mode_cmds = 0
 '''
 
 [[plugins]]
