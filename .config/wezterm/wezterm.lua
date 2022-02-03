@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 
 local env = {}
 local launch_menu = {}
-local default_prog = { "/bin/bash", "-l" }
+local default_prog = { "/bin/zsh", "-l" }
 
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
     env["TERM"] = ""
@@ -21,7 +21,8 @@ local config = {
     font = wezterm.font_with_fallback({
         "Cica",
     }),
-    color_scheme = "Popping and Locking",
+    color_scheme = "tokyonight_night",
+    color_scheme_dirs = {"~/.config/wezterm/colors/"},
     font_size = 10.0,
     launch_menu = launch_menu,
     set_environment_variables = env,
