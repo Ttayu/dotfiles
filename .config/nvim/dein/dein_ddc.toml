@@ -1,37 +1,9 @@
 [[plugins]]
 repo = 'Shougo/ddc.vim'
-depends = ['context_filetype.vim', 'denops.vim']
+depends = ['context_filetype.vim', 'denops.vim', 'pum.vim']
 on_event = 'InsertEnter'
 hook_source = '''
- call ddc#custom#patch_global('sources', ['vim-lsp', 'around', 'file'])
- call ddc#custom#patch_global('sourceOptions', {
-   \ '_': {
-   \   'ignoreCase': v:true,
-   \   'minAutoCompleteLength': 0,
-   \   'matchers': ['matcher_head'],
-   \   'sorters': ['sorter_rank'],
-   \   'converters': ['converter_remove_overlap'],
-   \ },
-   \ 'necovim': {'mark': 'vim'},
-   \ 'around': {
-   \   'mark': 'A',
-   \   'minAutoCompleteLength': 2,
-   \   'matchers': ['matcher_head', 'matcher_length'],
-   \ },
-   \ 'vim-lsp': {'mark': 'lsp', 'forceCompletionPattern': '\\.|:|->'},
-   \ 'file': {
-   \   'mark': 'F',
-   \   'minAutoCompleteLength': 1000,
-   \   'isVolatile': v:true,
-   \   'forceCompletionPattern': '\S/\S*',
-   \ },
-   \ })
- call ddc#custom#patch_filetype(
-   \ ['help', 'markdown', 'gitcommit', 'toml'], 'sources',
-   \ ['around', 'file']
-   \ )
- set completeopt-=preview
- call ddc#enable()
+  source ~/.config/nvim/plugins/ddc.vim
 '''
 
 [[plugins]]
@@ -44,25 +16,12 @@ on_ft = 'zsh'
 depends = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-matcher_head'
+repo = 'tani/ddc-fuzzy'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-matcher_length'
-on_source = 'ddc.vim'
-
-[[plugins]]
-repo = 'Shougo/ddc-sorter_rank'
-on_source = 'ddc.vim'
-
-[[plugins]]
-repo = 'Shougo/ddc-converter_remove_overlap'
-on_source = 'ddc.vim'
-
-[[plugins]]
-repo = 'shun/ddc-vim-lsp'
-depends = ['vim-lsp']
-on_source = 'ddc.vim'
+repo = 'Shougo/ddc-nvim-lsp'
+on_source = 'nvim-lspconfig'
 
 [[plugins]]
 repo = 'Shougo/neco-vim'
@@ -74,5 +33,30 @@ hook_source = '''
 '''
 
 [[plugins]]
+repo = 'Shougo/ddc-cmdline-history'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-cmdline'
+on_source = 'ddc.vim'
+
+[[plugins]]
 repo = 'LumaKernel/ddc-file'
 on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'matsui54/denops-popup-preview.vim'
+on_source = ['ddc.vim', 'pum.vim']
+hook_source = '''
+  call popup_preview#enable()
+'''
+
+[[plugins]]
+repo = 'matsui54/denops-signature_help'
+on_source = 'ddc.vim'
+hook_source = '''
+  let g:signature_help_config = {
+        \ "style": "labelOnly",
+        \ }
+  call signature_help#enable()
+'''

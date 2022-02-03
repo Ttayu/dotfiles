@@ -83,7 +83,7 @@ depends = ['vim-lsp']
 hook_add = '''
   let g:vista_close_on_jump = 1
   let g:vista#renderer#enable_icon = 1
-  let g:vista_default_executive = 'vim_lsp'
+  let g:vista_default_executive = 'nvim_lsp'
   nnoremap <silent> <leader>v :<C-u>Vista!!<CR>
   autocmd vimrc BufEnter * if (&filetype == 'vista' || &filetype == 'vista_kind') && winnr('$') == 1 | q | endif
 '''

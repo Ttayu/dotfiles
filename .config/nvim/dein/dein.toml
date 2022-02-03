@@ -4,6 +4,9 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = "vim-denops/denops.vim"
 
+[[plugins]]
+repo = 'Shougo/pum.vim'
+
 # カーソル位置のコンテキストに合わせてftを切り替える
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
@@ -53,32 +56,39 @@ hook_add = '''
 [[plugins]]
 repo = 'windwp/nvim-autopairs'
 on_event = 'InsertEnter'
+depends = ['pum.vim']
 hook_add = '''
-  lua << EOF
-require('nvim-autopairs').setup()
+lua << EOF
+  require('nvim-autopairs').setup()
 
-local remap = vim.api.nvim_set_keymap
-local npairs = require('nvim-autopairs')
+  local remap = vim.api.nvim_set_keymap
+  local npairs = require('nvim-autopairs')
 
--- skip it, if you use another global object
-_G.MUtils= {}
+  -- skip it, if you use another global object
+  _G.MUtils= {}
 
-vim.g.completion_confirm_key = ""
-MUtils.completion_confirm=function()
-  if vim.fn.pumvisible() ~= 0  then
-    if vim.fn.complete_info()["selected"] ~= -1 then
-      return npairs.esc("<c-y>")
+  vim.g.completion_confirm_key = ""
+  MUtils.completion_confirm=function()
+    if vim.api.nvim_eval('pum#visible()') ~= 0  then
+      if vim.api.nvim_eval('pum#complete_info()')["selected"] ~= -1 then
+        return vim.api.nvim_eval('pum#map#confirm()')
+      else
+        vim.api.nvim_eval('pum#map#cancel()')
+        return npairs.check_break_line_char()
+      end
     else
+      if vim.api.nvim_get_mode()["mode"] == "c" then
+        return npairs.esc("<CR>")
+      end
       return npairs.check_break_line_char()
     end
-  else
-    return npairs.check_break_line_char()
   end
-end
 
-remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
+  remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
+  remap('c' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
 EOF
 '''
+
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 
