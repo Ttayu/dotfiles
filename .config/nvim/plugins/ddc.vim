@@ -13,7 +13,10 @@ call ddc#custom#patch_global('sourceOptions', {
   \   'minAutoCompleteLength': 1000,
   \   'forceCompletionPattern': '\S/\S*',
   \ },
-  \ 'cmdline-history': {'mark': 'history'},
+  \ 'cmdline-history': {
+  \ 'mark': 'history',
+  \ 'sorters': [],
+  \ },
   \ 'around': {
   \   'mark': 'A',
   \ },
@@ -56,7 +59,6 @@ inoremap <silent><expr> <C-Space>  ddc#map#extend()
 nnoremap :       <Cmd>call CommandlinePre()<CR>:
 nnoremap ;       <Cmd>call CommandlinePre()<CR>:
 
-let s:prev_buffer_config = {}
 function! CommandlinePre() abort
   " Note: It disables default command line completion!
   cnoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
@@ -64,11 +66,13 @@ function! CommandlinePre() abort
   cnoremap <silent><expr> <C-j> pum#visible() ? '<Cmd>call pum#map#select_relative(+1)<CR>' : '<Down>'
   cnoremap <silent><expr> <C-k> pum#visible() ? '<Cmd>call pum#map#select_relative(-1)<CR>' : '<Up>'
   cnoremap <silent><expr> <C-Space>  ddc#map#extend()
+  cnoremap <silent><expr> <CR> pum#visible() ?
+        \ pum#complete_info()["selected"] != -1 ?
+        \ '<Cmd>call pum#map#confirm()<CR>' :
+        \ '<Cmd>call pum#map#cancel()<CR><CR>' : '<CR>'
 
   " Overwrite sources
-  if s:prev_buffer_config ==# ddc#custom#get_buffer()
-   let s:prev_buffer_config = {}
-  endif
+  let s:prev_buffer_config = ddc#custom#get_buffer()
 
   call ddc#custom#patch_buffer('sources',
           \ ['cmdline', 'cmdline-history', 'around'])
@@ -86,6 +90,7 @@ function! CommandlinePost() abort
   cunmap <C-j>
   cunmap <C-k>
   cunmap <C-Space>
+  cunmap <CR>
 endfunction
 
 call ddc#enable()

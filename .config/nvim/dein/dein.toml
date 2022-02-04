@@ -77,15 +77,11 @@ lua << EOF
         return npairs.check_break_line_char()
       end
     else
-      if vim.api.nvim_get_mode()["mode"] == "c" then
-        return npairs.esc("<CR>")
-      end
       return npairs.check_break_line_char()
     end
   end
 
   remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
-  remap('c' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
 EOF
 '''
 
