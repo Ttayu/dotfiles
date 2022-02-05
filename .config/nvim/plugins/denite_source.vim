@@ -54,14 +54,21 @@ if executable('rg')
   call denite#custom#var('grep', 'separator', ['--'])
   call denite#custom#var('grep', 'default_opts',
         \ ['-i', '--vimgrep', '--no-heading'])
+
+  call denite#custom#var('line', 'command', ['rg'])
+  call denite#custom#var('line', 'recursive_opts', [])
+  call denite#custom#var('line', 'final_opts', [])
+  call denite#custom#var('line', 'separator', ['--'])
+  call denite#custom#var('line', 'default_opts',
+        \ ['-i', '--vimgrep', '--no-heading'])
 else
   call denite#custom#var('file/rec', 'command',
-        \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+       \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 endif
 
 " file_rec検索時にfuzzymatchを有効にし、検索対象から指定のファイルを除外
 call denite#custom#source('file/rec', 'matchers', ['matcher/fruzzy'])
-call denite#custom#source('file/old', 'matchers', ['matcher/fruzzy', 'matcher/project_files'])
+call denite#custom#source('file/old', 'matchers', ['matcher/fruzzy'])
 
 " 検索対象外のファイル指定
 call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [ '.git/', '*cache*', 'venv/'])
