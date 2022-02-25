@@ -37,17 +37,6 @@ repo = 'Shougo/neoyank.vim'
 on_event = 'TextYankPost'
 on_source = ['denite.nvim']
 
-# ファイルランチャー
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-on_cmd = 'Denite'
-hook_add = '''
-  source ~/.config/nvim/plugins/denite_add.vim
-'''
-hook_source = '''
-  source ~/.config/nvim/plugins/denite_source.vim
-'''
-
 # git操作
 [[plugins]]
 repo = 'tpope/vim-fugitive'
