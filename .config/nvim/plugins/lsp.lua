@@ -10,6 +10,8 @@ vim.api.nvim_set_keymap('n', '[lsp]x', ':lua vim.lsp.buf.references()<CR>', { no
 vim.api.nvim_set_keymap('n', '[lsp]r', ':lua vim.lsp.buf.rename()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]t', ':lua vim.lsp.buf.type_definition()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]e', ':lua vim.diagnostic.open_float()<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '[lsp]n', ':lua vim.diagnostic.goto_next()<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '[lsp]p', ':lua vim.diagnostic.goto_prev()<CR>', { noremap = true })
 
 -- general settings
 vim.diagnostic.config({
