@@ -102,7 +102,7 @@ call ddu#custom#patch_global({
       \       'defaultAction': 'append',
       \     },
       \     'help': {
-      \       'defaultAction': 'split',
+      \       'defaultAction': 'open',
       \     }, 
       \     'action': {
       \       'defaultAction': 'do',
@@ -118,6 +118,9 @@ call ddu#custom#patch_local('files', {
       \ })
 call ddu#custom#patch_global({
       \   'sourceParams': {
+      \     'file_rec': {
+      \       'ignoredDirectories': ['.git', '*cache*', '.venv','node_modules', 'build'],
+      \     },
       \     'file_rg': {
       \       'cmd': ['rg', '--files', '--glob', '!.git',
       \               '--color', 'never', '--no-messages'],
