@@ -9,7 +9,7 @@ if ! has_key(g:lightline, 'component_visible_condition')
   let g:lightline.component_visible_condition = {}
 endif
 let g:lightline.colorscheme = 'tokyonight'
-let g:lightline.component.fugitive = ' %{fugitive#head()}'
+let g:lightline.component.fugitive = ' %{FugitiveHead()}'
 let g:lightline.component_visible_condition.fugitive = '(exists("*fugitive#head") && ""!=fugitive#head())'
 let g:lightline.active = {
       \ 'left': [
