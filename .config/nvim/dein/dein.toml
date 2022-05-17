@@ -132,10 +132,13 @@ EOF
 '''
 
 [[plugins]]
+repo = 'anuvyklack/nvim-keymap-amend'
+
+[[plugins]]
 repo = 'anuvyklack/pretty-fold.nvim'
 hook_add = '''
   lua << EOF
-  require('pretty-fold').setup{}
-  require('pretty-fold.preview').setup_keybinding()
+  require('pretty-fold').setup()
+  require('pretty-fold.preview').setup()
 EOF
 '''
