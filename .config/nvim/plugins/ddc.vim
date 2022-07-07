@@ -1,4 +1,7 @@
 call ddc#custom#patch_global('sources', ['nvim-lsp', 'around', 'file'])
+call ddc#custom#patch_global('cmdlineSources',
+      \ ['cmdline-history', 'input', 'file', 'around']
+      \ )
 call ddc#custom#patch_global('sourceOptions', {
   \ '_': {
   \   'ignoreCase': v:true,
@@ -12,10 +15,17 @@ call ddc#custom#patch_global('sourceOptions', {
   \   'mark': 'cmdline',
   \   'minAutoCompleteLength': 1000,
   \   'forceCompletionPattern': '\S/\S*',
+  \   'dup': v:true,
+  \ },
+  \ 'input': {
+  \   'mark': 'input',
+  \   'forceCompletionPattern': '\S/\S*',
+  \   'isVolatile': v:true,
+  \   'dup': v:true,
   \ },
   \ 'cmdline-history': {
-  \ 'mark': 'history',
-  \ 'sorters': [],
+  \   'mark': 'history',
+  \   'sorters': [],
   \ },
   \ 'around': {
   \   'mark': 'A',
