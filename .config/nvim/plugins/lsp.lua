@@ -3,7 +3,7 @@ vim.api.nvim_set_keymap('n', '<Leader>l', '[lsp]', { noremap = false })
 vim.api.nvim_set_keymap('n', '[lsp]a', ':lua vim.lsp.buf.code_action()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]c', ':lua vim.lsp.buf.declaration()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]d', ':lua vim.lsp.buf.definition()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '[lsp]f', ':lua vim.lsp.buf.formatting_sync({}, 5000)<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '[lsp]f', ':lua vim.lsp.buf.format{timeout_ms = 5000, async = true}<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]h', ':lua vim.lsp.buf.hover()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]i', ':lua vim.lsp.buf.implementation()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]x', ':lua vim.lsp.buf.references()<CR>', { noremap = true })
@@ -24,7 +24,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 )
 -- You will likely want to reduce updatetime which affects CursorHold
 -- note: this setting is global and should be set only once
-vim.o.updatetime = 10
+vim.o.updatetime = 100
 -- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
 function PrintDiagnostics(opts, bufnr, line_nr)
