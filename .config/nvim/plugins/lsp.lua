@@ -16,7 +16,7 @@ vim.api.nvim_set_keymap('n', '[lsp]p', ':lua vim.diagnostic.goto_prev()<CR>', { 
 -- general settings
 vim.diagnostic.config({
   float = {
-    source = "always",  -- Or "if_many"
+    source = "always", -- Or "if_many"
   },
 })
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -32,7 +32,7 @@ function PrintDiagnostics(opts, bufnr, line_nr)
 
   bufnr = bufnr or 0
   line_nr = line_nr or (vim.api.nvim_win_get_cursor(0)[1] - 1)
-  local line_diagnostics = vim.diagnostic.get(bufnr, {lnum = line_nr})
+  local line_diagnostics = vim.diagnostic.get(bufnr, { lnum = line_nr })
   if vim.tbl_isempty(line_diagnostics) then return end
 
   for _, diagnostic in ipairs(line_diagnostics) do
@@ -44,25 +44,26 @@ function PrintDiagnostics(opts, bufnr, line_nr)
     if #output > 140 then
       output = string.sub(output, 0, 140) .. '...'
     end
-    vim.api.nvim_echo({{ output }}, false, {})
+    vim.api.nvim_echo({ { output } }, false, {})
     break
   end
 end
+
 vim.cmd [[ autocmd CursorHold * lua PrintDiagnostics() ]]
 
 -- nvim-lsp-installer
-local lsp_installer = require"nvim-lsp-installer"
-lsp_installer.setup{}
+local lsp_installer = require "nvim-lsp-installer"
+lsp_installer.setup {}
 local lspconfig = require "lspconfig"
 
 for _, server in ipairs(lsp_installer.get_installed_servers()) do
-  lspconfig[server.name].setup{}
+  lspconfig[server.name].setup {}
 end
 lspconfig.sumneko_lua.setup({
   settings = {
     Lua = {
       diagnostics = {
-        globals = {"vim"}
+        globals = { "vim" }
       },
     },
   },
@@ -80,17 +81,17 @@ lspconfig.pylsp.setup({
   end,
   settings = {
     pylsp = {
-      configurationSources = {"flake8"},
+      configurationSources = { "flake8" },
       plugins = {
-        pyflakes = {enabled = false},
-        pycodestyle = {enabled = false},
-        mccabe = {enabled = false},
-        flake8 = {enabled = true},
-        autopep8 = {enabled = false},
-        pyls_flake8 = {enabled = false},
-        pylsp_black = {enabled = true},
-        pyls_isort = {enabled = true},
-        pylsp_mypy = {enabled = true, overrides = {true, "--ignore-missing-imports"}},
+        pyflakes = { enabled = false },
+        pycodestyle = { enabled = false },
+        mccabe = { enabled = false },
+        flake8 = { enabled = true },
+        autopep8 = { enabled = false },
+        pyls_flake8 = { enabled = false },
+        pylsp_black = { enabled = true },
+        pyls_isort = { enabled = true },
+        pylsp_mypy = { enabled = true, overrides = { true, "--ignore-missing-imports" } },
       }
     }
   }
