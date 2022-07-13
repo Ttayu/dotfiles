@@ -58,6 +58,15 @@ local lspconfig = require "lspconfig"
 for _, server in ipairs(lsp_installer.get_installed_servers()) do
   lspconfig[server.name].setup{}
 end
+lspconfig.sumneko_lua.setup({
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = {"vim"}
+      },
+    },
+  },
+})
 lspconfig.pylsp.setup({
   root_dir = function(fname)
     local root_files = {
