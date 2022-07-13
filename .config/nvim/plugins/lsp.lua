@@ -91,6 +91,7 @@ lspconfig.pylsp.setup({
         pyls_flake8 = { enabled = false },
         pylsp_black = { enabled = true },
         pyls_isort = { enabled = true },
+        yapf = { enabled = false },
         pylsp_mypy = { enabled = true, overrides = { true, "--ignore-missing-imports" } },
       }
     }
