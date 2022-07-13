@@ -51,11 +51,13 @@ end
 vim.cmd [[ autocmd CursorHold * lua PrintDiagnostics() ]]
 
 -- nvim-lsp-installer
-require"nvim-lsp-installer".setup{}
+local lsp_installer = require"nvim-lsp-installer"
+lsp_installer.setup{}
 local lspconfig = require "lspconfig"
 
-lspconfig.julials.setup({})
-lspconfig.r_language_server.setup({})
+for _, server in ipairs(lsp_installer.get_installed_servers()) do
+  lspconfig[server.name].setup{}
+end
 lspconfig.pylsp.setup({
   root_dir = function(fname)
     local root_files = {
