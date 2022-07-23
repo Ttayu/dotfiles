@@ -77,7 +77,7 @@ lspconfig.pylsp.setup({
       "requirements.txt",
       "Pipfile",
     }
-    return lspconfig.util.root_pattern(table.unpack(root_files))(fname) or lspconfig.util.find_git_ancestor(fname)
+    return lspconfig.util.root_pattern(unpack(root_files))(fname) or lspconfig.util.find_git_ancestor(fname)
   end,
   settings = {
     pylsp = {
