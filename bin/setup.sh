@@ -23,8 +23,8 @@ if [ $(uname) = 'Darwin' ]; then
       info "installing ncurses..."
       brew install ncurses
     fi
-      tic -xe tmux-256color ${DOT_DIRECTORY}/tmux-256color.info
-    }
+    tic -xe tmux-256color ${DOT_DIRECTORY}/tmux-256color.info
+  }
 fi
 
 : "install other packages by brew" && {
@@ -55,13 +55,14 @@ fi
   fi
 }
 
-: "install zinit" && {
-  ZINIT_DIR=$HOME/.zinit
-  if [ ! -e $ZINIT_DIR ]; then
-    info "installing zinit..."
-    sh -c "$(curl -fsSL https://git.io/zinit-install)"
-  else
-    warn "zinit is already installed"
+: "setup sheldon" && {
+  local SHELDON_DIR=$HOME/.sheldon
+  if [ ! -e $SHELDON_DIR ]; then
+    info "setup sheldon"
+    mkdir -p $SHELDON_DIR && \
+      ln -s ~/dotfiles/zsh/sheldon.plugins.toml $SHELDON_DIR/plugins.toml
+        else
+          warn "sheldon is already installed"
   fi
 }
 
