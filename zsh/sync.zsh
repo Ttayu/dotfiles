@@ -2,6 +2,13 @@ HISTFILE=$HOME/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 
+typeset -U path PATH
+bindkey -e
+if [[ ! -d $HOME/.zfunc ]]; then
+  mkdir $HOME/.zfunc
+fi
+fpath+=~/.zfunc # for poetry (python)
+
 setopt share_history
 # 重複を記録しない
 setopt hist_ignore_dups

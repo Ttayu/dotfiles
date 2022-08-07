@@ -1,9 +1,3 @@
-typeset -U path PATH
-bindkey -e
-if [[ ! -d $HOME/.zfunc ]]; then
-  mkdir $HOME/.zfunc
-fi
-fpath+=~/.zfunc # for poetry (python)
 # fuzzy matching
 # 0 -- vanilla completion (abc => abc)
 # 1 -- smart case completion (abc => Abc)
