@@ -4,6 +4,7 @@
 
 # not ignore
 !/bin/
+!/zsh/
 !/Brewfile.linux
 !/Brewfile.macos
 !/README.md

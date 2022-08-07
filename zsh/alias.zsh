@@ -1,0 +1,30 @@
+if [[ "$OSTYPE" =~ ^darwin ]]; then
+  alias ls="ls -G"
+else
+  alias ls="ls --color"
+fi
+alias ll="ls -a"
+alias l="ls -la"
+alias t="tmux"
+alias tl="tmux ls"
+alias ta="tmux attach"
+alias tk="tmux kill-session"
+alias td="tmux detach"
+alias vim="nvim"
+alias v="nvim"
+alias vz="nvim ~/.zshrc"
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias g='git'
+alias ga='git add'
+alias gd='git diff'
+alias gs='git status'
+alias gp='git push'
+alias gb='git branch'
+alias gco='git checkout'
+alias gf='git fetch'
+alias gc='git commit -m'
+alias h='cd ~'
+alias cn="cd ~/dotfiles/.config/nvim"
+alias vn="v ~/dotfiles/.config/nvim/init.vim"
+alias reload='exec $SHELL -l'

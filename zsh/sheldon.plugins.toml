@@ -1,0 +1,90 @@
+# `sheldon` configuration file
+# ----------------------------
+#
+# You can modify this file directly or you can use one of the following
+# `sheldon` commands which are provided to assist in editing the config file:
+#
+# - `sheldon add` to add a new plugin to the config file
+# - `sheldon edit` to open up the config file in the default editor
+# - `sheldon remove` to remove a plugin from the config file
+#
+# See the documentation for more https://github.com/rossmacarthur/sheldon#readme
+
+shell = "zsh"
+
+apply = ["defer"]
+
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+apply = ["source"]
+
+[templates]
+defer = { value = 'zsh-defer source "{{ file }}"', each = true }
+
+[plugins.compinit]
+inline = 'autoload -Uz compinit && zsh-defer compinit'
+
+[plugins.colors]
+inline = 'autoload -Uz colors && zsh-defer colors'
+
+[plugins.zsh-256color]
+github = "chrissicool/zsh-256color"
+
+[plugins.pastel]
+github = "iboyperson/pastel"
+apply = ["source"]
+
+[plugins.fast-syntax-highlighting]
+github = "zdharma-continuum/fast-syntax-highlighting"
+
+[plugins.zsh-completions]
+github = "zsh-users/zsh-completions"
+
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+
+[plugins.fzf]
+github = "junegunn/fzf"
+use = ["shell/completion.zsh", "shell/key-bindings.zsh"]
+
+[plugins.fzf-post]
+inline = """
+  if [ ! -f ~/.fzf.zsh ]; then
+    ~/.sheldon/repos/github.com/junegunn/fzf/install --all --no-update-rc
+  fi
+"""
+
+[plugins.enhancd]
+github = "b4b4r07/enhancd"
+
+[plugins.enhancd-post]
+inline = """
+  export ENHANCD_COMPLETION_BEHAVIOR=list
+"""
+
+[plugins.tmux-xpanes]
+github = "greymd/tmux-xpanes"
+
+[plugins.zsh-autopair]
+github = "hlissner/zsh-autopair"
+
+[plugins.zsh-pyenv-lazy]
+github = "davidparsson/zsh-pyenv-lazy"
+
+[plugins.zsh-jenv-lazy]
+github = "shihyuho/zsh-jenv-lazy"
+
+[plugins.dotfiles-defers]
+local = "~/dotfiles/zsh"
+use = ["{!sync,*}.zsh"]
+
+[plugins.dotfiles-sync]
+local = "~/dotfiles/zsh"
+use = ["sync.zsh"]
+apply = ["source"]
+
+
+# For example:
+#
+# [plugins.base16]
+# github = "chriskempson/base16-shell"
