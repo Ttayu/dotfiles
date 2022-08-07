@@ -139,6 +139,13 @@ repo = 'anuvyklack/pretty-fold.nvim'
 hook_add = '''
   lua << EOF
   require('pretty-fold').setup()
-  require('pretty-fold.preview').setup()
+EOF
+'''
+
+[[plugins]]
+repo = 'anuvyklack/fold-preview.nvim'
+hook_add = '''
+  lua << EOF
+  require('fold-preview').setup()
 EOF
 '''
