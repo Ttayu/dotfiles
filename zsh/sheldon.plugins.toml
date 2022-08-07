@@ -35,7 +35,7 @@ github = "iboyperson/pastel"
 apply = ["source"]
 
 [plugins.fast-syntax-highlighting]
-github = "zdharma-continuum/fast-syntax-highlighting"
+github = "zdharma/fast-syntax-highlighting"
 
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
