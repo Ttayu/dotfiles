@@ -82,19 +82,29 @@ function! CommandlinePre() abort
         \ '<Cmd>call pum#map#cancel()<CR><CR>' : '<CR>'
 
   " Overwrite sources
-  let b:prev_buffer_config = ddc#custom#get_buffer()
-
+  if !exists('b:prev_buffer_config')
+    let b:prev_buffer_config = ddc#custom#get_buffer()
+  endif
+  
   call ddc#custom#patch_buffer('sources',
           \ ['cmdline', 'cmdline-history', 'around'])
   call ddc#custom#patch_buffer('keywordPattern', '[0-9a-zA-Z_:#]*')
 
-  autocmd User DDCCmdlineLeave call CommandlinePost()
+  autocmd User DDCCmdlineLeave ++once call CommandlinePost()
+  autocmd InsertEnter <buffer> ++once call CommandlinePost()
 
   " Enable command line completion
   call ddc#enable_cmdline_completion()
   call ddc#enable()
 endfunction
 function! CommandlinePost() abort
+  silent! cunmap <buffer> <C-y>
+  silent! cunmap <buffer> <C-e>
+  silent! cunmap <buffer> <C-j>
+  silent! cunmap <buffer> <C-k>
+  silent! cunmap <buffer> <C-Space>
+  silent! cunmap <buffer> <CR>
+
   " Restore sources
   if exists('b:prev_buffer_config')
     call ddc#custom#set_buffer(b:prev_buffer_config)
@@ -102,10 +112,6 @@ function! CommandlinePost() abort
   else
     call ddc#custom#set_buffer({})
   endif
-  cunmap <C-j>
-  cunmap <C-k>
-  cunmap <C-Space>
-  cunmap <CR>
 endfunction
 
 call ddc#enable()
