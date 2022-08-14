@@ -89,7 +89,12 @@ EOF
 '''
 
 [[plugins]]
-repo = 'airblade/vim-gitgutter'
+repo = 'lewis6991/gitsigns.nvim'
+hook_add = '''
+lua << EOF
+  require('gitsigns').setup()
+EOF
+'''
 
 # ウィンドウサイズの変更
 [[plugins]]
