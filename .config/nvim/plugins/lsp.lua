@@ -1,17 +1,23 @@
+local saga = require "lspsaga"
+saga.init_lsp_saga()
+
 vim.api.nvim_set_keymap('n', '[lsp]', '<Nop>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>l', '[lsp]', { noremap = false })
-vim.api.nvim_set_keymap('n', '[lsp]a', ':lua vim.lsp.buf.code_action()<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '[lsp]a', ':Lspsaga code_action<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]c', ':lua vim.lsp.buf.declaration()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '[lsp]d', ':lua vim.lsp.buf.definition()<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '[lsp]dp', ':Lspsaga preview_definition<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '[lsp]dd', ':lua vim.lsp.buf.definition()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]f', ':lua vim.lsp.buf.format{timeout_ms = 5000, async = true}<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '[lsp]h', ':lua vim.lsp.buf.hover()<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '[lsp]h', ':Lspsaga hover_doc<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]i', ':lua vim.lsp.buf.implementation()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]x', ':lua vim.lsp.buf.references()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '[lsp]r', ':lua vim.lsp.buf.rename()<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '[lsp]r', ':Lspsaga rename<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]t', ':lua vim.lsp.buf.type_definition()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '[lsp]e', ':lua vim.diagnostic.open_float()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '[lsp]n', ':lua vim.diagnostic.goto_next()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '[lsp]p', ':lua vim.diagnostic.goto_prev()<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '[lsp]e', ':Lspsaga show_line_diagnostics<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '[lsp]n', ':Lspsaga diagnostic_jump_next<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '[lsp]p', ':Lspsaga diagnostic_jump_prev<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '[lsp]s', ':Lspsaga signature_help<CR>', { noremap = true })
+vim.api.nvim_set_keymap('i', '<C-s>', '<Cmd>Lspsaga signature_help<CR>', { noremap = true })
 
 -- general settings
 vim.diagnostic.config({
