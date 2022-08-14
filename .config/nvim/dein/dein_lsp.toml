@@ -1,10 +1,13 @@
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
-depends = ['nvim-lsp-installer', 'ddc.vim']
+depends = ['mason.nvim', 'mason-lspconfig.nvim', 'ddc.vim']
 on_event = ['BufRead', 'InsertEnter']
 hook_source = '''
   source ~/.config/nvim/plugins/lsp.lua
 '''
 
 [[plugins]]
-repo = 'williamboman/nvim-lsp-installer'
+repo = 'williamboman/mason.nvim'
+
+[[plugins]]
+repo = 'williamboman/mason-lspconfig.nvim'

@@ -51,14 +51,14 @@ end
 
 vim.cmd [[ autocmd CursorHold * lua PrintDiagnostics() ]]
 
--- nvim-lsp-installer
-local lsp_installer = require "nvim-lsp-installer"
-lsp_installer.setup {}
+local mason = require "mason"
+mason.setup {}
 local lspconfig = require "lspconfig"
 
-for _, server in ipairs(lsp_installer.get_installed_servers()) do
-  lspconfig[server.name].setup {}
-end
+local mason_lspconfig = require "mason-lspconfig"
+mason_lspconfig.setup_handlers({ function(server_name)
+  lspconfig[server_name].setup {}
+end })
 lspconfig.sumneko_lua.setup({
   settings = {
     Lua = {
