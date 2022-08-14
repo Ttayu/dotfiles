@@ -86,12 +86,14 @@ call ddu#custom#patch_global({
       \   },
       \   'sourceParams': {
       \     'file_external': {
-      \       'cmd': ['git', 'ls-files', '-co', '--exclude-standard'],
+      \       'cmd': ['fd', '.', '-H', '-E', '*cache*', '-t', 'f'],
       \     },
       \   },
       \   'uiParams': {
       \     'ff': {
+      \       'split': 'floating',
       \       'filterSplitDirection': 'floating',
+      \       'previewFloating': v:true,
       \     }
       \   },
       \   'kindOptions': {
@@ -118,9 +120,6 @@ call ddu#custom#patch_local('files', {
       \ })
 call ddu#custom#patch_global({
       \   'sourceParams': {
-      \     'file_rec': {
-      \       'ignoredDirectories': ['.git', '*cache*', '.venv','node_modules', 'build'],
-      \     },
       \     'file_rg': {
       \       'cmd': ['rg', '--files', '--glob', '!.git',
       \               '--color', 'never', '--no-messages'],
