@@ -7,7 +7,7 @@ vim.api.nvim_set_keymap('n', '[lsp]a', ':Lspsaga code_action<CR>', { noremap = t
 vim.api.nvim_set_keymap('n', '[lsp]c', ':lua vim.lsp.buf.declaration()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]dp', ':Lspsaga preview_definition<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]dd', ':lua vim.lsp.buf.definition()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '[lsp]f', ':lua vim.lsp.buf.format{timeout_ms = 5000, async = true}<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '[lsp]f', ':lua vim.lsp.buf.formatting{timeout_ms = 5000, async = true}<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]h', ':Lspsaga hover_doc<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]i', ':Lspsaga implement<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]x', ':lua vim.lsp.buf.references()<CR>', { noremap = true })
@@ -62,6 +62,7 @@ mason.setup {}
 local lspconfig = require "lspconfig"
 
 local mason_lspconfig = require "mason-lspconfig"
+mason_lspconfig.setup {}
 mason_lspconfig.setup_handlers({ function(server_name)
   lspconfig[server_name].setup {}
 end })
