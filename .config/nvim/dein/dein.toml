@@ -89,6 +89,21 @@ EOF
 '''
 
 [[plugins]]
+repo = 'windwp/nvim-ts-autotag'
+on_event = 'InsertEnter'
+on_source = 'nvim-treesitter'
+hook_add = '''
+lua << EOF
+  require('nvim-treesitter.configs').setup{
+    autotag = {
+      enable = true,
+    }
+  }
+  require('nvim-ts-autotag').setup()
+EOF
+'''
+
+[[plugins]]
 repo = 'lewis6991/gitsigns.nvim'
 hook_add = '''
 lua << EOF
