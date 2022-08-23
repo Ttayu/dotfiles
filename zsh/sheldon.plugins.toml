@@ -70,9 +70,11 @@ github = "hlissner/zsh-autopair"
 
 [plugins.zsh-pyenv-lazy]
 github = "davidparsson/zsh-pyenv-lazy"
+apply = ["source"]
 
 [plugins.zsh-jenv-lazy]
 github = "shihyuho/zsh-jenv-lazy"
+apply = ["source"]
 
 [plugins.dotfiles-defers]
 local = "~/dotfiles/zsh"
