@@ -30,8 +30,12 @@ repo = 'Shougo/context_filetype.vim'
 [[plugins]]
 repo = 'folke/tokyonight.nvim'
 hook_add = '''
-  let g:tokyonight_style = "night"
-  let g:tokyonight_transparent = v:true
+lua << EOF
+  require("tokyonight").setup({
+    style = "night",
+    transparent = true,
+  })
+EOF
 '''
 
 # ステータスラインの改造
