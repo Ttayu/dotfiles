@@ -9,7 +9,6 @@ vim.api.nvim_set_keymap('n', '[lsp]dp', ':Lspsaga peek_definition<CR>', { norema
 vim.api.nvim_set_keymap('n', '[lsp]dd', ':lua vim.lsp.buf.definition()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]f', ':lua vim.lsp.buf.formatting{timeout_ms = 5000, async = true}<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]h', ':Lspsaga hover_doc<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '[lsp]i', ':Lspsaga implement<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]x', ':lua vim.lsp.buf.references()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]r', ':Lspsaga rename<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]t', ':lua vim.lsp.buf.type_definition()<CR>', { noremap = true })
