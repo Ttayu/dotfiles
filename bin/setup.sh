@@ -56,7 +56,7 @@ fi
 }
 
 : "setup sheldon" && {
-  local SHELDON_DIR=$HOME/.sheldon
+  local SHELDON_DIR=$HOME/.config/sheldon
   if [ ! -e $SHELDON_DIR ]; then
     info "setup sheldon"
     mkdir -p $SHELDON_DIR && \
