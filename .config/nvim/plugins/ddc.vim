@@ -58,13 +58,14 @@ call ddc#custom#patch_global('autoCompleteEvents', [
   \ 'CmdlineEnter', 'CmdlineChanged',
   \ ])
 
-call ddc#custom#patch_global('completionMenu', 'pum.vim')
-inoremap <silent><expr> <C-j> pum#visible() ? '<Cmd>call pum#map#select_relative(+1)<CR>' : '<Down>'
-inoremap <silent><expr> <C-k> pum#visible() ? '<Cmd>call pum#map#select_relative(-1)<CR>' : '<Up>'
-inoremap <C-n>   <Cmd>call pum#map#select_relative(+1)<CR>
-inoremap <C-p>   <Cmd>call pum#map#select_relative(-1)<CR>
+call ddc#custom#patch_global('ui', 'pum')
+inoremap <silent><expr> <C-j> pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' : '<Down>'
+inoremap <silent><expr> <C-k> pum#visible() ? '<Cmd>call pum#map#insert_relative(-1)<CR>' : '<Up>'
+
+inoremap <C-n>   <Cmd>call pum#map#insert_relative(+1)<CR>
+inoremap <C-p>   <Cmd>call pum#map#insert_relative(-1)<CR>
 inoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
-inoremap <silent><expr> <C-Space>  ddc#map#extend()
+inoremap <silent><expr> <C-Space>  ddc#map#extend(pum#map#confirm())
 
 nnoremap :       <Cmd>call CommandlinePre()<CR>:
 nnoremap ;       <Cmd>call CommandlinePre()<CR>:
@@ -73,10 +74,10 @@ function! CommandlinePre() abort
   " Note: It disables default command line completion!
   cnoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
   cnoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
-  cnoremap <silent><expr> <C-j> pum#visible() ? '<Cmd>call pum#map#select_relative(+1)<CR>' : '<Down>'
-  cnoremap <silent><expr> <C-k> pum#visible() ? '<Cmd>call pum#map#select_relative(-1)<CR>' : '<Up>'
-  cnoremap <silent><expr> <C-Space>  ddc#map#extend()
-  cnoremap <silent><expr> <CR> pum#visible() ?
+  cnoremap <silent><expr> <C-j> pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' : '<Down>'
+  cnoremap <silent><expr> <C-k> pum#visible() ? '<Cmd>call pum#map#insert_relative(-1)<CR>' : '<Up>'
+  cnoremap <silent><expr> <C-Space>  ddc#map#extend(pum#map#confirm())
+  cnoremap <expr> <CR> pum#visible() ?
         \ pum#complete_info()["selected"] != -1 ?
         \ '<Cmd>call pum#map#confirm()<CR>' :
         \ '<Cmd>call pum#map#cancel()<CR><CR>' : '<CR>'
