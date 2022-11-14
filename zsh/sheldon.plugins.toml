@@ -50,7 +50,7 @@ use = ["shell/completion.zsh", "shell/key-bindings.zsh"]
 [plugins.fzf-post]
 inline = """
   if [ ! -f ~/.fzf.zsh ]; then
-    ~/.config/sheldon/repos/github.com/junegunn/fzf/install --all --no-update-rc
+    ~/.local/share/sheldon/repos/github.com/junegunn/fzf/install --all --no-update-rc
   fi
 """
 
