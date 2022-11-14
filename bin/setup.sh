@@ -48,7 +48,7 @@ fi
 : "install poetry" && {
   if ! command_exists poetry; then
     info "installing poetry..."
-    curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python3
+    curl -sSL https://install.python-poetry.org | python3 -
     poetry config virtualenvs.in-project true
   else
     warn "poetry is already installed"
