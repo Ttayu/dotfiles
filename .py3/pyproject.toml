@@ -7,7 +7,7 @@ authors = ["Ttayu <sample@sample.sample>"]
 [tool.poetry.dependencies]
 python = "^3.7"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 mypy = "^0.910"
 black = "^21.12b0"
 flake8 = "^3.9.2"
