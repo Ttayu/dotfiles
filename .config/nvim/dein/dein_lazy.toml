@@ -33,7 +33,6 @@ depends = ['context_filetype.vim']
 hook_add = '''
  let g:precious_enable_switchers = {
        \  'defx': {'setfiletype': 0},
-       \  'denite': {'setfiletype': 0}
        \  }
 '''
 
@@ -165,23 +164,13 @@ hook_source = '''
 EOF
 '''
 
-[[plugins]]
-repo = 'raghur/fruzzy'
-on_source = ['denite.nvim']
-hook_source = '''
-  let g:fruzzy#sortonempty = 0
-'''
-hook_post_update = '''
-  call fruzzy#install()
-'''
-
 # neosnippet
 [[plugins]]
 repo = 'Shougo/neosnippet'
 depends = ['neosnippet-snippets', 'context_filetype.vim']
 on_event = 'InsertCharPre'
 on_ft = 'snippet'
-on_source = ['denite.nvim']
+on_source = ['ddu.nvim']
 hook_source = '''
   source ~/.config/nvim/plugins/neosnippet.vim
 '''
@@ -198,11 +187,6 @@ hook_add = '''
 hook_source = '''
   source ~/.config/nvim/plugins/defx.vim
 '''
-
-[[plugins]]
-repo = 'Shougo/neoyank.vim'
-on_event = 'TextYankPost'
-on_source = ['denite.nvim']
 
 # git操作
 [[plugins]]
