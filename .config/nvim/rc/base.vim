@@ -2,6 +2,7 @@
 set encoding=utf-8
 scriptencoding utf-8
 
+set signcolumn=yes
 set cmdheight=2
 " バックアップファイルを作らない
 set nobackup
