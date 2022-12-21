@@ -77,7 +77,7 @@ lua << EOF
   vim.g.completion_confirm_key = ""
   MUtils.completion_confirm=function()
     if vim.api.nvim_eval('pum#visible()') ~= 0  then
-      if vim.api.nvim_eval('pum#complete_info()')["selected"] ~= -2 then
+      if vim.api.nvim_eval('pum#complete_info()')["selected"] >= 0 then
         return vim.api.nvim_eval('pum#map#confirm()')
       else
         vim.api.nvim_eval('pum#map#cancel()')
