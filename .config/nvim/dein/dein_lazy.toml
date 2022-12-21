@@ -11,18 +11,18 @@ hook_source = '''
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
 on_event = ['VimEnter', 'CursorHold']
-hook_source = '''
-lua << EOF
+lua_source = '''
   require('nvim-treesitter.configs').setup {
     highlight = {
       enable = true,
       disable = {},
     },
   }
-EOF
-  set foldmethod=expr
-  set foldexpr=nvim_treesitter#foldexpr()
-  set foldlevel=99
+'''
+hook_source = '''
+  " set foldmethod=expr
+  " set foldexpr=nvim_treesitter#foldexpr()
+  " set foldlevel=99
 '''
 
 # カーソル位置のコンテキストに合わせてftを切り替える
@@ -68,8 +68,7 @@ hook_add = '''
 repo = 'windwp/nvim-autopairs'
 on_event = 'InsertEnter'
 depends = ['pum.vim']
-hook_post_source = '''
-lua << EOF
+lua_source = '''
   require('nvim-autopairs').setup()
 
   local remap = vim.api.nvim_set_keymap
@@ -93,31 +92,26 @@ lua << EOF
   end
 
   remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
-EOF
 '''
 
 [[plugins]]
 repo = 'windwp/nvim-ts-autotag'
 on_event = 'InsertEnter'
 on_source = 'nvim-treesitter'
-hook_source = '''
-lua << EOF
+lua_source = '''
   require('nvim-treesitter.configs').setup{
     autotag = {
       enable = true,
     }
   }
   require('nvim-ts-autotag').setup()
-EOF
 '''
 
 [[plugins]]
 repo = 'lewis6991/gitsigns.nvim'
 on_event = "BufReadPost"
-hook_source = '''
-lua << EOF
+lua_source = '''
   require('gitsigns').setup()
-EOF
 '''
 
 # コメントアウト補助
@@ -139,10 +133,8 @@ hook_add = '''
   nnoremap ff :HopWord<CR>
   nnoremap fl :HopLine<CR>
 '''
-hook_source = '''
-lua << EOF
+lua_source = '''
   require'hop'.setup()
-EOF
 '''
 
 [[plugins]]
@@ -150,18 +142,14 @@ repo = 'anuvyklack/nvim-keymap-amend'
 
 [[plugins]]
 repo = 'anuvyklack/pretty-fold.nvim'
-hook_source = '''
-  lua << EOF
+lua_source = '''
   require('pretty-fold').setup()
-EOF
 '''
 
 [[plugins]]
 repo = 'anuvyklack/fold-preview.nvim'
-hook_source = '''
-  lua << EOF
+lua_source = '''
   require('fold-preview').setup()
-EOF
 '''
 
 # neosnippet

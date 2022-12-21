@@ -19,8 +19,6 @@ repo = 'simeji/winresizer'
 
 [[plugins]]
 repo = 'lewis6991/impatient.nvim'
-hook_add = '''
-  lua << EOF
+lua_add = '''
   require('impatient')
-EOF
 '''
