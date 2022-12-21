@@ -143,7 +143,7 @@ EOF
 
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
-on_event = 'BufRead'
+on_event = ['BufRead', 'CursorHold']
 hook_add = '''
 lua << EOF
   require('nvim-treesitter.configs').setup {
@@ -174,5 +174,13 @@ repo = 'anuvyklack/fold-preview.nvim'
 hook_add = '''
   lua << EOF
   require('fold-preview').setup()
+EOF
+'''
+
+[[plugins]]
+repo = 'lewis6991/impatient.nvim'
+hook_add = '''
+  lua << EOF
+  require('impatient')
 EOF
 '''
