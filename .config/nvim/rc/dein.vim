@@ -27,7 +27,7 @@ if dein#load_state(s:dein_dir)
 
   " TOML を読み込み、キャッシュしておく
   call dein#load_toml(s:toml,      {'lazy': 0})
-  call dein#load_toml(s:syntax_toml, {'lazy': 0})
+  call dein#load_toml(s:syntax_toml, {'lazy': 1})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
   call dein#load_toml(s:ddc_toml, {'lazy': 1})
   call dein#load_toml(s:ddu_toml, {'lazy': 1})
