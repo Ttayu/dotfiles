@@ -1,4 +1,4 @@
-call ddc#custom#patch_global('sources', ['nvim-lsp', 'around', 'file'])
+call ddc#custom#patch_global('sources', ['nvim-lsp', 'around', 'file', 'neosnippet'])
 call ddc#custom#patch_global('cmdlineSources',
       \ ['cmdline-history', 'input', 'file', 'around']
       \ )
@@ -41,10 +41,14 @@ call ddc#custom#patch_global('sourceOptions', {
   \   'isVolatile': v:true,
   \   'forceCompletionPattern': '\S/\S*',
   \ },
+  \ 'neosnippet': {
+  \   'mark': 'snippet',
+  \   'dup': 'force',
+  \ },
   \ })
 call ddc#custom#patch_filetype(
   \ ['help', 'markdown', 'gitcommit', 'toml'], 'sources',
-  \ ['around', 'file']
+  \ ['around', 'file', 'neosnippet']
   \ )
 call ddc#custom#patch_filetype(['FineCmdlinePrompt'], {
      \ 'keywordPattern': '[0-9a-zA-Z_:#]*',
