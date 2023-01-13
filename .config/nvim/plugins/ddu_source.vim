@@ -55,6 +55,10 @@ function! s:ddu_ff_filter_setttings() abort
         \ <Cmd>close<CR>
   nnoremap <buffer><silent> <Esc>
         \ <Cmd>close<CR>
+  nnoremap <buffer><silent> q
+        \ <Cmd>call ddu#ui#ff#do_action('quit')<CR>
+  inoremap <buffer> <C-p> <Up><Esc>A
+  inoremap <buffer> <C-n> <Down><Esc>A
 endfunction
 
 call ddu#custom#alias('source', 'file_rg', 'file_external')
