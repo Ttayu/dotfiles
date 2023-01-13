@@ -30,11 +30,6 @@ hook_source = '''
 repo = 'osyo-manga/vim-precious'
 on_event = ['CursorMoved', 'InsertEnter']
 depends = ['context_filetype.vim']
-hook_add = '''
- let g:precious_enable_switchers = {
-       \  'defx': {'setfiletype': 0},
-       \  }
-'''
 
 # カーソル位置のコンテキストのftを判断する
 [[plugins]]
@@ -165,16 +160,6 @@ hook_source = '''
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
-
-# file viewer
-[[plugins]]
-repo = 'Shougo/defx.nvim'
-hook_add = '''
-  nnoremap <silent> ,n :<C-u>Defx<CR>
-'''
-hook_source = '''
-  source ~/.config/nvim/plugins/defx.vim
-'''
 
 # git操作
 [[plugins]]
