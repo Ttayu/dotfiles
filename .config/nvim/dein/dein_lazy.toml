@@ -25,6 +25,17 @@ hook_source = '''
   " set foldlevel=99
 '''
 
+[[plugins]]
+repo =  'RRethy/nvim-treesitter-endwise'
+on_source = 'nvim-treesitter'
+lua_source = '''
+  require('nvim-treesitter.configs').setup {
+    endwise = {
+      enable = true,
+    },
+  }
+'''
+
 # カーソル位置のコンテキストに合わせてftを切り替える
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
