@@ -8,7 +8,7 @@ call ddc#custom#patch_global('sourceOptions', {
   \   'minAutoCompleteLength': 2,
   \   'matchers': ['matcher_fuzzy'],
   \   'sorters': ['sorter_fuzzy'],
-  \   'converters': ['converter_fuzzy'],
+  \   'converters': ['converter_fuzzy', 'converter_truncate_abbr'],
   \ },
   \ 'necovim': {'mark': 'vim'},
   \ 'cmdline': {
@@ -16,6 +16,10 @@ call ddc#custom#patch_global('sourceOptions', {
   \   'minAutoCompleteLength': 1000,
   \   'forceCompletionPattern': '\S/\S*',
   \   'dup': v:true,
+  \ },
+  \ 'nvim-lua': {
+  \   'mark': 'lua',
+  \   'forceCompletionPattern': '\.\w*|:\w*|->\w*',
   \ },
   \ 'input': {
   \   'mark': 'input',
@@ -50,6 +54,14 @@ call ddc#custom#patch_filetype(
   \ ['help', 'markdown', 'gitcommit', 'toml'], 'sources',
   \ ['around', 'file', 'neosnippet']
   \ )
+call ddc#custom#patch_filetype(
+      \ ['vim'], 'sources',
+      \ ['necovim', 'nvim-lsp', 'around', 'file']
+      \ )
+call ddc#custom#patch_filetype(
+      \ ['lua'], 'sources',
+      \ ['nvim-lua', 'nvim-lsp', 'around', 'file']
+      \ )
 call ddc#custom#patch_filetype(['FineCmdlinePrompt'], {
      \ 'keywordPattern': '[0-9a-zA-Z_:#]*',
      \ 'sources': ['cmdline', 'cmdline-history', 'around'],
