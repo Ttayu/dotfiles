@@ -4,13 +4,11 @@ repo = 'Shougo/dein.vim'
 # colorscheme
 [[plugins]]
 repo = 'folke/tokyonight.nvim'
-hook_add = '''
-lua << EOF
+lua_add = '''
   require("tokyonight").setup({
     style = "night",
     transparent = true,
   })
-EOF
 '''
 
 # ウィンドウサイズの変更
