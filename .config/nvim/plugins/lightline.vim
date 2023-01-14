@@ -15,7 +15,7 @@ let g:lightline.active = {
       \ 'left': [
       \   ['mode', 'paste'],
       \   ['fugitive'],
-      \   ['readonly', 'filename', 'modified', 'method'],
+      \   ['readonly', 'relativepath', 'modified', 'method'],
       \ ],
       \ 'right': [
       \   ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok', 'asyncrun_failure', 'asyncrun_running'],
