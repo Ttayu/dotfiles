@@ -62,3 +62,12 @@ on_ft = ['graphql', 'qql', 'Relay.QL', 'javascript', 'javascriptreact', 'typescr
 [[plugins]]
 repo = 'ap/vim-css-color'
 on_ft = ['css']
+
+[[plugins]]
+repo = 'iamcco/markdown-preview.nvim'
+on_ft = ['markdown']
+build = 'cd app && yarn install'
+
+[[plugins]]
+repo = 'dhruvasagar/vim-table-mode'
+on_ft = ['markdown']
