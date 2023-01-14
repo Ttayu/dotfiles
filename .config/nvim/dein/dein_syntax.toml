@@ -40,20 +40,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'Valloric/MatchTagAlways'
-on_ft = ['html', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact']
-hook_add = '''
-  nnoremap <silent><leader>m :MtaJumpToOtherTag<CR>
-  let g:mta_filetypes = {
-        \ 'html': 1,
-        \ 'javascript': 1,
-        \ 'javascriptreact': 1,
-        \ 'typescript': 1,
-        \ 'typescriptreact': 1,
-        \ }
-'''
-
-[[plugins]]
 repo = 'mattn/emmet-vim'
 on_ft = ['html', 'css', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact']
 hook_source = '''
