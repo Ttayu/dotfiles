@@ -19,6 +19,7 @@ call ddc#custom#patch_global('sourceOptions', {
   \ },
   \ 'nvim-lua': {
   \   'mark': 'lua',
+  \   'minAutoCompleteLength': 0,
   \   'forceCompletionPattern': '\.\w*|:\w*|->\w*',
   \ },
   \ 'input': {
@@ -56,11 +57,11 @@ call ddc#custom#patch_filetype(
   \ )
 call ddc#custom#patch_filetype(
       \ ['vim'], 'sources',
-      \ ['necovim', 'nvim-lsp', 'around', 'file']
+      \ ['nvim-lsp', 'necovim', 'around', 'file']
       \ )
 call ddc#custom#patch_filetype(
       \ ['lua'], 'sources',
-      \ ['nvim-lua', 'nvim-lsp', 'around', 'file']
+      \ ['nvim-lsp', 'nvim-lua', 'around', 'file']
       \ )
 call ddc#custom#patch_filetype(['FineCmdlinePrompt'], {
      \ 'keywordPattern': '[0-9a-zA-Z_:#]*',
