@@ -73,6 +73,15 @@ repo = 'dhruvasagar/vim-table-mode'
 on_ft = ['markdown']
 
 [[plugins]]
+repo = 'ekickx/clipboard-image.nvim'
+on_ft = ['markdown']
+lua_source = '''
+  require("clipboard-image").setup({
+    img_dir = "./"
+  })
+'''
+
+[[plugins]]
 repo = 'Decodetalkers/csv-tools.lua'
 on_ft = ['csv']
 lua_source = '''
