@@ -71,3 +71,12 @@ build = 'cd app && yarn install'
 [[plugins]]
 repo = 'dhruvasagar/vim-table-mode'
 on_ft = ['markdown']
+
+[[plugins]]
+repo = 'Decodetalkers/csv-tools.lua'
+on_ft = ['csv']
+lua_source = '''
+  require("csvtools").setup({
+    showoverflow = false
+  })
+'''
