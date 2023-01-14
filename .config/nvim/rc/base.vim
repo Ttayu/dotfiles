@@ -27,7 +27,7 @@ set cursorcolumn
 " 括弧入力時の対応する括弧を表示
 set showmatch
 " ステータスラインを表示
-set laststatus=2
+set laststatus=3
 " コマンドラインの補完
 set wildmenu
 set wildmode=list:longest
@@ -68,6 +68,14 @@ set foldmethod=marker
 set mouse=n
 
 set backupcopy=no
+
+set fillchars+=horiz:━
+set fillchars+=horizup:┻
+set fillchars+=horizdown:┳
+set fillchars+=vert:┃
+set fillchars+=vertleft:┫
+set fillchars+=vertright:┣
+set fillchars+=verthoriz:╋
 
 augroup QuickFix
   autocmd!
