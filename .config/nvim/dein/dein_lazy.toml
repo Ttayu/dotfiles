@@ -50,7 +50,7 @@ repo = 'Shougo/context_filetype.vim'
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 on_event = 'VimEnter'
-depends = ['vim-fugitive', 'lightline-lsp']
+on_source = ['vim-gitbranch', 'lightline-lsp']
 hook_add = '''
   source ~/.config/nvim/plugins/lightline.vim
 '''
@@ -175,10 +175,32 @@ repo = 'Shougo/neosnippet-snippets'
 
 # git操作
 [[plugins]]
-repo = 'tpope/vim-fugitive'
-on_cmd = ['Git', 'Gdiffsplit', 'Gbrowse']
+repo = 'itchyny/vim-gitbranch'
+
+[[plugins]]
+repo = 'nvim-lua/plenary.nvim'
+
+[[plugins]]
+repo = 'sindrets/diffview.nvim'
+depends = "plenary.nvim"
 hook_add = '''
-  source ~/.config/nvim/plugins/fugitive.vim
+  nnoremap [diffview] <Nop>
+  nmap <Leader>g [diffview]
+  nnoremap [diffview]d :DiffviewOpen<CR>
+  nnoremap [diffview]h :DiffviewFileHistory<CR>
+'''
+lua_post_source = '''
+  require('diffview').setup({
+    use_icons = false,
+    key_bindings = {
+      view = {
+        ['q'] = '<cmd>DiffviewClose<CR>',
+      },
+      file_panel = {
+        ['q'] = '<cmd>DiffviewClose<CR>',
+      },
+    }
+  })
 '''
 
 [[plugins]]
