@@ -189,6 +189,7 @@ hook_add = '''
   nmap <Leader>g [diffview]
   nnoremap [diffview]d :DiffviewOpen<CR>
   nnoremap [diffview]h :DiffviewFileHistory<CR>
+  xnoremap ,gh :DiffviewFileHistory<CR>
 '''
 lua_post_source = '''
   require('diffview').setup({
@@ -198,6 +199,9 @@ lua_post_source = '''
         ['q'] = '<cmd>DiffviewClose<CR>',
       },
       file_panel = {
+        ['q'] = '<cmd>DiffviewClose<CR>',
+      },
+      file_history_panel = {
         ['q'] = '<cmd>DiffviewClose<CR>',
       },
     }
