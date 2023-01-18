@@ -60,14 +60,15 @@ hook_add = '''
 repo = 'spywhere/lightline-lsp'
 depends = ['lightline.vim']
 
-# インデントの可視化
 [[plugins]]
-repo = 'Yggdroot/indentLine'
-on_event = ['FileType']
-hook_add = '''
-  let g:indentLine_char = '|'
-  let g:indentLine_faster = 1
-  let g:indentLine_concealcursor = ''
+repo = 'lukas-reineke/indent-blankline.nvim'
+on_event = ['BufRead']
+lua_source = '''
+  require("indent_blankline").setup {
+    space_char_blankline = " ",
+    show_current_context = true,
+    show_current_context_start = true,
+  }
 '''
 
 [[plugins]]
