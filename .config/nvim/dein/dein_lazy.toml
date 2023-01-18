@@ -63,6 +63,7 @@ depends = ['lightline.vim']
 [[plugins]]
 repo = 'lukas-reineke/indent-blankline.nvim'
 on_event = ['BufRead']
+depends = 'nvim-treesitter'
 lua_source = '''
   require("indent_blankline").setup {
     space_char_blankline = " ",
