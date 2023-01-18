@@ -58,7 +58,7 @@ hook_add = '''
 # lightlineにbuildin lspのstatusを表示する補助プラグイン
 [[plugins]]
 repo = 'spywhere/lightline-lsp'
-depends = ['lightline.vim']
+on_source = ['lightline.vim']
 
 [[plugins]]
 repo = 'lukas-reineke/indent-blankline.nvim'
