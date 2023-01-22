@@ -139,4 +139,5 @@ call ddu#custom#patch_local('filer', {
       \       'toggle': v:true,
       \     },
       \   },
+      \   'searchPath': expand("%:p"),
       \ })
