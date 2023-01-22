@@ -103,3 +103,11 @@ on_source = 'ddu.vim'
 [[plugins]]
 repo = 'ryota2357/ddu-column-icon_filename'
 on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'lambdalisue/kensaku.vim'
+
+[[plugins]]
+repo = 'Milly/ddu-filter-kensaku'
+depends = 'kensaku.vim'
+on_source = 'ddu.vim'

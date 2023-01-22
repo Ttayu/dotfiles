@@ -26,6 +26,11 @@ call ddu#custom#patch_global({
       \     'dein': {
       \       'defaultAction': 'cd',
       \     },
+      \     'line': {
+      \       'matchers': [
+      \         'matcher_kensaku',
+      \       ],
+      \     },
       \   },
       \   'sourceParams': {
       \     'file_external': {
