@@ -83,7 +83,7 @@ inoremap <silent><expr> <C-k> pum#visible() ? '<Cmd>call pum#map#insert_relative
 inoremap <C-n>   <Cmd>call pum#map#insert_relative(+1)<CR>
 inoremap <C-p>   <Cmd>call pum#map#insert_relative(-1)<CR>
 inoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
-inoremap <silent><expr> <C-Space>  ddc#map#extend(pum#map#confirm())
+inoremap <silent><expr> <C-Space>  ddc#map#manual_complete()
 
 nnoremap :       <Cmd>call CommandlinePre()<CR>:
 nnoremap ;       <Cmd>call CommandlinePre()<CR>:
@@ -94,7 +94,7 @@ function! CommandlinePre() abort
   cnoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
   cnoremap <silent><expr> <C-j> pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' : '<Down>'
   cnoremap <silent><expr> <C-k> pum#visible() ? '<Cmd>call pum#map#insert_relative(-1)<CR>' : '<Up>'
-  cnoremap <silent><expr> <C-Space>  ddc#map#extend(pum#map#confirm())
+  cnoremap <silent><expr> <C-Space>  ddc#map#manual_complete()
   cnoremap <expr> <CR> pum#visible() ?
         \ pum#complete_info()["selected"] != -1 ?
         \ '<Cmd>call pum#map#confirm()<CR>' :
