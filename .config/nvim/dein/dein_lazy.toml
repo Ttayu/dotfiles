@@ -175,32 +175,18 @@ repo = 'Shougo/neosnippet-snippets'
 repo = 'itchyny/vim-gitbranch'
 
 [[plugins]]
-repo = 'nvim-lua/plenary.nvim'
-
-[[plugins]]
-repo = 'sindrets/diffview.nvim'
-depends = "plenary.nvim"
-hook_add = '''
-  nnoremap [diffview] <Nop>
-  nmap <Leader>g [diffview]
-  nnoremap [diffview]d :DiffviewOpen<CR>
-  nnoremap [diffview]h :DiffviewFileHistory<CR>
-  xnoremap ,gh :DiffviewFileHistory<CR>
-'''
-lua_post_source = '''
-  require('diffview').setup({
-    use_icons = false,
-    key_bindings = {
-      view = {
-        ['q'] = '<cmd>DiffviewClose<CR>',
-      },
-      file_panel = {
-        ['q'] = '<cmd>DiffviewClose<CR>',
-      },
-      file_history_panel = {
-        ['q'] = '<cmd>DiffviewClose<CR>',
-      },
-    }
+repo = 'dinhhuy258/git.nvim'
+on_event = 'VimEnter'
+lua_source = '''
+  require('git').setup({
+    default_mappings = false,
+    keymaps = {
+      blame = ",gb",
+      quit_blame = "q",
+      blame_commit = "<CR>",
+      diff = ",gd",
+      dif_close = "q",
+    },
   })
 '''
 
