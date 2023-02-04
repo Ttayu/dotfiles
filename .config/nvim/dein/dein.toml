@@ -1,6 +1,10 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
+[[plugins]]
+repo = "vim-denops/denops.vim"
+on_event = 'CursorHold'
+
 # colorscheme
 [[plugins]]
 repo = 'folke/tokyonight.nvim'
