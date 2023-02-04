@@ -34,7 +34,7 @@ call ddu#custom#patch_global({
       \   },
       \   'sourceParams': {
       \     'file_external': {
-      \       'cmd': ['fd', '.', '-H', '-E', '*cache*', '-t', 'f'],
+      \       'cmd': ['fd', '.', '-H', '-E', '*cache*', '-t', 'f', '-S', '-1m'],
       \     },
       \   },
       \   'uiParams': {
