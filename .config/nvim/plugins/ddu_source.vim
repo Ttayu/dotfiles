@@ -80,6 +80,9 @@ call ddu#custom#patch_global({
       \ })
 call ddu#custom#patch_global({
       \   'filterParams': {
+      \     'matcher_fzf': {
+      \       'highlightMatched': 'Search',
+      \     },
       \     'matcher_substring': {
       \       'highlightMatched': 'Search',
       \     },
