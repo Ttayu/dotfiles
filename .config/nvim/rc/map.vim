@@ -107,6 +107,6 @@ cnoremap <C-a> <Home>
 cnoremap <C-n> <Down>
 cnoremap <C-p> <Up>
 cnoremap <C-b> <BS>
-cnoremap <C-h> <Left>
-cnoremap <C-l> <Right>
+cnoremap <M-h> <Left>
+cnoremap <M-l> <Right>
 cnoremap <C-d> <Del>
