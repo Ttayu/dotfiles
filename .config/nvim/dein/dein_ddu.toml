@@ -23,7 +23,7 @@ hook_source = '''
 
 [[plugins]]
 repo = 'Shougo/ddu-ui-filer'
-on_source = 'denops.vim'
+on_source = 'ddu.vim'
 hook_add = '''
   nnoremap ,n <Cmd>Ddu
     \ -name=filer -resume<CR>
