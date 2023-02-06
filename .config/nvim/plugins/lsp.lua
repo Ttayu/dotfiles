@@ -1,5 +1,4 @@
-local saga = require "lspsaga"
-saga.init_lsp_saga()
+local saga = require "lspsaga".setup({})
 
 vim.api.nvim_set_keymap('n', '[lsp]', '<Nop>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>l', '[lsp]', { noremap = false })
@@ -7,13 +6,14 @@ vim.api.nvim_set_keymap('n', '[lsp]a', ':Lspsaga code_action<CR>', { noremap = t
 vim.api.nvim_set_keymap('n', '[lsp]c', ':lua vim.lsp.buf.declaration()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]dp', ':Lspsaga peek_definition<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]dd', ':lua vim.lsp.buf.definition()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '[lsp]f', ':lua vim.lsp.buf.formatting{timeout_ms = 5000, async = true}<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '[lsp]f', ':lua vim.lsp.buf.format{timeout_ms = 5000, async = true}<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]h', ':Lspsaga hover_doc<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]i', ':lua vim.lsp.buf.implementation()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]x', ':lua vim.lsp.buf.references()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]r', ':Lspsaga rename<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]t', ':lua vim.lsp.buf.type_definition()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]e', ':Lspsaga show_line_diagnostics<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '[lsp]b', ':Lspsaga show_buf_diagnostics<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]n', ':Lspsaga diagnostic_jump_next<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]p', ':Lspsaga diagnostic_jump_prev<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[lsp]s', ':lua vim.lsp.buf.signature_help()<CR>', { noremap = true })
