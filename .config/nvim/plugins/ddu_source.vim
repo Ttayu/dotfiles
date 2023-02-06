@@ -31,6 +31,9 @@ call ddu#custom#patch_global({
       \         'matcher_kensaku',
       \       ],
       \     },
+      \     'command_history': {
+      \       'defaultAction': 'execute',
+      \     },
       \   },
       \   'sourceParams': {
       \     'file_external': {
