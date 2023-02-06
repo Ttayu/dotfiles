@@ -69,6 +69,8 @@ set mouse=n
 
 set backupcopy=no
 
+set history=1000
+
 set fillchars+=horiz:━
 set fillchars+=horizup:┻
 set fillchars+=horizdown:┳
