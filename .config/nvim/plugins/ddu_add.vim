@@ -38,3 +38,5 @@ xnoremap <expr><silent> [ddu]r (mode() ==# 'V' ? '"_R<Esc>' : '"_d') .
       \  -source-option-defaultAction=insert -ui-param-autoResize<CR>'
 nnoremap <silent> sg <Cmd>Ddu
       \ dein<CR>
+nnoremap <silent> [ddu]t <Cmd>Ddu
+      \ command_history -input=''<CR>
