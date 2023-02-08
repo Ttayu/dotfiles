@@ -12,5 +12,10 @@ repo = 'williamboman/mason.nvim'
 [[plugins]]
 repo = 'williamboman/mason-lspconfig.nvim'
 
+
+[[plugins]]
+repo = 'nvim-tree/nvim-web-devicons'
+
 [[plugins]]
 repo = 'glepnir/lspsaga.nvim'
+depends = 'nvim-web-devicons'
