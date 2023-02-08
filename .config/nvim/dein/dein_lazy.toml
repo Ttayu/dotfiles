@@ -22,7 +22,7 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo =  'RRethy/nvim-treesitter-endwise'
+repo = 'RRethy/nvim-treesitter-endwise'
 on_source = 'nvim-treesitter'
 lua_source = '''
   require('nvim-treesitter.configs').setup {
@@ -36,6 +36,7 @@ lua_source = '''
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
 on_event = ['CursorMoved', 'InsertEnter']
+on_ft = ['markdown', 'toml', 'html']
 depends = ['context_filetype.vim']
 
 # カーソル位置のコンテキストのftを判断する
@@ -113,7 +114,7 @@ lua_source = '''
 
 [[plugins]]
 repo = 'lewis6991/gitsigns.nvim'
-on_event = "BufReadPost"
+on_event = 'BufReadPost'
 lua_source = '''
   require('gitsigns').setup()
 '''
@@ -217,7 +218,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'rhysd/accelerated-jk'
-on_map = {n = '<Plug>'}
+on_map = { n = '<Plug>' }
 hook_add = '''
   nmap <silent>j <Plug>(accelerated_jk_gj)
   nmap <silent>k <Plug>(accelerated_jk_gk)

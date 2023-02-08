@@ -2,7 +2,7 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = "vim-denops/denops.vim"
+repo = 'vim-denops/denops.vim'
 on_event = 'CursorHold'
 
 # colorscheme

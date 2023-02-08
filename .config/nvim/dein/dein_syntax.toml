@@ -27,9 +27,9 @@ hook_add = '''
 [[plugins]]
 repo = 'udalov/kotlin-vim'
 on_ft = ['kotlin']
-hook_add = """
+hook_add = '''
   autocmd FileType kotlin setlocal sw=4 sts=4 ts=4 et
-"""
+'''
 
 [[plugins]]
 repo = 'jalvesaq/Nvim-R'
