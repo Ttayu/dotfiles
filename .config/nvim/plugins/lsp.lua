@@ -1,5 +1,4 @@
-local saga = require "lspsaga".setup({})
-
+require "lspsaga".setup({})
 vim.api.nvim_set_keymap('n', '[lsp]', '<Nop>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>l', '[lsp]', { noremap = false })
 vim.api.nvim_set_keymap('n', '[lsp]a', ':Lspsaga code_action<CR>', { noremap = true })
@@ -125,5 +124,29 @@ lspconfig.pylsp.setup({
       }
     }
   }
+})
+-- }}}
+
+-- typescript {{{
+lspconfig.denols.setup({
+  root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "deps.ts", "denops"),
+  init_options = {
+    lint = true,
+    unstable = true,
+    suggest = {
+      imports = {
+        hosts = {
+          ["https://deno.land"] = true,
+          ["https://cdn.nest.land"] = true,
+          ["https://crux.land"] = true,
+        },
+      },
+    },
+  },
+})
+
+lspconfig.tsserver.setup({
+  single_file_support = false,
+  root_dir = lspconfig.util.root_pattern("package.json"),
 })
 -- }}}
