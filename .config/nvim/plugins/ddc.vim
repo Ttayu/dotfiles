@@ -32,6 +32,7 @@ call ddc#custom#patch_global('sourceOptions', {
   \ 'cmdline-history': {
   \   'mark': 'history',
   \   'sorters': [],
+  \   'dup': 'force',
   \ },
   \ 'around': {
   \   'mark': 'A',

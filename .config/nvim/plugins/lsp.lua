@@ -66,15 +66,37 @@ mason_lspconfig.setup {}
 mason_lspconfig.setup_handlers({ function(server_name)
   lspconfig[server_name].setup {}
 end })
+
+-- Lua {{{
+local runtime_path = vim.split(package.path, ";")
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
+
 lspconfig.sumneko_lua.setup({
   settings = {
     Lua = {
       diagnostics = {
         globals = { "vim" }
       },
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = "LuaJIT",
+        -- Setup your lua path
+        path = runtime_path,
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      telemetry = {
+        enable = false,
+      },
     },
   },
 })
+-- }}}
+
+-- python {{{
 lspconfig.pylsp.setup({
   root_dir = function(fname)
     local root_files = {
@@ -104,3 +126,4 @@ lspconfig.pylsp.setup({
     }
   }
 })
+-- }}}
