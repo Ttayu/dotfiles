@@ -12,6 +12,11 @@ if &runtimepath !~# '/dein.vim'
   execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
 
+let g:dein#auto_recache = v:true
+let g:dein#install_check_diff = v:true
+let g:dein#install_progress_type = 'floating'
+let g:dein#types#git#enable_partial_clone = v:true
+
 " 設定開始
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
