@@ -42,9 +42,12 @@ call ddu#custom#patch_global({
       \   },
       \   'uiParams': {
       \     'ff': {
+      \       'autoAction': { 'name': 'preview' },
       \       'split': 'floating',
       \       'filterSplitDirection': 'floating',
       \       'previewFloating': v:true,
+      \       'previewSplit': 'no',
+      \       'autoResize': v:true,
       \       'highlights': {
       \         'floating': 'Normal',
       \       },
