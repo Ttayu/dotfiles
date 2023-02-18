@@ -45,6 +45,9 @@ call ddu#custom#patch_global({
       \       'split': 'floating',
       \       'filterSplitDirection': 'floating',
       \       'previewFloating': v:true,
+      \       'highlights': {
+      \         'floating': 'Normal',
+      \       },
       \     },
       \   },
       \   'kindOptions': {
