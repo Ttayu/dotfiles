@@ -2,8 +2,7 @@
 repo = 'Shougo/pum.vim'
 hook_source = '''
   call pum#set_option('max_width', float2nr(&columns * 0.5))
-  let pum = pum#_get()
-  let pum.orig_line = ''
+  call pum#set_option('use_complete', v:true)
 '''
 
 [[plugins]]
