@@ -77,7 +77,10 @@ repo = 'ekickx/clipboard-image.nvim'
 on_ft = ['markdown']
 lua_source = '''
   require("clipboard-image").setup({
-    img_dir = "./"
+    default = {
+      img_dir = {"%:p:h", "contents"},
+      img_dir_txt = "./contents"
+    }
   })
 '''
 
