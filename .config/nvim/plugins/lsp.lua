@@ -1,5 +1,7 @@
 require "lspsaga".setup({
-  on_insert = false,
+  diagnostic = {
+    on_insert = false,
+  },
 })
 
 vim.api.nvim_set_keymap('n', '[lsp]', '<Nop>', { noremap = true })
