@@ -122,13 +122,14 @@ lspconfig.pylsp.setup({
         pyflakes = { enabled = false },
         pycodestyle = { enabled = false },
         mccabe = { enabled = false },
-        flake8 = { enabled = true },
+        flake8 = { enabled = false },
         autopep8 = { enabled = false },
         pyls_flake8 = { enabled = false },
         pylsp_black = { enabled = true },
         pyls_isort = { enabled = true },
         yapf = { enabled = false },
         pylsp_mypy = { enabled = true, overrides = { true, "--ignore-missing-imports" } },
+        ruff = { enabled = true },
       }
     }
   }
