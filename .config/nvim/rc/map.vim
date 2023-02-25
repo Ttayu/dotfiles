@@ -92,7 +92,6 @@ vnoremap <M-k> "zx<Up>"zP`[V`]
 vnoremap <M-j> "zx"zp`[V`]
 
 xnoremap r <C-v>
-nnoremap <C-l> <Cmd>redraw!<CR>
 
 " terminal
 nnoremap <Leader>t :vsplit<CR>:terminal<CR>:set nonumber<CR>:set norelativenumber<CR>
