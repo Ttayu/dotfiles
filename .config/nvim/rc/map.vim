@@ -91,6 +91,9 @@ nnoremap <M-j> "zdd"zp
 vnoremap <M-k> "zx<Up>"zP`[V`]
 vnoremap <M-j> "zx"zp`[V`]
 
+xnoremap r <C-v>
+nnoremap <C-l> <Cmd>redraw!<CR>
+
 " terminal
 nnoremap <Leader>t :vsplit<CR>:terminal<CR>:set nonumber<CR>:set norelativenumber<CR>
 tnoremap <Esc> <C-\><C-n>
@@ -104,9 +107,12 @@ tnoremap <C-k> <C-\><C-n><C-w>k
 
 " Command line
 cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
 cnoremap <C-n> <Down>
 cnoremap <C-p> <Up>
 cnoremap <C-b> <BS>
+cnoremap <C-h> <Left>
+cnoremap <C-l> <Right>
 cnoremap <M-h> <Left>
 cnoremap <M-l> <Right>
 cnoremap <C-d> <Del>
