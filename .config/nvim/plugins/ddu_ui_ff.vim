@@ -46,13 +46,13 @@ endfunction
 
 function! s:ddu_ff_filter_setttings() abort
   inoremap <buffer><silent> <CR>
-        \ <Esc><Cmd>close<CR>
+        \ <Esc><Cmd>call ddu#ui#ff#close()<CR>
   inoremap <buffer><silent> jj
-        \ <Esc><Cmd>close<CR>
+        \ <Esc><Cmd>call ddu#ui#ff#close()<CR>
   nnoremap <buffer><silent> <CR>
-        \ <Cmd>close<CR>
+        \ <Cmd>call ddu#ui#ff#close()<CR>
   nnoremap <buffer><silent> <Esc>
-        \ <Cmd>close<CR>
+        \ <Cmd>call ddu#ui#ff#close()<CR>
   nnoremap <buffer><silent> q
         \ <Cmd>call ddu#ui#ff#do_action('quit')<CR>
   inoremap <buffer> <C-p> <Up><Esc>A
