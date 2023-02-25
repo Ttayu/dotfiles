@@ -42,11 +42,6 @@ on_source = 'nvim-lspconfig'
 [[plugins]]
 repo = 'Shougo/neco-vim'
 on_source = 'ddc.vim'
-hook_source = '''
-  call ddc#custom#patch_filetype(
-        \ ['vim'], 'sources', ['necovim', 'around', 'file']
-        \ )
-'''
 
 [[plugins]]
 repo = 'Shougo/ddc-source-cmdline-history'
