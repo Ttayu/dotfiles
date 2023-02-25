@@ -17,6 +17,7 @@ call ddu#custom#patch_global({
       \       'matchers': [
       \         'matcher_fzf', 'matcher_hidden',
       \       ],
+      \     'sorters': ['sorter_alpha'],
       \     },
       \     'file_rec': {
       \       'matchers': [
@@ -37,7 +38,7 @@ call ddu#custom#patch_global({
       \   },
       \   'sourceParams': {
       \     'file_external': {
-      \       'cmd': ['fd', '.', '-H', '-E', '*cache*', '-t', 'f', '-S', '-1m'],
+      \       'cmd': ['fd', '.', '-H', '-E', '.git', '-t', 'f', '-X', 'grep', '-lI', '.'],
       \     },
       \   },
       \   'uiParams': {
