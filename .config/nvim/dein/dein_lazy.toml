@@ -75,10 +75,13 @@ repo = 'windwp/nvim-autopairs'
 on_event = 'InsertEnter'
 on_source = ['pum.vim', 'ddc.vim']
 lua_source = '''
-  require('nvim-autopairs').setup()
+  require('nvim-autopairs').setup({
+    map_cr = false,
+  })
 
   local remap = vim.api.nvim_set_keymap
   local npairs = require('nvim-autopairs')
+  npairs.enable()
 
   -- skip it, if you use another global object
   _G.MUtils= {}
@@ -89,8 +92,7 @@ lua_source = '''
       if vim.api.nvim_eval('pum#complete_info()')["selected"] >= 0 then
         return vim.api.nvim_eval('pum#map#confirm()')
       else
-        vim.api.nvim_eval('pum#map#cancel()')
-        return npairs.check_break_line_char()
+        return vim.api.nvim_eval('pum#map#cancel()') .. npairs.check_break_line_char()
       end
     else
       return npairs.check_break_line_char()
