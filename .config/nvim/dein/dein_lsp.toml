@@ -19,3 +19,10 @@ repo = 'nvim-tree/nvim-web-devicons'
 [[plugins]]
 repo = 'glepnir/lspsaga.nvim'
 depends = 'nvim-web-devicons'
+
+[[plugins]]
+repo = 'Ttayu/nvim-lsp-autoimport'
+on_source = ['nvim-lspconfig', 'pum.vim']
+lua_source = '''
+  require("autoimport")
+'''

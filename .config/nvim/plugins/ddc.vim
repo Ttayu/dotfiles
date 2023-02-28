@@ -84,7 +84,16 @@ inoremap <silent><expr> <C-k> pum#visible() ? '<Cmd>call pum#map#insert_relative
 inoremap <C-n>   <Cmd>call pum#map#insert_relative(+1)<CR>
 inoremap <C-p>   <Cmd>call pum#map#insert_relative(-1)<CR>
 inoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
+inoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
 inoremap <silent><expr> <C-Space>  ddc#map#manual_complete()
+inoremap <silent><expr> <CR>
+    \ pum#visible() ?
+    \ (
+    \   pum#complete_info().selected >= 0 ?
+    \     '<Cmd>call pum#map#confirm()<CR>' :
+    \     '<Cmd>call pum#map#cancel()<CR>' . v:lua.MPairs.completion_confirm()
+    \ ) :
+    \ v:lua.MPairs.completion_confirm()
 
 nnoremap :       <Cmd>call CommandlinePre()<CR>:
 nnoremap ;       <Cmd>call CommandlinePre()<CR>:
