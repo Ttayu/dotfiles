@@ -71,7 +71,7 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/ddc-converter_truncate_abbr'
+repo = 'Shougo/ddc-filter-converter_truncate_abbr'
 on_source = 'ddc.vim'
 
 [[plugins]]
