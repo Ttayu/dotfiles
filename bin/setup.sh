@@ -68,6 +68,7 @@ fi
 
 : "set git config" && {
   git config --global core.excludesFile ./.gitignore_global
+  git config --global commit.template ~/.commit_template
 }
 
 ok "Complete!"

@@ -13,6 +13,7 @@
 !/.config/**
 !/.gitignore
 !/.gitignore_global
+!/.commit_template
 !/.globalrc
 !/.py3
 !/.Rprofile
