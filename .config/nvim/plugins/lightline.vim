@@ -31,6 +31,7 @@ let g:lightline.subseparator = { 'left': '', 'right': '' }
 let g:lightline#lsp#indicator_errors = '✖ '
 let g:lightline#lsp#indicator_warnings = '⚠ '
 let g:lightline#lsp#indicator_ok = '✔'
+let g:lightline#lsp#update_in_insert = v:true
 
 let g:lightline.component_expand = {
       \  'linter_checking': 'lightline#lsp#checking',

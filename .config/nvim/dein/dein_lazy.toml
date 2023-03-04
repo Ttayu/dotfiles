@@ -55,7 +55,7 @@ hook_add = '''
 
 # lightlineにbuildin lspのstatusを表示する補助プラグイン
 [[plugins]]
-repo = 'spywhere/lightline-lsp'
+repo = 'Ttayu/lightline-lsp'
 on_source = ['lightline.vim']
 
 [[plugins]]
