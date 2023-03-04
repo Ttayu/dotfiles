@@ -14,7 +14,6 @@ endif
 
 let g:dein#auto_recache = v:true
 let g:dein#install_check_diff = v:true
-let g:dein#install_progress_type = 'floating'
 let g:dein#types#git#enable_partial_clone = v:true
 
 " 設定開始
