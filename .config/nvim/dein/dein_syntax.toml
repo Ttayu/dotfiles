@@ -67,6 +67,13 @@ on_ft = ['css']
 repo = 'iamcco/markdown-preview.nvim'
 on_ft = ['markdown']
 build = 'cd app && yarn install'
+hook_add = '''
+  let g:mkdp_preview_options = {
+        \ 'mkit': {
+        \   'breaks': v:true
+        \ }
+        \}
+'''
 
 [[plugins]]
 repo = 'dhruvasagar/vim-table-mode'
