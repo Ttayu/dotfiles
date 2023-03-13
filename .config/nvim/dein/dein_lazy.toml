@@ -73,13 +73,8 @@ lua_source = '''
 [[plugins]]
 repo = 'windwp/nvim-autopairs'
 on_event = 'InsertEnter'
-on_source = ['pum.vim', 'ddc.vim']
 lua_source = '''
   require('nvim-autopairs').setup({})
-
-  local remap = vim.api.nvim_set_keymap
-  local npairs = require('nvim-autopairs')
-  npairs.enable()
 '''
 
 [[plugins]]
