@@ -93,5 +93,8 @@ call ddu#custom#patch_global({
       \     'matcher_substring': {
       \       'highlightMatched': 'Search',
       \     },
+      \     'matcher_kensaku': {
+      \       'highlightMatched': 'Search',
+      \     },
       \   }
       \ })
