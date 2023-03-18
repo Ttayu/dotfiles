@@ -31,9 +31,9 @@ vim.diagnostic.config({
 })
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-  update_in_insert = false,
-  virtual_text = false,
-})
+    update_in_insert = false,
+    virtual_text = false,
+  })
 
 -- You will likely want to reduce updatetime which affects CursorHold
 -- note: this setting is global and should be set only once
