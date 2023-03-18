@@ -74,6 +74,11 @@ mason_lspconfig.setup_handlers({ function(server_name)
   lspconfig[server_name].setup {}
 end })
 
+local mason_null_ls = require "mason-null-ls"
+mason_null_ls.setup({ automatic_setup = true })
+require "null-ls".setup({})
+mason_null_ls.setup_handlers({})
+
 -- Lua {{{
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")

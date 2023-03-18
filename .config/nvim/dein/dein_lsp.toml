@@ -26,3 +26,15 @@ on_source = ['nvim-lspconfig', 'pum.vim']
 lua_source = '''
   require("autoimport")
 '''
+
+[[plugins]]
+repo = 'nvim-lua/plenary.nvim'
+
+[[plugins]]
+repo = 'jose-elias-alvarez/null-ls.nvim'
+depends = 'plenary.nvim'
+on_source = ['mason.nvim']
+
+[[plugins]]
+repo = 'jay-babu/mason-null-ls.nvim'
+on_source = ['mason.nvim', 'null-ls.nvim']
