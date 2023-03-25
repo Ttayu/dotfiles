@@ -1,6 +1,6 @@
 scriptencoding utf-8
 autocmd TabEnter,CursorHold,FocusGained <buffer>
-      \ call ddu#ui#filer#do_action('checkItems')
+      \ call ddu#ui#do_action('checkItems')
 augroup DduFilerSettings
   autocmd!
   autocmd FileType ddu-filer call s:ddu_filer_settings()
@@ -8,64 +8,64 @@ augroup END
 
 function! s:ddu_filer_settings() abort
   nnoremap <buffer> i
-        \ <Cmd>call ddu#ui#filer#do_action('toggleSelectItem')j<CR>
+        \ <Cmd>call ddu#ui#do_action('toggleSelectItem')<CR>
   nnoremap <buffer> *
-        \ <Cmd>call ddu#ui#filer#do_action('toggleAllItems')<CR>
+        \ <Cmd>call ddu#ui#do_action('toggleAllItems')<CR>
   nnoremap <buffer> a
-        \ <Cmd>call ddu#ui#filer#do_action('chooseAction')<CR>
+        \ <Cmd>call ddu#ui#do_action('chooseAction')<CR>
   nnoremap <buffer> q
-        \ <Cmd>call ddu#ui#filer#do_action('quit')<CR>
+        \ <Cmd>call ddu#ui#do_action('quit')<CR>
   nnoremap <buffer> <Esc>
-        \ <Cmd>call ddu#ui#filer#do_action('quit')<CR>
+        \ <Cmd>call ddu#ui#do_action('quit')<CR>
   nnoremap <buffer> o
-        \ <Cmd>call ddu#ui#filer#do_action('expandItem',
+        \ <Cmd>call ddu#ui#do_action('expandItem',
         \ {'mode': 'toggle'})<CR>
   nnoremap <buffer> O
-        \ <Cmd>call ddu#ui#filer#do_action('expandItem',
+        \ <Cmd>call ddu#ui#do_action('expandItem',
         \ {'maxLevel': -1})<CR>
   nnoremap <buffer> c
-        \ <Cmd>call ddu#ui#filer#multi_actions([
+        \ <Cmd>call ddu#ui#multi_actions([
         \   ['itemAction', {'name': 'copy'}],
         \   ['clearSelectAllItems'],
         \ ])<CR>
   nnoremap <buffer> d
-        \ <Cmd>call ddu#ui#filer#do_action('itemAction',
+        \ <Cmd>call ddu#ui#do_action('itemAction',
         \ #{ name: 'delete' })<CR>
   nnoremap <buffer> D
-        \ <Cmd>call ddu#ui#filer#do_action('itemAction',
+        \ <Cmd>call ddu#ui#do_action('itemAction',
         \ #{ name: 'trash' })<CR>
   nnoremap <buffer> m
-        \ <Cmd>call ddu#ui#filer#do_action('itemAction',
+        \ <Cmd>call ddu#ui#do_action('itemAction',
         \ #{ name: 'move' })<CR>
   nnoremap <buffer> r
-        \ <Cmd>call ddu#ui#filer#do_action('itemAction',
+        \ <Cmd>call ddu#ui#do_action('itemAction',
         \ #{ name: 'rename' })<CR>
   nnoremap <buffer> !
-        \ <Cmd>call ddu#ui#filer#do_action('itemAction',
+        \ <Cmd>call ddu#ui#do_action('itemAction',
         \ #{ name: 'executeSystem' })<CR>
   nnoremap <buffer> p
-        \ <Cmd>call ddu#ui#filer#do_action('itemAction',
+        \ <Cmd>call ddu#ui#do_action('itemAction',
         \ #{ name: 'paste' })<CR>
   nnoremap <buffer> K
-        \ <Cmd>call ddu#ui#filer#do_action('itemAction',
+        \ <Cmd>call ddu#ui#do_action('itemAction',
         \ #{ name: 'newDirectory' })<CR>
   nnoremap <buffer> N
-        \ <Cmd>call ddu#ui#filer#do_action('itemAction',
+        \ <Cmd>call ddu#ui#do_action('itemAction',
         \ #{ name: 'newFile' })<CR>
   nnoremap <buffer> ~
-        \ <Cmd>call ddu#ui#filer#do_action('itemAction',
+        \ <Cmd>call ddu#ui#do_action('itemAction',
         \ #{ name: 'narrow', params: #{ path: expand('~') } })<CR>
   nnoremap <buffer> \
-        \ <Cmd>call ddu#ui#filer#do_action('itemAction',
+        \ <Cmd>call ddu#ui#do_action('itemAction',
         \ #{ name: 'narrow', params: #{ path: getcwd() } })<CR>
   nnoremap <buffer> h
-        \ <Cmd>call ddu#ui#filer#do_action('itemAction',
+        \ <Cmd>call ddu#ui#do_action('itemAction',
         \ #{ name: 'narrow', params: #{ path: '..' } })<CR>
   nnoremap <buffer> yy
-        \ <Cmd>call ddu#ui#filer#do_action('itemAction', 
+        \ <Cmd>call ddu#ui#do_action('itemAction', 
         \ #{ name: 'yank'})<CR>
   nnoremap <buffer> I
-        \ <Cmd>call ddu#ui#filer#do_action('itemAction',
+        \ <Cmd>call ddu#ui#do_action('itemAction',
         \ #{
         \   name: 'narrow',
         \   params: #{
@@ -73,7 +73,7 @@ function! s:ddu_filer_settings() abort
         \   }
         \ })<CR>
   nnoremap <buffer> >
-        \ <Cmd>call ddu#ui#filer#do_action('updateOptions', #{
+        \ <Cmd>call ddu#ui#do_action('updateOptions', #{
         \   sourceOptions: #{
         \     file: #{
         \       matchers: ToggleHidden('file'),
@@ -81,15 +81,15 @@ function! s:ddu_filer_settings() abort
         \   },
         \ })<CR>
   nnoremap <buffer> <C-l>
-        \ <Cmd>call ddu#ui#filer#do_action('checkItems')<CR>
+        \ <Cmd>call ddu#ui#do_action('checkItems')<CR>
   nnoremap <buffer><expr> <CR>
-        \ ddu#ui#filer#is_tree() ?
-        \ "<Cmd>call ddu#ui#filer#do_action('itemAction', #{ name: 'narrow' })<CR>" :
-        \ "<Cmd>call ddu#ui#filer#do_action('itemAction', #{ name: 'open' })<CR>"
+        \ ddu#ui#get_item()->get('isTree', v:false) ?
+        \ "<Cmd>call ddu#ui#do_action('itemAction', #{ name: 'narrow' })<CR>" :
+        \ "<Cmd>call ddu#ui#do_action('itemAction', #{ name: 'open' })<CR>"
   nnoremap <buffer><expr> l
-        \ ddu#ui#filer#is_tree() ?
-        \ "<Cmd>call ddu#ui#filer#do_action('itemAction', #{ name: 'narrow' })<CR>" :
-        \ "<Cmd>call ddu#ui#filer#do_action('itemAction', #{ name: 'open' })<CR>"
+        \ ddu#ui#get_item()->get('isTree', v:false) ?
+        \ "<Cmd>call ddu#ui#do_action('itemAction', #{ name: 'narrow' })<CR>" :
+        \ "<Cmd>call ddu#ui#do_action('itemAction', #{ name: 'open' })<CR>"
 endfunction
 
 function! ToggleHidden(name)
