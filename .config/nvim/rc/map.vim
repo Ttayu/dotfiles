@@ -49,13 +49,13 @@ inoremap <silent> jj <ESC>:<C-u>w<CR>
 
 " insert modeで移動
 " 元々は<BS>
-inoremap <C-h> <Left>
+inoremap <C-h> <C-g>U<Left>
 " 元々は改行
 inoremap <C-j> <Down>
 " 元vimrcに属するautocmdを初期化々はマルチバイト文字を入力
 inoremap <C-k> <Up>
 " 元々はinsert modeを抜ける
-inoremap <C-l> <Right>
+inoremap <C-l> <C-g>U<Right>
 inoremap <C-b> <BS>
 
 " xやsではヤンクしない
