@@ -120,7 +120,6 @@ function! CommandlinePre() abort
   call ddc#custom#patch_buffer('keywordPattern', '[0-9a-zA-Z_:#]*')
 
   autocmd User DDCCmdlineLeave ++once call CommandlinePost()
-  autocmd InsertEnter <buffer> ++once call CommandlinePost()
 
   " Enable command line completion
   call ddc#enable_cmdline_completion()
