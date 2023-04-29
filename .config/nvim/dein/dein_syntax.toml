@@ -80,7 +80,7 @@ repo = 'dhruvasagar/vim-table-mode'
 on_ft = ['markdown']
 
 [[plugins]]
-repo = 'ekickx/clipboard-image.nvim'
+repo = 'Ttayu/clipboard-image.nvim'
 on_ft = ['markdown']
 lua_source = '''
   require("clipboard-image").setup({
