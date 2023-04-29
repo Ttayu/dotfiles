@@ -44,6 +44,8 @@ function! s:ddu_filer_settings() abort
         \ <Cmd>call ddu#ui#do_action('itemAction',
         \ #{ name: 'executeSystem' })<CR>
   nnoremap <buffer> p
+        \ <Cmd>call ddu#ui#do_action('preview')<CR>
+  nnoremap <buffer> P
         \ <Cmd>call ddu#ui#do_action('itemAction',
         \ #{ name: 'paste' })<CR>
   nnoremap <buffer> K
@@ -113,7 +115,11 @@ call ddu#custom#patch_local('filer', {
       \       'columns': ['icon_filename'],
       \     },
       \     'file': {
-      \       'matchers': ['matcher_hidden'],
+      \       'matchers': ['matcher_substring'],
+      \       'sorters': ['sorter_alpha'],
+      \     },
+      \     'path_history': {
+      \       'defaultAction': 'uiCd',
       \     },
       \   },
       \   'kindOptions': {
@@ -141,3 +147,13 @@ call ddu#custom#patch_local('filer', {
       \   },
       \   'searchPath': expand("%:p"),
       \ })
+
+
+call ddu#custom#action('kind', 'file', 'uiCd', { args -> UiCdAction(args) })
+function! UiCdAction(args)
+  const path = a:args.items[0].action.path
+  const directory = path->isdirectory() ? path : path->fnamemodify(':h')
+
+  call ddu#ui#do_action('itemAction',
+        \ #{ name: 'narrow', params: #{ path: directory } })
+endfunction

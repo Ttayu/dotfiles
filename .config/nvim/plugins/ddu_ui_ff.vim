@@ -34,6 +34,10 @@ function! s:ddu_ff_settings() abort
         \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'new'})<CR>
   nnoremap <buffer><silent> r
         \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'quickfix'})<CR>
+  nnoremap <buffer><silent> yy
+        \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'yank'})<CR>
+  nnoremap <buffer><silent> n
+        \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'narrow'})<CR>
   nnoremap <buffer><silent> u
         \ <Cmd>call ddu#ui#do_action('updateOptions', {
         \   'sourceOptions': {

@@ -61,6 +61,10 @@ repo = 'Shougo/ddu-source-action'
 on_source = 'ddu.vim'
 
 [[plugins]]
+repo = 'Shougo/ddu-source-path_history'
+on_source = 'ddu.vim'
+
+[[plugins]]
 repo = 'matsui54/ddu-source-file_external'
 on_source = 'ddu.vim'
 

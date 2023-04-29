@@ -38,12 +38,22 @@ call ddu#custom#patch_global({
       \   },
       \   'sourceParams': {
       \     'file_external': {
-      \       'cmd': ['fd', '.', '-H', '-E', '.git', '-t', 'f', '-X', 'grep', '-lI', '.'],
+      \       'cmd': ['fd', '.', '-H', '-E', '.git', '-t', 'f', '-S', '-10m', '-X', 'grep', '-lI', '.'],
+      \     },
+      \     'rg': {
+      \       'args': [
+      \         '--ignore-case', '--column', '--no-heading',
+      \         '--color', 'never',
+      \       ],
+      \     },
+      \     'file_rg': {
+      \       'cmd': ['rg', '--files', '--glob', '!.git',
+      \               '--color', 'never', '--no-messages'],
+      \       'updateItems': 50000,
       \     },
       \   },
       \   'uiParams': {
       \     'ff': {
-      \       'autoAction': { 'name': 'preview' },
       \       'split': 'floating',
       \       'filterSplitDirection': 'floating',
       \       'previewFloating': v:true,
@@ -75,15 +85,6 @@ call ddu#custom#patch_local('files', {
       \       'split': 'floating',
       \     }
       \   },
-      \ })
-call ddu#custom#patch_global({
-      \   'sourceParams': {
-      \     'file_rg': {
-      \       'cmd': ['rg', '--files', '--glob', '!.git',
-      \               '--color', 'never', '--no-messages'],
-      \       'updateItems': 50000,
-      \     },
-      \   }
       \ })
 call ddu#custom#patch_global({
       \   'filterParams': {

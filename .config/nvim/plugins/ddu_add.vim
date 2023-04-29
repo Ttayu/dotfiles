@@ -28,15 +28,30 @@ nnoremap <silent> [ddu]n <Cmd>Ddu
       \ -name=search -resume
       \ -ui-param-startFilter=v:false<CR>
 nnoremap <silent> [ddu]r <Cmd>Ddu
-      \ -buffer-name=register register
+      \ -name=register register
       \ -ui-param-autoResize<CR>
 nnoremap <silent> [ddu]h  <Cmd>Ddu
       \ -name=help help
       \ -ui-param-startFilter<CR>
-xnoremap <expr><silent> [ddu]r (mode() ==# 'V' ? '"_R<Esc>' : '"_d') .
-      \ '<Cmd>Ddu -buffer-name=register register
+xnoremap <expr><silent> ,dr (mode() ==# 'V' ? '"_R<Esc>' : '"_d') ..
+      \ '<Cmd>Ddu -name=register register
       \  -source-option-defaultAction=insert -ui-param-autoResize<CR>'
 nnoremap <silent> sg <Cmd>Ddu
       \ dein<CR>
 nnoremap <silent> [ddu]t <Cmd>Ddu
       \ command_history -input=''<CR>
+" Insert filename
+inoremap <C-f> <Cmd>call ddu#start(#{
+      \   name: 'file',
+      \   ui: 'ff',
+      \   input: '.'->getline()[: '.'->col() - 1]->matchstr('\f*$'),
+      \   sources: [
+      \     #{ name: 'file', options: #{ defaultAction: 'feedkeys' } },
+      \   ],
+      \   uiParams: #{
+      \     ff: #{
+      \       startFilter: v:true,
+      \       replaceCol: '.'->getline()[: '.'->col() - 1]->match('\f*$') + 1,
+      \     },
+      \   },
+      \ })<CR>
