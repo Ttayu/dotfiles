@@ -18,7 +18,7 @@ let g:lightline.active = {
       \   ['readonly', 'relativepath', 'modified', 'method'],
       \ ],
       \ 'right': [
-      \   ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok', 'asyncrun_failure', 'asyncrun_running'],
+      \   ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok', 'asyncrun_failure', 'asyncrun_running'],
       \   ['lineinfo'],
       \   ['percent'],
       \   ['fileformat', 'fileencoding', 'filetype']
@@ -30,6 +30,7 @@ let g:lightline.subseparator = { 'left': '', 'right': '' }
 " setting lsp
 let g:lightline#lsp#indicator_errors = '✖ '
 let g:lightline#lsp#indicator_warnings = '⚠ '
+let g:lightline#lsp#indicator_infos = ' '
 let g:lightline#lsp#indicator_ok = '✔'
 let g:lightline#lsp#update_in_insert = v:false
 
@@ -37,12 +38,14 @@ let g:lightline.component_expand = {
       \  'linter_checking': 'lightline#lsp#checking',
       \  'linter_warnings': 'lightline#lsp#warnings',
       \  'linter_errors': 'lightline#lsp#errors',
+      \  'linter_errors': 'lightline#lsp#infos',
       \  'linter_ok': 'lightline#lsp#ok',
       \ }
 let g:lightline.component_type = {
       \     'linter_checking': 'left',
       \     'linter_warnings': 'warning',
       \     'linter_errors': 'error',
+      \     'linter_infos': 'left',
       \     'linter_ok': 'left',
       \ }
 function! NearestMethodOrFunction() abort
