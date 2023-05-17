@@ -38,7 +38,7 @@ let g:lightline.component_expand = {
       \  'linter_checking': 'lightline#lsp#checking',
       \  'linter_warnings': 'lightline#lsp#warnings',
       \  'linter_errors': 'lightline#lsp#errors',
-      \  'linter_errors': 'lightline#lsp#infos',
+      \  'linter_infos': 'lightline#lsp#infos',
       \  'linter_ok': 'lightline#lsp#ok',
       \ }
 let g:lightline.component_type = {
