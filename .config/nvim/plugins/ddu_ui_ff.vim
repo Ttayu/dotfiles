@@ -61,4 +61,8 @@ function! s:ddu_ff_filter_setttings() abort
         \ <Cmd>call ddu#ui#do_action('quit')<CR>
   inoremap <buffer> <C-p> <Up><Esc>A
   inoremap <buffer> <C-n> <Down><Esc>A
+  inoremap <buffer> <C-j>
+        \ <Cmd>call ddu#ui#do_action('cursorNext')<CR>
+  inoremap <buffer> <C-k>
+        \ <Cmd>call ddu#ui#do_action('cursorPrevious')<CR>
 endfunction
