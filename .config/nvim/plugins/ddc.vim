@@ -78,8 +78,8 @@ call ddc#custom#patch_global('autoCompleteEvents', [
   \ ])
 
 call ddc#custom#patch_global('ui', 'pum')
-inoremap <silent><expr> <C-j> pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' : '<Down>'
-inoremap <silent><expr> <C-k> pum#visible() ? '<Cmd>call pum#map#insert_relative(-1)<CR>' : '<Up>'
+inoremap <silent><expr> <C-j> pum#visible() ? '<Cmd>call pum#map#insert_relative(+1, "loop")<CR>' : '<Down>'
+inoremap <silent><expr> <C-k> pum#visible() ? '<Cmd>call pum#map#insert_relative(-1, "loop")<CR>' : '<Up>'
 
 inoremap <C-n>   <Cmd>call pum#map#insert_relative(+1)<CR>
 inoremap <C-p>   <Cmd>call pum#map#insert_relative(-1)<CR>
@@ -102,8 +102,8 @@ function! CommandlinePre() abort
   " Note: It disables default command line completion!
   cnoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
   cnoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
-  cnoremap <silent><expr> <C-j> pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' : '<Down>'
-  cnoremap <silent><expr> <C-k> pum#visible() ? '<Cmd>call pum#map#insert_relative(-1)<CR>' : '<Up>'
+  cnoremap <silent><expr> <C-j> pum#visible() ? '<Cmd>call pum#map#insert_relative(+1, "loop")<CR>' : '<Down>'
+  cnoremap <silent><expr> <C-k> pum#visible() ? '<Cmd>call pum#map#insert_relative(-1, "loop")<CR>' : '<Up>'
   cnoremap <silent><expr> <C-Space>  ddc#map#manual_complete()
   cnoremap <expr> <CR> pum#visible() ?
         \ pum#complete_info()["selected"] != -1 ?
