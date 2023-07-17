@@ -120,6 +120,10 @@ on_source = 'ddu.vim'
 repo = 'lambdalisue/kensaku.vim'
 
 [[plugins]]
+repo = 'kyoh86/ddu-filter-converter_hl_dir'
+on_source = 'ddu.vim'
+
+[[plugins]]
 repo = 'Milly/ddu-filter-kensaku'
 depends = 'kensaku.vim'
 on_source = 'ddu.vim'

@@ -12,17 +12,20 @@ call ddu#custom#patch_global({
       \       'matchers': [
       \         'matcher_fzf', 'matcher_relative', 'matcher_hidden',
       \       ],
+      \     'converters': ['converter_hl_dir'],
       \     },
       \     'file_external': {
       \       'matchers': [
       \         'matcher_fzf', 'matcher_hidden',
       \       ],
       \     'sorters': ['sorter_alpha'],
+      \     'converters': ['converter_hl_dir'],
       \     },
       \     'file_rec': {
       \       'matchers': [
       \         'matcher_fzf', 'matcher_hidden',
       \       ],
+      \     'converters': ['converter_hl_dir'],
       \     },
       \     'dein': {
       \       'defaultAction': 'cd',
@@ -96,6 +99,9 @@ call ddu#custom#patch_global({
       \     },
       \     'matcher_kensaku': {
       \       'highlightMatched': 'Search',
+      \     },
+      \     'converter_hl_dir': {
+      \       'hlGroup': ['Directory', 'Keyword'],
       \     },
       \   }
       \ })

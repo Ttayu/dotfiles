@@ -77,6 +77,10 @@ hook_source = '''
 '''
 
 [[plugins]]
+repo = 'Shougo/ddc-filter-sorter_rank'
+on_source = 'ddc.vim'
+
+[[plugins]]
 repo = 'Shougo/ddc-filter-converter_truncate_abbr'
 on_source = 'ddc.vim'
 

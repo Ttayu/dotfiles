@@ -47,6 +47,7 @@ call ddc#custom#patch_global('sourceOptions', {
   \   'minAutoCompleteLength': 1000,
   \   'isVolatile': v:true,
   \   'forceCompletionPattern': '\S/\S*',
+  \   'sorters': ['sorter_rank'],
   \ },
   \ 'neosnippet': {
   \   'mark': 'snippet',

@@ -117,6 +117,7 @@ call ddu#custom#patch_local('filer', {
       \     'file': {
       \       'matchers': ['matcher_substring'],
       \       'sorters': ['sorter_alpha'],
+      \       'converters': ['converter_hl_dir'],
       \     },
       \     'path_history': {
       \       'defaultAction': 'uiCd',
