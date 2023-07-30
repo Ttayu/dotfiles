@@ -38,3 +38,16 @@ on_source = ['mason.nvim']
 [[plugins]]
 repo = 'jay-babu/mason-null-ls.nvim'
 on_source = ['mason.nvim', 'null-ls.nvim']
+
+[[plugins]]
+repo = 'mfussenegger/nvim-dap'
+on_source = ['mason.nvim']
+
+[[plugins]]
+repo = 'rcarriga/nvim-dap-ui'
+on_source = ['mason.nvim', 'nvim-dap']
+hook_source = '''
+  hi DapBreakpointTextHl guifg=#AA0000
+  hi DapStoppedTextHl guifg=#00c853
+  source ~/.config/nvim/plugins/dap.lua
+'''
