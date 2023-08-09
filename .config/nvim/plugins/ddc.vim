@@ -39,6 +39,9 @@ call ddc#custom#patch_global('sourceOptions', {
   \ },
   \ 'nvim-lsp': {
   \   'mark': 'lsp',
+  \   'dup': 'keep',
+  \   'keywordPattern': '\k+',
+  \   'sorters': ['sorter_lsp-kind'],
   \   'minAutoCompleteLength': 0,
   \   'forceCompletionPattern': '\.\w*|:\w*|->\w*'
   \ },
@@ -52,6 +55,13 @@ call ddc#custom#patch_global('sourceOptions', {
   \ 'neosnippet': {
   \   'mark': 'snippet',
   \   'dup': 'force',
+  \ },
+  \ })
+call ddc#custom#patch_global('sourceParams', {
+  \ 'nvim-lsp': {
+  \   'enableResolveItem': v:true,
+  \   'enableAdditionalTextEdit': v:true,
+  \   'confirmBehavior': 'replace',
   \ },
   \ })
 call ddc#custom#patch_filetype(
