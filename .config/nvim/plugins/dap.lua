@@ -8,6 +8,7 @@ vim.api.nvim_set_keymap("n", "[dap]r", ":lua require('dap').run_last()<CR>", { n
 vim.api.nvim_set_keymap("n", "[dap]i", ":DapStepInto<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "[dap]o", ":DapStepOut<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "[dap]s", ":DapStepOver<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "[dap]q", ":DapTerminate<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "[dap]e", ":lua require('dapui').eval()<CR>", { noremap = true, silent = true })
 
 vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DapBreakpointTextHl" })
