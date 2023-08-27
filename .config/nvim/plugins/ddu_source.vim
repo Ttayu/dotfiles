@@ -10,7 +10,7 @@ call ddu#custom#patch_global({
       \     },
       \     'file_old': {
       \       'matchers': [
-      \         'matcher_fzf', 'matcher_relative', 'matcher_hidden',
+      \         'matcher_relative', 'matcher_substring',
       \       ],
       \     'converters': ['converter_hl_dir'],
       \     },
@@ -23,7 +23,7 @@ call ddu#custom#patch_global({
       \     },
       \     'file_rec': {
       \       'matchers': [
-      \         'matcher_fzf', 'matcher_hidden',
+      \         'matcher_substring', 'matcher_hidden',
       \       ],
       \     'converters': ['converter_hl_dir'],
       \     },
