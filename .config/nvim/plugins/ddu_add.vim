@@ -22,8 +22,8 @@ nnoremap <silent> * <Cmd>Ddu
       \ -ui-param-ff-startFilter=v:false<CR>
 nnoremap <silent> [ddu]g <Cmd>Ddu
       \ -name=search rg -resume=v:false
-      \ -ui-param-ignoreEmpty
-      \ -source-param-input=`input('Pattern: ')`<CR>
+      \ -ui-param-ff-ignoreEmpty
+      \ -source-param-rg-input=`input('Pattern: ')`<CR>
 nnoremap <silent> [ddu]n <Cmd>Ddu
       \ -name=search -resume
       \ -ui-param-ff-startFilter=v:false<CR>
