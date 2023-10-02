@@ -33,6 +33,8 @@ nnoremap <silent> [ddu]r <Cmd>Ddu
 nnoremap <silent> [ddu]h  <Cmd>Ddu
       \ -name=help help
       \ -ui-param-ff-startFilter<CR>
+nnoremap <buffer> H
+      \ <Cmd>call ddu#start(#{ sources: [#{ name: 'path_history' }] })<CR>
 xnoremap <expr><silent> ,dr (mode() ==# 'V' ? '"_R<Esc>' : '"_d') ..
       \ '<Cmd>Ddu -name=register register
       \  -source-option-defaultAction=insert -ui-param-autoResize<CR>'
