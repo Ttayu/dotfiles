@@ -26,7 +26,7 @@ repo = 'Shougo/ddu-ui-filer'
 on_source = 'ddu.vim'
 hook_add = '''
   nnoremap ,n <Cmd>Ddu
-    \ -name=filer -resume<CR>
+    \ -name=filer -resume -sync=file<CR>
 '''
 hook_source = '''
   source ~/.config/nvim/plugins/ddu_ui_filer.vim

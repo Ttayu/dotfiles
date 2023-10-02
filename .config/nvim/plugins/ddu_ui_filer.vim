@@ -1,5 +1,5 @@
 scriptencoding utf-8
-autocmd TabEnter,CursorHold,FocusGained <buffer>
+autocmd TabEnter,WinEnter,CursorHold,FocusGained *
       \ call ddu#ui#do_action('checkItems')
 augroup DduFilerSettings
   autocmd!
@@ -115,7 +115,7 @@ call ddu#custom#patch_local('filer', {
       \       'columns': ['icon_filename'],
       \     },
       \     'file': {
-      \       'matchers': ['matcher_substring'],
+      \       'matchers': ['matcher_hidden'],
       \       'sorters': ['sorter_alpha'],
       \       'converters': ['converter_hl_dir'],
       \     },
