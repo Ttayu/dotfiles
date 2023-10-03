@@ -63,6 +63,8 @@ function! s:ddu_filer_settings() abort
   nnoremap <buffer> h
         \ <Cmd>call ddu#ui#do_action('itemAction',
         \ #{ name: 'narrow', params: #{ path: '..' } })<CR>
+  nnoremap <buffer> H
+      \ <Cmd>call ddu#start(#{ sources: [#{ name: 'path_history' }] })<CR>
   nnoremap <buffer> yy
         \ <Cmd>call ddu#ui#do_action('itemAction', 
         \ #{ name: 'yank'})<CR>
