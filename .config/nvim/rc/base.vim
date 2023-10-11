@@ -84,3 +84,9 @@ augroup QuickFix
   autocmd FileType qf nnoremap <silent><buffer>q :quit<CR>
   autocmd WinEnter * if &filetype == 'qf' && winnr('$') == 1 | q | endif
 augroup END
+
+let g:loaded_node_provider = v:false
+let g:loaded_perl_provider = v:false
+let g:loaded_python_provider = v:false
+let g:loaded_python3_provider = v:false
+let g:loaded_ruby_provider = v:false
