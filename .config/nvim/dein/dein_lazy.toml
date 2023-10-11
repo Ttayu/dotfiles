@@ -64,7 +64,7 @@ on_event = ['BufRead']
 depends = 'nvim-treesitter'
 lua_source = '''
   require("ibl").setup {
-    scope = { enabled = false }
+    scope = { enabled = false },
   }
 '''
 
