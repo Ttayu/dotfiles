@@ -146,11 +146,37 @@ lspconfig.pylsp.setup({
         pylsp_black = { enabled = true },
         pyls_isort = { enabled = true },
         yapf = { enabled = false },
-        pylsp_mypy = { enabled = true, overrides = { true, "--ignore-missing-imports" } },
+        pylsp_mypy = {
+          enabled = true,
+          overrides = { true, "--ignore-missing-imports", "--no-site-packages" },
+          live_mode = false
+        },
         ruff = { enabled = true },
       },
     },
   },
+  before_init = function(_, config)
+    local python_executable = vim.fn.trim(vim.fn.system("which python"))
+    config.settings.pylsp.plugins.jedi = {}
+    config.settings.pylsp.plugins.jedi.environment = python_executable
+
+    local pdm_packages = vim.fs.joinpath(config.root_dir, "__pypackages__")
+    if vim.fn.isdirectory(pdm_packages) == 0 then
+      vim.notify("Not found __pypackages__")
+      return
+    end
+
+    local python_version = vim.fn.trim(vim.fn.system("python -V"))
+    local major_minor_version = string.match(python_version, "Python (%d+%.%d+)")
+    local python_packages = vim.fs.joinpath(pdm_packages, major_minor_version, "lib")
+    print(vim.fn.isdirectory(python_packages))
+    if vim.fn.isdirectory(python_packages) == 0 then
+      vim.notify("Not found python_packages")
+      return
+    end
+
+    config.settings.pylsp.plugins.jedi.extra_paths = { python_packages }
+  end
 })
 -- }}}
 
