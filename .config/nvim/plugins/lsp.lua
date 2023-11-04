@@ -169,7 +169,6 @@ lspconfig.pylsp.setup({
     local python_version = vim.fn.trim(vim.fn.system("python -V"))
     local major_minor_version = string.match(python_version, "Python (%d+%.%d+)")
     local python_packages = vim.fs.joinpath(pdm_packages, major_minor_version, "lib")
-    print(vim.fn.isdirectory(python_packages))
     if vim.fn.isdirectory(python_packages) == 0 then
       vim.notify("Not found python_packages")
       return
