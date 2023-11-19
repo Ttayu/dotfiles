@@ -48,10 +48,11 @@ fi
 : "install other packages by asdf" && {
   PACKAGES=(bat fd ripgrep delta exa deno neovim)
   asdf plugin add python
-  for p in $PACKAGES; then
+  for p in $PACKAGES; do
     asdf plugin add $p
     asdf install $p latest
     asdf global $p latest
+  done
 }
 
 : "install tmux plugins manager" && {
@@ -78,10 +79,12 @@ fi
   local SHELDON_DIR=$HOME/.config/sheldon
   if [ ! -e $SHELDON_DIR ]; then
     info "setup sheldon"
+    curl --proto '=https' -fLsS https://rossmacarthur.github.io/install/crate.sh \
+      | bash -s -- --repo rossmacarthur/sheldon --to ~/.local/bin
     mkdir -p $SHELDON_DIR && \
       ln -s ~/dotfiles/zsh/sheldon.plugins.toml $SHELDON_DIR/plugins.toml
-        else
-          warn "sheldon is already installed"
+  else
+      warn "sheldon is already installed"
   fi
 }
 
