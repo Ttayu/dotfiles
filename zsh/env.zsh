@@ -1,35 +1,9 @@
 export EDITOR=nvim
 
-: "python settings" && {
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  export PATH="$HOME/.local/bin:$PATH"
-}
-
-: "golang settings" && {
-  if command_exists go; then
-    export PATH=$PATH:/usr/local/go/bin
-    export GOPATH=$HOME/.config/go
-    export GOROOT=$( go env GOROOT )
-    export PATH=$GOPATH/bin:$PATH
-  fi
-}
-
-: "rust settings" && {
-  export PATH="$PATH:$HOME/.cargo/bin"
-}
-
-: "java/kotlin settings" && {
-  # source "/Users/yuki-tana/.sdkman/bin/sdkman-init.sh"
-  export ANDROID_HOME=$HOME/Library/Android/sdk
-}
-
-: "C++ settings" && {
-  if command_exists llvm; then
-    export PATH="/usr/local/opt/llvm/bin:$PATH"
-    export LDFLAGS="-L/usr/local/opt/llvm/lib"
-    export CPPFLAGS="-I/usr/local/opt/llvm/include"
-  fi
+: "asdf settings" && {
+  . "$HOME/.asdf/asdf.sh"
+  # append completions to fpath
+  fpath=(${ASDF_DIR}/completions $fpath)
 }
 
 : "fzf settings" && {
