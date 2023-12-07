@@ -42,7 +42,7 @@ repo = 'tani/ddc-fuzzy'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-source-nvim-lsp'
+repo = 'Shougo/ddc-source-lsp'
 on_source = ['nvim-lspconfig']
 
 [[plugins]]
@@ -98,5 +98,5 @@ hook_source = '''
 repo = 'uga-rosa/ddc-nvim-lsp-setup'
 on_source = ['nvim-lspconfig']
 lua_source = '''
-  require("ddc_nvim_lsp_setup").setup()
+  require("ddc_source_lsp_setup").setup()
 '''

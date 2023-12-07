@@ -1,4 +1,4 @@
-call ddc#custom#patch_global('sources', ['file', 'nvim-lsp', 'around', 'neosnippet'])
+call ddc#custom#patch_global('sources', ['file', 'lsp', 'around', 'neosnippet'])
 call ddc#custom#patch_global('cmdlineSources',
       \ ['cmdline-history', 'input', 'file', 'around']
       \ )
@@ -37,7 +37,7 @@ call ddc#custom#patch_global('sourceOptions', {
   \ 'around': {
   \   'mark': 'A',
   \ },
-  \ 'nvim-lsp': {
+  \ 'lsp': {
   \   'mark': 'lsp',
   \   'dup': 'keep',
   \   'keywordPattern': '\k+',
@@ -58,7 +58,7 @@ call ddc#custom#patch_global('sourceOptions', {
   \ },
   \ })
 call ddc#custom#patch_global('sourceParams', {
-  \ 'nvim-lsp': {
+  \ 'lsp': {
   \   'enableResolveItem': v:true,
   \   'enableAdditionalTextEdit': v:true,
   \   'confirmBehavior': 'replace',
@@ -70,11 +70,11 @@ call ddc#custom#patch_filetype(
   \ )
 call ddc#custom#patch_filetype(
       \ ['vim'], 'sources',
-      \ ['file','nvim-lsp', 'necovim', 'around']
+      \ ['file','lsp', 'necovim', 'around']
       \ )
 call ddc#custom#patch_filetype(
       \ ['lua'], 'sources',
-      \ ['file', 'nvim-lsp', 'nvim-lua', 'around']
+      \ ['file', 'lsp', 'nvim-lua', 'around']
       \ )
 call ddc#custom#patch_filetype(['FineCmdlinePrompt'], {
      \ 'keywordPattern': '[0-9a-zA-Z_:#]*',
