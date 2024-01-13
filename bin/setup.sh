@@ -35,24 +35,32 @@ fi
 #   fi
 # }
 
-: "install asdf" && {
-  ASDF_DIR=$HOME/.asdf
-  if [ ! -e $ASDF_DIR ]; then
-    info "installing asdf"
-    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.13.1
+: "install mise" && {
+  MISE_BIN=$HOME/.local/bin/mise
+  if [ ! -e $MISE_BIN ]; then
+    info "installing mise"
+    curl https://mise.jdx.dev/install.sh | sh 
+    eval "$(~/.local/bin/mise activate zsh)"
+    mise completion zsh  > /usr/local/share/zsh/site-functions/_mise 
   else
-    warn "asdf is already installed"
+    warn "mise is already installed"
   fi
 }
 
-: "install other packages by asdf" && {
-  PACKAGES=(bat fd ripgrep delta exa deno neovim)
-  asdf plugin add python
+: "install other packages by mise" && {
+  info "installing packages by mise"
+  PACKAGES=(bat delta deno exa fd nodejs python pdm ripgrep)
   for p in $PACKAGES; do
-    asdf plugin add $p
-    asdf install $p latest
-    asdf global $p latest
+    mise use --global -y $p@latest
   done
+  PACKAGES=(neovim rust)
+  for p in $PACKAGES; do
+    mise use --global -y $p@nightly
+  done
+}
+
+: "setup pdm" && {
+  pdm --pep582 zsh >> ~/.zprofile
 }
 
 : "install tmux plugins manager" && {

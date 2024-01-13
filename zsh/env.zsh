@@ -1,9 +1,5 @@
-export EDITOR=nvim
-
-: "asdf settings" && {
-  . "$HOME/.asdf/asdf.sh"
-  # append completions to fpath
-  fpath=(${ASDF_DIR}/completions $fpath)
+: "mise settings" && {
+  eval "$(~/.local/bin/mise activate zsh)"
 }
 
 : "fzf settings" && {
