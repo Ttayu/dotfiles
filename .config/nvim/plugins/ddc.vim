@@ -126,9 +126,19 @@ function! CommandlinePre() abort
     let b:prev_buffer_config = ddc#custom#get_buffer()
   endif
   
-  call ddc#custom#patch_buffer('sources',
-          \ ['cmdline', 'cmdline-history', 'around'])
-  call ddc#custom#patch_buffer('keywordPattern', '[0-9a-zA-Z_:#]*')
+    " Use zsh source for :! completion
+  call ddc#custom#set_context_buffer({ ->
+        \ getcmdline()->stridx('!') ==# 0 ? {
+        \   'cmdlineSources': [
+        \     'cmdline', 'cmdline-history', 'around',
+        \   ],
+        \ } : {} })
+
+  call ddc#custom#patch_buffer('sourceOptions', #{
+        \ _: #{
+        \    keywordPattern: '[0-9a-zA-Z_:#]*',
+        \   },
+        \ })
 
   autocmd User DDCCmdlineLeave ++once call CommandlinePost()
 
