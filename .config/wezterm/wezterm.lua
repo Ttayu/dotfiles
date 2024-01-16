@@ -71,8 +71,4 @@ local config = {
     }
 }
 
-if wezterm.target_triple == "x86_64-pc-windows-msvc" then
-    config.term = ""
-end
-
 return config
