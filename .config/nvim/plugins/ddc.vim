@@ -62,6 +62,7 @@ call ddc#custom#patch_global('sourceParams', {
   \   'enableResolveItem': v:true,
   \   'enableAdditionalTextEdit': v:true,
   \   'confirmBehavior': 'replace',
+  \   'enableDisplayDetail': v:true,
   \ },
   \ })
 call ddc#custom#patch_filetype(
@@ -164,3 +165,5 @@ function! CommandlinePost() abort
 endfunction
 
 call ddc#enable()
+
+call ddc#set_static_import_path()
