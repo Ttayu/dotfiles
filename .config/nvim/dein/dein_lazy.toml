@@ -101,16 +101,56 @@ lua_source = '''
 '''
 
 # コメントアウト補助
+# [[plugins]]
+# repo = 'tyru/caw.vim'
+# on_map = ['<Plug>(caw:hatpos:toggle)', '<Plug>(caw:zeropos:toggle)']
+# hook_add = '''
+#   " 行の最初の文字の前にコメント文字をトグル
+#   nmap <Leader>c <Plug>(caw:hatpos:toggle)j
+#   vmap <Leader>c <Plug>(caw:hatpos:toggle)j
+#   " 行頭にコメントをトグル
+#   nmap <Leader>C <Plug>(caw:zeropos:toggle)j
+#   vmap <Leader>C <Plug>(caw:zeropos:toggle)j
+# '''
+
 [[plugins]]
-repo = 'tyru/caw.vim'
-on_map = ['<Plug>(caw:hatpos:toggle)', '<Plug>(caw:zeropos:toggle)']
-hook_add = '''
-  " 行の最初の文字の前にコメント文字をトグル
-  nmap <Leader>c <Plug>(caw:hatpos:toggle)j
-  vmap <Leader>c <Plug>(caw:hatpos:toggle)j
-  " 行頭にコメントをトグル
-  nmap <Leader>C <Plug>(caw:zeropos:toggle)j
-  vmap <Leader>C <Plug>(caw:zeropos:toggle)j
+repo = 'JoosepAlviste/nvim-ts-context-commentstring'
+
+[[plugins]]
+repo = 'numToStr/Comment.nvim'
+on_map = ['gcc', 'gbc']
+on_event = ['CursorHold', 'InsertEnter']
+depends = 'nvim-ts-context-commentstring'
+hook_post_source = '''
+  " Disable auto comment
+  augroup COMMENTS
+    au!
+    autocmd FileType * setlocal comments-=://
+    autocmd FileType * setlocal comments-=:--
+    autocmd FileType * setlocal comments-=:#
+    autocmd FileType * setlocal comments-=:\"
+  augroup end
+'''
+lua_source = '''
+  require("ts_context_commentstring").setup {
+    enable_autocmd = false,
+  }
+  require('Comment').setup({
+    stickey = true,
+    ignore = '^$',
+    mappings = {
+        basic = false,
+    },
+    pre_hook = require(
+      'ts_context_commentstring.integrations.comment_nvim'
+    ).create_pre_hook(),
+  })
+  vim.keymap.set('n', ',c', function()
+    local vvar = vim.api.nvim_get_vvar
+    return vvar('count') == 0 and '<Plug>(comment_toggle_linewise_current) j'
+    or '<Plug>(comment_toggle_linewise_count)'
+  end, { expr = true })
+  vim.keymap.set('v', ',c', '<Plug>(comment_toggle_linewise_visual)')
 '''
 
 [[plugins]]
