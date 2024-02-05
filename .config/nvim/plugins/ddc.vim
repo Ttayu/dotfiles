@@ -41,7 +41,7 @@ call ddc#custom#patch_global('sourceOptions', {
   \   'mark': 'lsp',
   \   'dup': 'keep',
   \   'keywordPattern': '\k+',
-  \   'sorters': ['sorter_fuzzy', 'sorter_lsp-kind'],
+  \   'sorters': ['sorter_lsp-kind', 'sorter_fuzzy'],
   \   'minAutoCompleteLength': 0,
   \   'forceCompletionPattern': '\.\w*|:\w*|->\w*'
   \ },
