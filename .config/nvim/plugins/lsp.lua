@@ -149,7 +149,7 @@ lspconfig.pylsp.setup({
         pylsp_mypy = {
           enabled = true,
           overrides = { true, "--ignore-missing-imports", "--no-site-packages" },
-          live_mode = false
+          live_mode = false,
         },
         ruff = { enabled = true },
       },
@@ -175,7 +175,7 @@ lspconfig.pylsp.setup({
     end
 
     config.settings.pylsp.plugins.jedi.extra_paths = { python_packages }
-  end
+  end,
 })
 -- }}}
 
@@ -200,5 +200,17 @@ lspconfig.denols.setup({
 lspconfig.tsserver.setup({
   single_file_support = false,
   root_dir = lspconfig.util.root_pattern("package.json"),
+})
+-- }}}
+
+-- rust {{{
+lspconfig.rust_analyzer.setup({
+  settings = {
+    ['rust-analyzer'] = {
+      check = {
+        command = "clippy",
+      },
+    },
+  },
 })
 -- }}}
