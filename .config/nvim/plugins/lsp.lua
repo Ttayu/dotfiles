@@ -62,8 +62,10 @@ function PrintDiagnostics(opts, bufnr, line_nr)
       diagnostic.message or "",
       vim.diagnostic.severity[diagnostic.severity] or ""
     )
-    if #output > 140 then
-      output = string.sub(output, 0, 140) .. "..."
+    local lines = vim.split(output, '\n')
+
+    if #lines > 2 then
+      output = table.concat({ lines[1], lines[2] .. " ..." }, "\n")
     end
     vim.api.nvim_echo({ { output } }, false, {})
     break
