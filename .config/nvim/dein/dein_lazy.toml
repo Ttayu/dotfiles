@@ -147,7 +147,7 @@ lua_source = '''
   })
   vim.keymap.set('n', ',c', function()
     local vvar = vim.api.nvim_get_vvar
-    return vvar('count') == 0 and '<Plug>(comment_toggle_linewise_current) j'
+    return vvar('count') == 0 and '<Plug>(comment_toggle_linewise_current)<Down>'
     or '<Plug>(comment_toggle_linewise_count)'
   end, { expr = true })
   vim.keymap.set('v', ',c', '<Plug>(comment_toggle_linewise_visual)')
