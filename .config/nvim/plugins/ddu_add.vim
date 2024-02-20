@@ -55,3 +55,5 @@ inoremap <C-f> <Cmd>call ddu#start(#{
       \     },
       \   },
       \ })<CR>
+nnoremap <silent> [ddu]m <Cmd>Ddu
+      \ marks -input=''<CR>

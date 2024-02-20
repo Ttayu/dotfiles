@@ -88,7 +88,7 @@ function! s:ddu_filer_settings() abort
         \ <Cmd>call ddu#ui#do_action('checkItems')<CR>
   nnoremap <buffer><expr> <CR>
         \ ddu#ui#get_item()->get('isTree', v:false) ?
-        \ "<Cmd>call ddu#ui#do_action('itemAction', #{ name: 'narrow' })<CR>" :
+        \ "<Cmd>call ddu#ui#do_action('expandItem', #{ mode: 'toggle' })<CR>" :
         \ "<Cmd>call ddu#ui#do_action('itemAction', #{ name: 'open' })<CR>"
   nnoremap <buffer><expr> l
         \ ddu#ui#get_item()->get('isTree', v:false) ?
@@ -146,6 +146,7 @@ call ddu#custom#patch_local('filer', {
       \       'sort': 'filename',
       \       'sortTreesFirst': v:true,
       \       'toggle': v:true,
+      \       'previewFloating': v:true,
       \     },
       \   },
       \   'searchPath': expand("%:p"),
