@@ -103,9 +103,9 @@ inoremap <silent><expr> <CR>
     \ (
     \   pum#complete_info().selected >= 0 ?
     \     '<Cmd>call pum#map#confirm()<CR>' :
-    \     '<Cmd>call pum#map#cancel()<CR>' . v:lua.MPairs.completion_confirm()
+    \     '<Cmd>call pum#map#cancel()<CR>' . luaeval('require("nvim-autopairs").completion_confirm()')
     \ ) :
-    \ v:lua.MPairs.completion_confirm()
+    \ luaeval('require("nvim-autopairs").completion_confirm()')
 
 nnoremap :       <Cmd>call CommandlinePre()<CR>:
 nnoremap ;       <Cmd>call CommandlinePre()<CR>:
