@@ -67,6 +67,10 @@ function PrintDiagnostics(opts, bufnr, line_nr)
     if #lines > 2 then
       output = table.concat({ lines[1], lines[2] .. " ..." }, "\n")
     end
+    local winwidth = vim.fn.winwidth(0)
+    if #output > winwidth * 2 then
+      output = output:sub(0, math.floor(winwidth * 2 * 0.9)) .. " ..."
+    end
     vim.api.nvim_echo({ { output } }, false, {})
     break
   end
