@@ -33,7 +33,7 @@ local config = {
   leader = { key = "g", mods = "CTRL" },
   keys = {
     { key = "-",      mods = "LEADER",       action = wezterm.action { SplitVertical = { domain = "CurrentPaneDomain" } } },
-    { key = "|",      mods = "LEADER",       action = wezterm.action { SplitHorizontal = { domain = "CurrentPaneDomain" } } },
+    { key = "|",      mods = "LEADER|SHIFT",       action = wezterm.action { SplitHorizontal = { domain = "CurrentPaneDomain" } } },
     { key = "z",      mods = "LEADER",       action = "TogglePaneZoomState" },
     { key = "c",      mods = "LEADER",       action = wezterm.action { SpawnTab = "CurrentPaneDomain" } },
     { key = "h",      mods = "LEADER",       action = wezterm.action { ActivatePaneDirection = "Left" } },
