@@ -24,7 +24,7 @@ depends = 'nvim-web-devicons'
 repo = 'nvim-lua/plenary.nvim'
 
 [[plugins]]
-repo = 'jose-elias-alvarez/null-ls.nvim'
+repo = 'nvimtools/none-ls.nvim'
 depends = 'plenary.nvim'
 on_source = ['mason.nvim']
 
