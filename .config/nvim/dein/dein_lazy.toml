@@ -85,11 +85,6 @@ repo = 'windwp/nvim-ts-autotag'
 on_event = 'InsertEnter'
 on_source = 'nvim-treesitter'
 lua_source = '''
-  require('nvim-treesitter.configs').setup{
-    autotag = {
-      enable = true,
-    }
-  }
   require('nvim-ts-autotag').setup()
 '''
 
