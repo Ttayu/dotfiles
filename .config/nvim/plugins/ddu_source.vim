@@ -1,6 +1,6 @@
 scriptencoding utf-8
 
-call ddu#custom#alias('source', 'file_rg', 'file_external')
+call ddu#custom#alias('files', 'source', 'file_rg', 'file_external')
 call ddu#custom#patch_global({
       \   'ui': 'ff',
       \   'sourceOptions': {

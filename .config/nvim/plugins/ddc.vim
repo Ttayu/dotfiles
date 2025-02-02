@@ -1,6 +1,6 @@
 call ddc#custom#patch_global('sources', ['file', 'lsp', 'around', 'neosnippet'])
 call ddc#custom#patch_global('cmdlineSources',
-      \ ['cmdline-history', 'input', 'file', 'around']
+      \ ['cmdline_history', 'input', 'file', 'around']
       \ )
 call ddc#custom#patch_global('sourceOptions', {
   \ '_': {
@@ -29,7 +29,7 @@ call ddc#custom#patch_global('sourceOptions', {
   \   'isVolatile': v:true,
   \   'dup': 'force',
   \ },
-  \ 'cmdline-history': {
+  \ 'cmdline_history': {
   \   'mark': 'history',
   \   'sorters': [],
   \   'dup': 'force',
@@ -79,7 +79,7 @@ call ddc#custom#patch_filetype(
       \ )
 call ddc#custom#patch_filetype(['FineCmdlinePrompt'], {
      \ 'keywordPattern': '[0-9a-zA-Z_:#]*',
-     \ 'sources': ['cmdline', 'cmdline-history', 'around'],
+     \ 'sources': ['cmdline', 'cmdline_history', 'around'],
      \ 'specialBufferCompletion': v:true,
      \ })
 
@@ -131,7 +131,7 @@ function! CommandlinePre() abort
   call ddc#custom#set_context_buffer({ ->
         \ getcmdline()->stridx('!') ==# 0 ? {
         \   'cmdlineSources': [
-        \     'cmdline', 'cmdline-history', 'around',
+        \     'cmdline', 'cmdline_history', 'around',
         \   ],
         \ } : {} })
 
