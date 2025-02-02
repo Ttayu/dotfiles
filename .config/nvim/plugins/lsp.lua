@@ -137,7 +137,10 @@ lspconfig.pylsp.setup({
       "requirements.txt",
       "Pipfile",
     }
-    return lspconfig.util.root_pattern(unpack(root_files))(fname) or lspconfig.util.find_git_ancestor(fname)
+    local root = lspconfig.util.root_pattern(unpack(root_files))(fname)
+        or lspconfig.util.find_git_ancestor(fname)
+        or vim.fn.getcwd()
+    return root
   end,
   settings = {
     pylsp = {
@@ -203,7 +206,7 @@ lspconfig.denols.setup({
   },
 })
 
-lspconfig.tsserver.setup({
+lspconfig.ts_ls.setup({
   single_file_support = false,
   root_dir = lspconfig.util.root_pattern("package.json"),
 })
