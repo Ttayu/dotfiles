@@ -38,6 +38,10 @@ lua_source = '''
   }
 '''
 
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter-context'
+on_source = 'nvim-treesitter'
+
 # カーソル位置のコンテキストに合わせてftを切り替える
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
