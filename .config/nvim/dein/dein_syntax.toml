@@ -106,26 +106,19 @@ lua_source = '''
 
 [[plugins]]
 repo =  'stevearc/dressing.nvim'
-# [[plugins]]
-# repo =  'nvim-lua/plenary.nvim'
 [[plugins]]
 repo =  'MunifTanjim/nui.nvim'
 [[plugins]]
 repo =  'MeanderingProgrammer/render-markdown.nvim'
-[[plugins]]
-repo =  'hrsh7th/nvim-cmp'
-# [[plugins]]
-# repo =  'nvim-tree/nvim-web-devicons'
-[[plugins]]
-repo =  'HakonHarnes/img-clip.nvim'
-[[plugins]]
-repo =  'zbirenbaum/copilot.lua'
-
+lua_source = '''
+  require("render-markdown").setup{
+    file_types = { "markdown", "Avante" },
+  }
+'''
 [[plugins]]
 repo = 'yetone/avante.nvim'
 build = 'make'
 depends = ['nui.nvim']
 hook_source = '''
-  set laststatus = 3
   source ~/.config/nvim/plugins/avante.lua
 '''
