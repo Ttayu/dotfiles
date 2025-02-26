@@ -90,3 +90,22 @@ let g:loaded_perl_provider = v:false
 let g:loaded_python_provider = v:false
 let g:loaded_python3_provider = v:false
 let g:loaded_ruby_provider = v:false
+
+if has("wsl")
+    if executable("xsel") == 0
+        echo "xsel not found, clipboard integration won't work"
+    else
+        let g:clipboard = {
+            \ 'name': 'xsel (wsl)',
+            \ 'copy': {
+            \   '+': 'xsel --clipboard --input',
+            \   '*': 'xsel --primary --input',
+            \ },
+            \ 'paste': {
+            \   '+': {-> systemlist('xsel --clipboard --output | sed -e "s/\r$//"', '', 1)},
+            \   '*': {-> systemlist('xsel --primary --output | sed -e "s/\r$//"', '', 1)},
+            \ },
+            \ 'cache_enabled': v:true
+        \ }
+    endif
+endif
