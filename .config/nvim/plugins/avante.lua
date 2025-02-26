@@ -54,7 +54,7 @@ local function parse_curl_args(self, code_opts)
   vim.list_extend(messages, self:parse_messages(code_opts))
   -- Construct options separately for clarity
   local options = {
-    num_ctx = (self.options and self.options.num_ctx) or 4096,
+    num_ctx = (self.options and self.options.num_ctx) or 16384,
     temperature = code_opts.temperature or (self.options and self.options.temperature) or 0,
   }
   -- Check if tools table is empty
@@ -99,19 +99,20 @@ local function parse_stream_data(data, handler_opts)
 end
 
 ---@type AvanteProvider
-local ollama = {
+local base = {
   api_key_name = "",
   endpoint = "http://127.0.0.1:11434",
-  model = "deepseek-r1:14b", -- Specify your model here
+  max_tokens = 32768,
   parse_messages = parse_messages,
   parse_curl_args = parse_curl_args,
   parse_stream_data = parse_stream_data,
 }
 
 require('avante').setup({
-  auto_suggestions_provider = "ollama",
-  provider = "ollama",
+  auto_suggestions_provider = "phi4",
+  provider = "phi4",
   vendors = {
-    ollama = ollama,
+    phi4 = vim.tbl_extend("force", base, { model = "phi4" }),
+    deepseek = vim.tbl_extend("force", base, { model = "deepseek-r1:14b" }),
   },
 })
