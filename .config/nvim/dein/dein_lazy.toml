@@ -105,10 +105,8 @@ lua_source = '''
         vim.keymap.set(mode, l, r, opts)
       end
 
-      map('n', '[git]', '<Nop>')
-      map('n', '<Leader>g', '[git]', { remap = true })
-      map('v', '[git]', '<Nop>')
-      map('v', '<Leader>g', '[git]', { remap = true })
+      map({ 'n', 'v' }, '[git]', '<Nop>')
+      map({ 'n', 'v' }, '<Leader>g', '[git]', { remap = true })
       -- Actions
       map('n', '[git]s', gitsigns.stage_hunk)
       map('n', '[git]r', gitsigns.reset_hunk)
