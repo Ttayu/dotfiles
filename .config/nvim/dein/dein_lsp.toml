@@ -1,7 +1,7 @@
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
 depends = ['mason.nvim', 'mason-lspconfig.nvim', 'lspsaga.nvim', 'ddc.vim']
-on_event = ['BufReadPost', 'BufNewFile']
+on_event = ['BufRead', 'BufNewFile']
 hook_source = '''
   source ~/.config/nvim/plugins/lsp.lua
 '''

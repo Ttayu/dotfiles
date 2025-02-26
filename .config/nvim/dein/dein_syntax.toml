@@ -119,6 +119,7 @@ lua_source = '''
 repo = 'yetone/avante.nvim'
 build = 'make'
 depends = ['nui.nvim']
+on_event = ['BufRead', 'BufNewFile']
 hook_source = '''
   source ~/.config/nvim/plugins/avante.lua
 '''
