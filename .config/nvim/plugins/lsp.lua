@@ -168,13 +168,20 @@ lspconfig.pylsp.setup({
     },
   },
   before_init = function(_, config)
-    local python_executable = vim.fn.trim(vim.fn.system("which python"))
+    local venv_path = vim.fs.joinpath(config.root_dir, "/.venv")
+    if vim.fn.isdirectory(venv_path) == 1 then
+      vim.env.VIRTUAL_ENV = venv_path
+      vim.env.PATH = vim.fs.joinpath(venv_path, "/bin:", vim.env.PATH)
+    end
+    local python_executable = vim.fs.joinpath(venv_path, "/bin/python")
+    print(python_executable)
+    -- local python_executable = vim.fn.trim(vim.fn.system("which python"))
     config.settings.pylsp.plugins.jedi = {}
     config.settings.pylsp.plugins.jedi.environment = python_executable
 
     local pdm_packages = vim.fs.joinpath(config.root_dir, "__pypackages__")
     if vim.fn.isdirectory(pdm_packages) == 0 then
-      vim.notify("Not found __pypackages__")
+      -- vim.notify("Not found __pypackages__")
       return
     end
 
@@ -182,7 +189,7 @@ lspconfig.pylsp.setup({
     local major_minor_version = string.match(python_version, "Python (%d+%.%d+)")
     local python_packages = vim.fs.joinpath(pdm_packages, major_minor_version, "lib")
     if vim.fn.isdirectory(python_packages) == 0 then
-      vim.notify("Not found python_packages")
+      -- vim.notify("Not found python_packages")
       return
     end
 
