@@ -8,15 +8,6 @@ function command_exists() {
   type "$1" &> /dev/null ;
 }
 
-# : "install brew" && {
-#   if ! command_exists brew; then
-#     info "installing brew..."
-#     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-#   else
-#     warn "brew is already installed"
-#   fi
-# }
-
 if [ $(uname) = 'Darwin' ]; then
   : "install tmux-256color on macOS" && {
     if ! command_exists /usr/local/opt/ncurses/bin/infocmp ; then
@@ -26,14 +17,6 @@ if [ $(uname) = 'Darwin' ]; then
     tic -xe tmux-256color ${DOT_DIRECTORY}/tmux-256color.info
   }
 fi
-
-# : "install other packages by brew" && {
-#   if [ $(uname) = 'Darwin' ]; then
-#     brew bundle --file ${DOT_DIRECTORY}/Brewfile.macos
-#   elif [ $(uname) = 'Linux' ]; then
-#     brew bundle --file ${DOT_DIRECTORY}/Brewfile.linux
-#   fi
-# }
 
 : "install mise" && {
   MISE_BIN=$HOME/.local/bin/mise
@@ -72,16 +55,6 @@ fi
     warn "tpm is already installed"
   fi
 }
-
-# : "install poetry" && {
-#   if ! command_exists poetry; then
-#     info "installing poetry..."
-#     curl -sSL https://install.python-poetry.org | python3 -
-#     poetry config virtualenvs.in-project true
-#   else
-#     warn "poetry is already installed"
-#   fi
-# }
 
 : "setup sheldon" && {
   local SHELDON_DIR=$HOME/.config/sheldon
