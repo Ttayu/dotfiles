@@ -68,6 +68,15 @@ github = "greymd/tmux-xpanes"
 [plugins.zsh-autopair]
 github = "hlissner/zsh-autopair"
 
+[plugins.docker-zsh-completion]
+github = "greymd/docker-zsh-completion"
+
+[plugins.fzf-docker]
+github = "pierpo/fzf-docker"
+
+[plugins.fzf-docker-post]
+inline = 'plugins=(... fzf-docker ...)'
+
 [plugins.zsh-pyenv-lazy]
 github = "davidparsson/zsh-pyenv-lazy"
 apply = ["source"]
@@ -87,6 +96,9 @@ apply = ["source"]
 
 [plugins.mise]
 inline = 'eval "$(~/.local/bin/mise activate zsh)"'
+
+[plugins.uv]
+inline = 'zsh-defer eval "$(uv generate-shell-completion zsh)"'
 
 # For example:
 #
