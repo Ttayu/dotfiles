@@ -23,27 +23,21 @@ fi
   if [ ! -e $MISE_BIN ]; then
     info "installing mise"
     curl https://mise.jdx.dev/install.sh | sh 
-    eval "$(~/.local/bin/mise activate zsh)"
-    mise completion zsh  > /usr/local/share/zsh/site-functions/_mise 
   else
     warn "mise is already installed"
   fi
+  # Activate mise to install packages
+  eval "$(~/.local/bin/mise activate zsh)"
+  sudo chown -R $USER /usr/local/share/zsh/site-functions
+  mise completion zsh  > /usr/local/share/zsh/site-functions/_mise
 }
 
 : "install other packages by mise" && {
   info "installing packages by mise"
-  PACKAGES=(bat delta deno exa fd nodejs python pdm ripgrep)
+  PACKAGES=(bat delta deno eza fd uv ripgrep rust node)
   for p in $PACKAGES; do
     mise use --global -y $p@latest
   done
-  PACKAGES=(neovim rust)
-  for p in $PACKAGES; do
-    mise use --global -y $p@nightly
-  done
-}
-
-: "setup pdm" && {
-  pdm --pep582 zsh >> ~/.zprofile
 }
 
 : "install tmux plugins manager" && {
