@@ -1,8 +1,5 @@
-if [[ "$OSTYPE" =~ ^darwin ]]; then
-  alias ls="ls -G"
-else
-  alias ls="ls --color"
-fi
+setopt aliases
+alias ls="eza"
 alias ll="ls -a"
 alias l="ls -la"
 alias t="tmux"
