@@ -28,14 +28,9 @@ nnoremap <silent> [ddu]n <Cmd>Ddu
       \ -name=search -resume
       \ -ui-param-ff-startFilter=v:false<CR>
 nnoremap <silent> [ddu]r <Cmd>Ddu
-      \ -name=register register
-      \ -ui-param-autoResize<CR>
-nnoremap <silent> [ddu]h  <Cmd>Ddu
-      \ -name=help help
-      \ -ui-param-ff-startFilter<CR>
+      \ -name=register register<CR>
 xnoremap <expr><silent> ,dr (mode() ==# 'V' ? '"_R<Esc>' : '"_d') ..
-      \ '<Cmd>Ddu -name=register register
-      \  -source-option-defaultAction=insert -ui-param-autoResize<CR>'
+      \ '<Cmd>Ddu -name=register register<CR>'
 nnoremap <silent> sg <Cmd>Ddu
       \ dein<CR>
 nnoremap <silent> [ddu]t <Cmd>Ddu

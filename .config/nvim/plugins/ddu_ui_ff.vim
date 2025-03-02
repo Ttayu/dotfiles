@@ -1,7 +1,10 @@
 augroup DduFfSettings
   autocmd!
   autocmd FileType ddu-ff call s:ddu_ff_settings()
-  autocmd FileType ddu-ff-filter call s:ddu_ff_filter_setttings()
+  autocmd User Ddu:uiOpenFilterWindow
+        \ call s:ddu_ff_filter_setttings()
+  autocmd User Ddu:uiCloseFilterWindow
+        \ call s:ddu_ff_filter_cleanup()
 augroup END
 
 function! s:ddu_ff_settings() abort
@@ -49,20 +52,16 @@ function! s:ddu_ff_settings() abort
 endfunction
 
 function! s:ddu_ff_filter_setttings() abort
-  inoremap <buffer><silent> <CR>
-        \ <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
-  inoremap <buffer><silent> jj
-        \ <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
-  nnoremap <buffer><silent> <CR>
-        \ <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
-  nnoremap <buffer><silent> <Esc>
-        \ <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
-  nnoremap <buffer><silent> q
-        \ <Cmd>call ddu#ui#do_action('quit')<CR>
-  inoremap <buffer> <C-p> <Up><Esc>A
-  inoremap <buffer> <C-n> <Down><Esc>A
-  inoremap <buffer> <C-j>
-        \ <Cmd>call ddu#ui#do_action('cursorNext')<CR>
-  inoremap <buffer> <C-k>
-        \ <Cmd>call ddu#ui#do_action('cursorPrevious')<CR>
+  call ddu#ui#save_cmaps(['jj','<C-j>', '<C-k>'])
+  cnoremap <buffer><silent> jj <CR>
+
+  cnoremap <C-j>
+        \ <Cmd>call ddu#ui#do_action('cursorNext', {'loop': v:true})<CR>
+  cnoremap <C-k>
+        \ <Cmd>call ddu#ui#do_action('cursorPrevious', {'loop': v:true})<CR>
+endfunction
+function s:ddu_ff_filter_cleanup() abort
+  set nocursorline
+
+  call ddu#ui#restore_cmaps()
 endfunction
