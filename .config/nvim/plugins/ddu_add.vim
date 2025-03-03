@@ -52,3 +52,8 @@ inoremap <C-f> <Cmd>call ddu#start(#{
       \ })<CR>
 nnoremap <silent> [ddu]m <Cmd>Ddu
       \ marks -input=''<CR>
+
+nnoremap <silent> [ddu]a
+    \ <Cmd>call ddu#start({'sources': [{'name': 'prompt', 'params': {'command': 'AvanteAsk'}}]})<CR>
+vnoremap <silent> ,da
+    \ y<Cmd>call ddu#start({'sources': [{'name': 'prompt', 'params': {'command': 'AvanteAsk', 'selected': @@}}]})<CR>

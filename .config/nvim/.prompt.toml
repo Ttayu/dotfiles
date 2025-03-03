@@ -1,0 +1,22 @@
+[[prompts]]
+title = "fix: error handling"
+word = """
+Must: The description must be translated into Japanese.
+Check the following code for proper error handling,
+If it is not, please point it out and suggest a fix if possible.
+The code is shown below:
+Check if the error handling of this code is done properly,
+If necessary, please suggest improvements.
+"""
+
+[[prompts]]
+title = "fix: logic error"
+word = """
+Must: The description must be translated into Japanese.
+Check the following code for logical completeness,
+If not, point it out, and if possible, suggest a fix,
+If possible, please suggest a fix.
+The code is shown below:
+Check that the logical integrity of this code has been taken into account,
+if necessary, please suggest improvements.
+"""

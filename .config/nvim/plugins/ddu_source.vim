@@ -80,6 +80,9 @@ call ddu#custom#patch_global({
       \     'action': {
       \       'defaultAction': 'do',
       \     },
+      \     'prompt': {
+      \       'defaultAction': 'execute',
+      \     },
       \   }
       \ })
 call ddu#custom#patch_local('files', {

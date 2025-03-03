@@ -127,3 +127,10 @@ on_source = 'ddu.vim'
 repo = 'Milly/ddu-filter-kensaku'
 depends = 'kensaku.vim'
 on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'nekowasabi/ddu-ai-prompt-connecter'
+on_source = 'ddu.vim'
+hook_add = '''
+  let g:prompt_toml = $HOME . '/.config/nvim/.prompt.toml'
+'''
