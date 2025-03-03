@@ -123,3 +123,11 @@ on_event = ['BufRead', 'BufNewFile']
 hook_source = '''
   source ~/.config/nvim/plugins/avante.lua
 '''
+
+[[plugins]]
+repo = 'olimorris/codecompanion.nvim'
+depends = ['plenary.nvim', 'nvim-treesitter']
+on_event = ['BufRead', 'BufNewFile']
+hook_source = '''
+  source ~/.config/nvim/plugins/codecompanion.lua
+'''
