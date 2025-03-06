@@ -54,8 +54,8 @@ local function parse_curl_args(self, code_opts)
   vim.list_extend(messages, self:parse_messages(code_opts))
   -- Construct options separately for clarity
   local options = {
-    num_ctx = (self.options and self.options.num_ctx) or 4096,
-    temperature = code_opts.temperature or (self.options and self.options.temperature) or 0,
+    num_ctx = self.num_ctx or 32768,
+    temperature = code_opts.temperature or self.temperature or 0,
   }
   -- Check if tools table is empty
   local tools = (code_opts.tools and next(code_opts.tools)) and code_opts.tools or nil
@@ -76,7 +76,7 @@ local function parse_curl_args(self, code_opts)
   }
 end
 
-local function parse_stream_data(data, handler_opts)
+local function parse_stream_data(ctx, data, handler_opts)
   local json_data = vim.fn.json_decode(data)
   if json_data then
     if json_data.done then
