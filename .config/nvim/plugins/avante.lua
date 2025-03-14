@@ -1,12 +1,5 @@
 -- https://github.com/yetone/avante.nvim
 require('avante_lib').load()
-
-    end
-      end
-    end
-  end
-end
-
 ---@type AvanteProvider
 local base = {
   __inherited_from = "ollama",
