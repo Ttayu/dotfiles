@@ -165,5 +165,3 @@ function! CommandlinePost() abort
 endfunction
 
 call ddc#enable()
-
-call ddc#set_static_import_path()
