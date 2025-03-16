@@ -95,7 +95,7 @@ use = ["sync.zsh"]
 apply = ["source"]
 
 [plugins.mise]
-inline = 'eval "$(~/.local/bin/mise activate zsh)"'
+inline = 'zsh-defer eval "$(~/.local/bin/mise activate zsh)"'
 
 [plugins.uv]
 inline = '''
