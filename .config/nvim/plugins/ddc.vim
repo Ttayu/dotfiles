@@ -6,6 +6,7 @@ call ddc#custom#patch_global('sourceOptions', {
   \ '_': {
   \   'ignoreCase': v:true,
   \   'minAutoCompleteLength': 2,
+  \   'minManualCompleteLength': 0,
   \   'matchers': ['matcher_fuzzy'],
   \   'sorters': ['sorter_fuzzy'],
   \   'converters': ['converter_fuzzy', 'converter_truncate_abbr'],
@@ -40,7 +41,7 @@ call ddc#custom#patch_global('sourceOptions', {
   \ 'lsp': {
   \   'mark': 'lsp',
   \   'dup': 'keep',
-  \   'keywordPattern': '\k+',
+  \   'keywordPattern': '\k*',
   \   'sorters': ['sorter_lsp-kind', 'sorter_fuzzy'],
   \   'minAutoCompleteLength': 0,
   \   'forceCompletionPattern': '\.\w*|:\w*|->\w*'
