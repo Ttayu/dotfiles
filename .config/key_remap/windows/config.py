@@ -20,8 +20,9 @@ def configure(keymap):
     keymap_global = keymap.defineWindowKeymap()
 
     # SandS
-    keymap.replaceKey("Space", "LShift")
-    keymap_global["O-LShift"] = "Space"
+    keymap.replaceKey("Space", "RShift")
+    keymap_global["O-RShift"] = "Space"
+    keymap_global["O-LC-RShift"] = "C-Space"
 
     # ctrl and escape
     keymap_global["O-LCtrl"] = "Esc"
