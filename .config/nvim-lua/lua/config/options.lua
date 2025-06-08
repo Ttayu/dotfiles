@@ -8,7 +8,8 @@ o.cmdheight = 1
 -- Disable backup and swap, enable undo file
 o.backup = false
 o.swapfile = false
-o.undofile = true                -- persist undo history
+-- persist undo history
+o.undofile = true
 -- Auto-reload files changed outside of Neovim
 o.autoread = true
 -- Allow hidden buffers (open multiple files without saving)
@@ -71,6 +72,8 @@ o.fillchars = {
   vertright  = "┣",
   verthoriz  = "╋",
 }
+-- Reduce updatetime for CursorHold
+o.updatetime = 100
 -- QuickFix behavior
 vim.api.nvim_create_augroup("QuickFix", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {

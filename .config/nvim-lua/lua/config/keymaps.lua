@@ -33,7 +33,7 @@ vim.keymap.set({ "n", "o" }, "H", "^", opts)
 vim.keymap.set({ "n", "o" }, "L", "$", opts)
 
 -- Parenthesis matching
-vim.keymap.set("n", "<Space>m", "%", opts)
+vim.keymap.set("n", "<Space>m", "%", opts_with({ desc = "Parenthesis matching" }))
 
 -- Wrap-aware movement
 vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", opts_with({expr=true}))
@@ -55,8 +55,8 @@ vim.keymap.set("i", "<C-b>", "<BS>", opts)
 vim.keymap.set("n", "x", '"_x', opts)
 
 -- Yank and paste whole buffer
-vim.keymap.set("n", "<Space>y", "ggyG", opts)
-vim.keymap.set("n", "<Space>p", "gg\"_dGp", opts)
+vim.keymap.set("n", "<Space>y", "ggyG", opts_with({ desc = "Yank whole buffer" }))
+vim.keymap.set("n", "<Space>p", "gg\"_dGp", opts_with({ desc = "Paste whole buffer" }))
 
 -- Escape right in insert mode
 vim.keymap.set("i", "<C-]>", "<ESC>l", opts)
@@ -67,7 +67,7 @@ vim.keymap.set('n', '<Space><Space>', function()
     vim.fn.setreg('z', word)
     vim.fn.setreg('/', '\\<' .. word .. '\\>')
     vim.opt.hlsearch = true
-end, opts)
+end, opts_with({ desc = "Highlight word under cursor"}))
 
 -- Find and replace current word
 
@@ -86,7 +86,7 @@ vim.keymap.set("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<c
 vim.keymap.set("x", "r", "<C-v>", opts)
 
 -- Terminal toggling and navigation
-vim.keymap.set("n", "<leader>t", "<cmd>vsplit<CR><cmd>terminal<CR><cmd>setlocal nonumber norelativenumber<CR>", opts)
+vim.keymap.set("n", "<leader>t", "<cmd>vsplit<CR><cmd>terminal<CR><cmd>setlocal nonumber norelativenumber<CR>", opts_with({desc = "Terminal toggling"}))
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", opts)
 vim.keymap.set("t", "jj", "<C-\\><C-n>", opts)
 vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h", opts)
