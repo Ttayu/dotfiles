@@ -64,13 +64,13 @@ o.history = 1000
 o.nrformats = "unsigned"
 -- Fancy window separators
 o.fillchars = {
-  horiz      = "━",
-  horizup    = "┻",
-  horizdown  = "┳",
-  vert       = "┃",
-  vertleft   = "┫",
-  vertright  = "┣",
-  verthoriz  = "╋",
+  horiz     = "━",
+  horizup   = "┻",
+  horizdown = "┳",
+  vert      = "┃",
+  vertleft  = "┫",
+  vertright = "┣",
+  verthoriz = "╋",
 }
 -- Reduce updatetime for CursorHold
 o.updatetime = 100
@@ -92,11 +92,11 @@ vim.api.nvim_create_autocmd("WinEnter", {
   end,
 })
 -- Disable unused providers (enable python3 if you need plugins in Python)
-vim.g.loaded_node_provider   = 0
-vim.g.loaded_perl_provider   = 0
-vim.g.loaded_python_provider = 0
+vim.g.loaded_node_provider    = 0
+vim.g.loaded_perl_provider    = 0
+vim.g.loaded_python_provider  = 0
 vim.g.loaded_python3_provider = 0
-vim.g.loaded_ruby_provider   = 0
+vim.g.loaded_ruby_provider    = 0
 -- WSL clipboard integration
 if vim.fn.has("wsl") == 1 then
   if vim.fn.executable("xsel") == 0 then
