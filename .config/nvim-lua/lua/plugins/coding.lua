@@ -42,6 +42,13 @@ return {
         ['<C-k>'] = { 'select_prev', 'fallback_to_mappings' },
         ['<C-j>'] = { 'select_next', 'fallback_to_mappings' },
       },
+      cmdline = {
+        keymap = {
+          ['<C-k>'] = { 'select_prev', 'fallback_to_mappings' },
+          ['<C-j>'] = { 'select_next', 'fallback_to_mappings' },
+        },
+      },
+
       appearance = {
         -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
         -- Adjusts spacing to ensure icons are aligned
@@ -77,4 +84,3 @@ return {
     opts_extend = { "sources.default" }
   }
 }
-
