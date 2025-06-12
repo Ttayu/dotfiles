@@ -7,7 +7,7 @@ return {
       "neovim/nvim-lspconfig",
     },
     config = function()
-      require("mason-lspconfig").setup{}
+      require("mason-lspconfig").setup {}
       vim.diagnostic.config({
         float = {
           source = "if_many", -- Or "if_many"
@@ -51,6 +51,7 @@ return {
           break
         end
       end
+
       vim.cmd([[ autocmd CursorHold * lua PrintDiagnostics() ]])
     end
   },
@@ -76,7 +77,6 @@ return {
       { "<Leader>ln",  "<CMD>Lspsaga diagnostic_jump_next<CR>",                          desc = "Next Diagnostic" },
       { "<Leader>lp",  "<CMD>Lspsaga diagnostic_jump_prev<CR>",                          desc = "Prev Diagnostic" },
       -- signature help
-      { "<Leader>s",   "<CMD>lua vim.lsp.buf.signature_help()<CR>",                      desc = "Signature Help" },
       { "<C-s>",       "<CMD>lua vim.lsp.buf.signature_help()<CR>",                      mode = "i",                  desc = "Signature Help (Insert)" },
     }
   }

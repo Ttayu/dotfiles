@@ -9,7 +9,11 @@ return {
         {
           mode = { "n", "v" },
           { "<Leader>l", group = "Lsp" },
-        }
+        },
+        {
+          mode = { "n", "v" },
+          { "<Leader>f", group = "file/find" },
+        },
       },
     },
     keys = {
