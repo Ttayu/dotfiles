@@ -4,6 +4,13 @@ return {
     event = "VeryLazy",
     opts = {
       preset = "helix",
+      defaults = {},
+      spec = {
+        {
+          mode = { "n", "v" },
+          { "<Leader>l", group = "Lsp" },
+        }
+      },
     },
     keys = {
       {
