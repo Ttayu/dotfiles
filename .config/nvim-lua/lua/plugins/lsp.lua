@@ -79,5 +79,10 @@ return {
       -- signature help
       { "<C-s>",       "<CMD>lua vim.lsp.buf.signature_help()<CR>",                      mode = "i",                  desc = "Signature Help (Insert)" },
     }
-  }
+  },
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "InsertEnter",
+    config = true,
+  },
 }
