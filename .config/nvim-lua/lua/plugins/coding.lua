@@ -84,13 +84,4 @@ return {
     },
     opts_extend = { "sources.default" }
   },
-  {
-    "smoka7/hop.nvim",
-    event = "VeryLazy",
-    config = true,
-    keys = {
-      { "ff", "<CMD>HopWord<CR>",      desc = "HopWord" },
-      { "fl", "<CMD>HopLineStart<CR>", desc = "HopLineStart" },
-    }
-  }
 }
