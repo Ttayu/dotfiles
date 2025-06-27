@@ -1,6 +1,7 @@
 return {
   {
     "folke/lazydev.nvim",
+    event = "VeryLazy",
     ft = "lua",
     cmd = "LazyDev",
     opts = {
@@ -83,5 +84,10 @@ return {
       fuzzy = { implementation = "prefer_rust_with_warning" }
     },
     opts_extend = { "sources.default" }
+  },
+  {
+    "echasnovski/mini.pairs",
+    event = { "InsertEnter", "CmdLineEnter" },
+    config = true,
   },
 }
