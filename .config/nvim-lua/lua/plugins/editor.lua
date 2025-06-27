@@ -62,4 +62,13 @@ return {
       { "<Leader>gw", "<CMD>Gitsigns toggle_word_diff<CR>",    desc = "Toggle Word Diff" },
     }
   },
+  {
+    "stevearc/oil.nvim",
+    config = true,
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    lazy = false,
+    keys = {
+      { "<Leader>fo", "<CMD>Oil<CR>", desc = "Oil" },
+    }
+  },
 }
