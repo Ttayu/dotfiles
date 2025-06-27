@@ -34,5 +34,13 @@ return {
       { "ff", "<CMD>HopWord<CR>",      desc = "HopWord" },
       { "fl", "<CMD>HopLineStart<CR>", desc = "HopLineStart" },
     }
+  },
+  {
+    "rainbowhxch/accelerated-jk.nvim",
+    event = "VeryLazy",
+    keys = {
+      { "j", "<Plug>(accelerated_jk_gj)", desc = "Accelerated gj movement" },
+      { "k", "<Plug>(accelerated_jk_gk)", desc = "Accelerated gk movement" },
+    }
   }
 }
