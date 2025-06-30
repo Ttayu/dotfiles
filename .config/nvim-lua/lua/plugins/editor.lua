@@ -71,4 +71,13 @@ return {
       { "<Leader>fo", "<CMD>Oil<CR>", desc = "Oil" },
     }
   },
+  {
+    "stevearc/oil.nvim",
+    config = true,
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    lazy = false,
+    keys = {
+      { "<Leader>fo", "<CMD>Oil<CR>", desc = "Oil" },
+    }
+  },
 }
