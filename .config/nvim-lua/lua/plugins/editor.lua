@@ -72,12 +72,9 @@ return {
     }
   },
   {
-    "stevearc/oil.nvim",
+    "nvim-lualine/lualine.nvim",
     config = true,
-    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    dependencies = { { "nvim-tree/nvim-web-devicons", opts = {} } },
     lazy = false,
-    keys = {
-      { "<Leader>fo", "<CMD>Oil<CR>", desc = "Oil" },
-    }
   },
 }
