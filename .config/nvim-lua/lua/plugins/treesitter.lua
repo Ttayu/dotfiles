@@ -6,7 +6,23 @@ return {
     build = ":TSUpdate",
     dependencies = {
       "RRethy/nvim-treesitter-endwise",
+      "RRethy/nvim-treesitter-textsubjects",
     },
+    main = "nvim-treesitter.configs",
+    opts = {
+      highlight = { enable = true },
+      incremental_selection = { enable = true },
+      indent = { enable = true },
+      textsubjects = {
+        enable = true,
+        prev_selection = ",",
+        keymaps = {
+          ["."] = "textsubjects-smart",
+          [";"] = "textsubjects-container-outer",
+          ["i;"] = "textsubjects-container-inner",
+        }
+      }
+    }
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
