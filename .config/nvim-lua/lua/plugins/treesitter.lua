@@ -31,4 +31,14 @@ return {
       max_lines = 4
     }
   },
+  {
+    "Wansmer/treesj",
+    event = { "BufNewFile", "BufReadPre" },
+    opts = {
+      use_default_keymaps = false,
+    },
+    keys = {
+      { "J", "<Cmd>TSJToggle<CR>", desc = "Toggle TSJ" },
+    },
+  }
 }
