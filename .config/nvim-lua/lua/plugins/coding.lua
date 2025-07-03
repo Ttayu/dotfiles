@@ -46,6 +46,7 @@ return {
       },
       cmdline = {
         keymap = {
+          ['<CR>'] = { 'accept', 'fallback' },
           ['<C-k>'] = { 'select_prev', 'fallback_to_mappings' },
           ['<C-j>'] = { 'select_next', 'fallback_to_mappings' },
         },
@@ -58,7 +59,7 @@ return {
       },
       -- (Default) Only show the documentation popup when manually triggered
       completion = {
-        documentation = { auto_show = true, auto_show_delay_ms = 200},
+        documentation = { auto_show = true, auto_show_delay_ms = 200 },
         list = {
           selection = { preselect = false, auto_insert = true },
         },
@@ -81,7 +82,7 @@ return {
       -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
       --
       -- See the fuzzy documentation for more information
-      fuzzy = { implementation = "prefer_rust_with_warning" }
+      fuzzy = { implementation = "prefer_rust_with_warning" },
     },
     opts_extend = { "sources.default" }
   },
