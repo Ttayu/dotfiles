@@ -29,7 +29,8 @@ return {
       { "<Leader>fg", function() Snacks.picker.git_files() end,                     desc = "Find Git Files" },
       { "<Leader>fp", function() Snacks.picker.projects() end,                      desc = "Projects" },
       { "<Leader>fr", function() Snacks.picker.registers() end,                     desc = "Registers" },
-      { "<Leader>fh", function() Snacks.picker.help() end,                          desc = "Help Pages" },
+      { "<Leader>f?", function() Snacks.picker.help() end,                          desc = "Help Pages" },
+      { "<Leader>fh", function() Snacks.picker.command_history() end,               desc = "Command History" },
       { "<Leader>fp", function() Snacks.picker.pickers() end,                       desc = "Pickers" },
       -- Grep
       { "<Leader>sb", function() Snacks.picker.grep_buffers() end,                  desc = "Grep Open Buffers" },

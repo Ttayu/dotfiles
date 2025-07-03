@@ -14,7 +14,11 @@ return {
   {
     'saghen/blink.cmp',
     -- optional: provides snippets for the snippet source
-    dependencies = { 'rafamadriz/friendly-snippets' },
+    dependencies = {
+      "rafamadriz/friendly-snippets",
+      { "saghen/blink.compat", opts = {} },
+      "dmitmel/cmp-cmdline-history",
+    },
     event = { "InsertEnter", "CmdLineEnter" },
 
     -- use a release tag to download pre-built binaries
@@ -50,6 +54,9 @@ return {
           ['<C-k>'] = { 'select_prev', 'fallback_to_mappings' },
           ['<C-j>'] = { 'select_next', 'fallback_to_mappings' },
         },
+        sources = {
+          "buffer", "cmdline", "cmdline_history"
+        },
       },
 
       appearance = {
@@ -74,6 +81,11 @@ return {
             module = "lazydev.integrations.blink",
             -- make lazydev completions top priority (see `:h blink.cmp`)
             score_offset = 100,
+          },
+          cmdline_history = {
+            name = "cmdline_history",
+            module = 'blink.compat.source',
+            score_offset = -3,
           },
         },
       },
