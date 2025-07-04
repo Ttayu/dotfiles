@@ -122,4 +122,37 @@ return {
     event = { "InsertEnter", "CmdLineEnter" },
     config = true,
   },
+  {
+    "yetone/avante.nvim",
+    build = "make",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "folke/snacks.nvim", -- for input provider snacks
+      {
+        -- Make sure to set this up properly if you have lazy=true
+        'MeanderingProgrammer/render-markdown.nvim',
+        opts = {
+          file_types = { "markdown", "Avante" },
+        },
+        ft = { "markdown", "Avante" },
+      },
+    },
+    event = "VeryLazy",
+    opts = {
+      auto_suggestions_provider = "ollama",
+      cursor_applying_provider = "ollama",
+      memory_summary_provider = "ollama",
+      provider = "ollama",
+      providers = {
+        ollama = {
+          endpoint = "http://127.0.0.1:11434",
+          model = "devstral:latest"
+        }
+      },
+      behaviour = {
+        enable_cursor_planning_mode = false,
+      },
+    },
+  },
 }
