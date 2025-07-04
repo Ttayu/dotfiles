@@ -85,4 +85,10 @@ return {
     event = "InsertEnter",
     config = true,
   },
+  {
+    "zeioth/none-ls-autoload.nvim",
+    event = "BufEnter",
+    dependencies = { "mason.nvim", "nvimtools/none-ls.nvim" },
+    opts = {},
+  },
 }
