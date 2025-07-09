@@ -55,7 +55,7 @@ return {
           ['<C-j>'] = { 'select_next', 'fallback_to_mappings' },
         },
         sources = {
-          "buffer", "cmdline", "cmdline_history"
+          "buffer", "cmdline", "cmdline_history", "path",
         },
       },
 
@@ -74,9 +74,18 @@ return {
       -- Default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
-        default = { "lazydev", "lsp", "path", "snippets", "buffer" },
-        priority = { "cmdline-history", "cmdline", "lsp", "path", "snippets", "buffer" },
+        default = { "path", "lsp", "snippets", "buffer" },
+        per_filetype = {
+          lua = { inherit_defaults = true, "lazydev" },
+        },
         providers = {
+          path = {
+            opts = {
+              get_cwd = function(_)
+                return vim.fn.getcwd()
+              end
+            }
+          },
           lazydev = {
             name = "LazyDev",
             module = "lazydev.integrations.blink",
