@@ -132,6 +132,36 @@ return {
     config = true,
   },
   {
+    "stevearc/overseer.nvim",
+    opts = {},
+    keys = {
+      { "<C-q>", "<CMD>OverseerRun<CR>", desc = "Overseer Run" },
+    },
+    config = function(_, opts)
+      local overseer = require("overseer")
+
+      overseer.register_template({
+        name = "Run current file with uv",
+        builder = function()
+          local file = vim.api.nvim_buf_get_name(0)
+          return {
+            cmd = { "uv", "run", file },
+            name = "uv run " .. vim.fn.fnamemodify(file, ":t"),
+            components = {
+              { "on_output_quickfix", open = true },
+              "default",
+            },
+          }
+        end,
+        condition = {
+          filetype = { "python" },
+        },
+      })
+
+      require("overseer").setup(opts)
+    end
+  },
+  {
     "yetone/avante.nvim",
     build = "make",
     dependencies = {
