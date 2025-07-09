@@ -83,7 +83,10 @@ return {
   {
     "ray-x/lsp_signature.nvim",
     event = "InsertEnter",
-    config = true,
+    opts = {
+      doc_lines = 0,
+      hint_enable = false,
+    },
   },
   {
     "zeioth/none-ls-autoload.nvim",
