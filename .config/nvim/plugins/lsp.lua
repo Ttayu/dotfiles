@@ -86,13 +86,11 @@ local lspconfig = require("lspconfig")
 
 local mason_lspconfig = require("mason-lspconfig")
 local capabilities = require("ddc_source_lsp").make_client_capabilities()
-mason_lspconfig.setup({})
-mason_lspconfig.setup_handlers({
-  function(server_name)
-    lspconfig[server_name].setup({
-      capabilities = capabilities,
-    })
-  end,
+vim.lsp.config('*', {
+  capabilities = capabilities,
+})
+mason_lspconfig.setup({
+  automatic_enable = true
 })
 
 local mason_null_ls = require("mason-null-ls")
@@ -162,7 +160,14 @@ lspconfig.pylsp.setup({
         yapf = { enabled = false },
         pylsp_mypy = {
           enabled = true,
-          overrides = { true, "--ignore-missing-imports", "--no-site-packages" },
+          overrides = {
+            true,
+            "--ignore-missing-imports",
+            "--no-site-packages",
+            "--allow-untyped-calls",
+            "--allow-untyped-decorators",
+            "--allow-untyped-defs",
+          },
           live_mode = false,
         },
         ruff = { enabled = true },
