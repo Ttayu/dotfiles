@@ -115,3 +115,7 @@ vim.keymap.set("c", "<C-l>", "<Right>", { silent = false })
 vim.keymap.set("c", "<M-h>", "<Left>", { silent = false })
 vim.keymap.set("c", "<M-l>", "<Right>", { silent = false })
 vim.keymap.set("c", "<C-d>", "<Del>", { silent = false })
+
+-- Comment-out keymaps
+vim.keymap.set({ "n", "x", "o" }, ",c", "gccj", { remap = true })
+vim.keymap.set("v", ",c", "gc", { remap = true })
