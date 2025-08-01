@@ -47,12 +47,14 @@ return {
         preset = 'enter',
         ['<C-k>'] = { 'select_prev', 'fallback_to_mappings' },
         ['<C-j>'] = { 'select_next', 'fallback_to_mappings' },
+        ['<C-b>'] = { 'fallback' },
       },
       cmdline = {
         keymap = {
           ['<CR>'] = { 'accept', 'fallback' },
           ['<C-k>'] = { 'select_prev', 'fallback_to_mappings' },
           ['<C-j>'] = { 'select_next', 'fallback_to_mappings' },
+          ['<C-b>'] = { 'fallback' },
         },
         sources = {
           "buffer", "cmdline", "cmdline_history", "path",
@@ -118,7 +120,7 @@ return {
           seen[item.label] = true
           return true
         end
-        for id in vim.iter(opts.sources.priority) do
+        for id in vim.iter(opts.sources.default) do
           items_by_source[id] = items_by_source[id] and vim.iter(items_by_source[id]):filter(filter):totable()
         end
         return original(ctx, items_by_source)
@@ -133,9 +135,15 @@ return {
   },
   {
     "stevearc/overseer.nvim",
-    opts = {},
+    opts = {
+      task_list = {
+        min_height = 12,
+      }
+    },
     keys = {
-      { "<C-q>", "<CMD>OverseerRun<CR>", desc = "Overseer Run" },
+      { "<C-q>",    "<CMD>OverseerRun<CR>",    desc = "Overseer Run" },
+      { "<Space>r", "<CMD>OverseerRun<CR>",    desc = "Overseer Run" },
+      { "<Space>R", "<CMD>OverseerToggle<CR>", desc = "Toggle Task List" },
     },
     config = function(_, opts)
       local overseer = require("overseer")
@@ -148,7 +156,7 @@ return {
             cmd = { "uv", "run", file },
             name = "uv run " .. vim.fn.fnamemodify(file, ":t"),
             components = {
-              { "on_output_quickfix", open = true },
+              "open_output",
               "default",
             },
           }

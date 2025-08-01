@@ -81,4 +81,7 @@ return {
       }
     }
   },
+  {
+    "simeji/winresizer",
+  },
 }

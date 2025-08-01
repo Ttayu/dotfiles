@@ -12,14 +12,14 @@ return {
         float = {
           source = "if_many", -- Or "if_many"
         },
-        virtual_text = true,
+        virtual_text = {
+          current_line = false,
+        },
         -- https://github.com/nvimdev/lspsaga.nvim/issues/1520#issuecomment-2631782677
         severity_sort = true,
         update_in_insert = false,
         underline = true,
       })
-
-      vim.lsp.inlay_hint.enable(true)
 
       function PrintDiagnostics(opts, bufnr, line_nr)
         opts = opts or {}
@@ -58,7 +58,12 @@ return {
   {
     "nvimdev/lspsaga.nvim",
     event = "VeryLazy",
-    config = true,
+    opts = {
+      lightbulb = {
+        sign = false,
+        enable_in_insert = false,
+      },
+    },
     keys = {
       { "<Leader>la",  "<CMD>Lspsaga code_action<CR>",                                   desc = "LSP Code Action" },
       { "<Leader>lc",  "<CMD>lua vim.lsp.buf.declaration()<CR>",                         desc = "Goto Declaration" },
@@ -80,18 +85,29 @@ return {
       { "<C-s>",       "<CMD>lua vim.lsp.buf.signature_help()<CR>",                      mode = "i",                  desc = "Signature Help (Insert)" },
     }
   },
-  {
-    "ray-x/lsp_signature.nvim",
-    event = "InsertEnter",
-    opts = {
-      doc_lines = 0,
-      hint_enable = false,
-    },
-  },
+  -- {
+  --   "ray-x/lsp_signature.nvim",
+  --   event = "InsertEnter",
+  --   opts = {
+  --     doc_lines = 0,
+  --     hint_enable = false,
+  --     floating_window_off_y = 3,
+  --     floating_window_above_cur_line = false,
+  --   },
+  -- },
   {
     "zeioth/none-ls-autoload.nvim",
     event = "BufEnter",
-    dependencies = { "mason.nvim", "nvimtools/none-ls.nvim" },
-    opts = {},
+    dependencies = {
+      "mason.nvim",
+      { "nvimtools/none-ls.nvim", opts = {} },
+      "zeioth/none-ls-external-sources.nvim",
+    },
+    opts = {
+      external_sources = {
+        'none-ls-external-sources.diagnostics.ruff',
+        'none-ls-external-sources.formatting.ruff',
+      }
+    },
   },
 }
