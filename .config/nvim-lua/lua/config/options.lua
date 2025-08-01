@@ -2,7 +2,7 @@
 local o = vim.opt
 
 -- Always show the sign column to avoid text shifting
-o.signcolumn = "yes"
+o.signcolumn = "yes:2"
 -- Command-line height for messages
 o.cmdheight = 1
 -- Disable backup and swap, enable undo file

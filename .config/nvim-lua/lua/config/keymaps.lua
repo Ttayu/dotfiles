@@ -34,8 +34,8 @@ vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
 vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
 
 -- Line beginnings and ends
-vim.keymap.set({ "n", "o" }, "H", "^", opts)
-vim.keymap.set({ "n", "o" }, "L", "$", opts)
+vim.keymap.set({ "n", "v", "o" }, "H", "^", opts)
+vim.keymap.set({ "n", "v", "o" }, "L", "$", opts)
 
 -- Parenthesis matching
 vim.keymap.set("n", "<Space>m", "%", opts_with({ desc = "Parenthesis matching" }))
