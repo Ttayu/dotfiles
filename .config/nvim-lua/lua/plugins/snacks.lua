@@ -32,6 +32,7 @@ return {
       { "<Leader>f?", function() Snacks.picker.help() end,                          desc = "Help Pages" },
       { "<Leader>fh", function() Snacks.picker.command_history() end,               desc = "Command History" },
       { "<Leader>fp", function() Snacks.picker.pickers() end,                       desc = "Pickers" },
+      { "<Leader>fl", function() Snacks.picker.lsp_symbols() end,                   desc = "Lsp Symbols" },
       -- Grep
       { "<Leader>sb", function() Snacks.picker.grep_buffers() end,                  desc = "Grep Open Buffers" },
       { "<Leader>sg", function() Snacks.picker.grep() end,                          desc = "Grep" },
