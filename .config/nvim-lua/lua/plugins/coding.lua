@@ -130,7 +130,7 @@ return {
     end
   },
   {
-    "echasnovski/mini.pairs",
+    "nvim-mini/mini.pairs",
     event = { "InsertEnter", "CmdLineEnter" },
     config = true,
   },

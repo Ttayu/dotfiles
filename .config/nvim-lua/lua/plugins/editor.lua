@@ -65,7 +65,7 @@ return {
   {
     "stevearc/oil.nvim",
     config = true,
-    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    dependencies = { { "nvim-mini/mini.icons", opts = {} } },
     lazy = false,
     keys = {
       { "<Leader>fo", "<CMD>Oil<CR>", desc = "Oil" },
