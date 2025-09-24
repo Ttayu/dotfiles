@@ -68,6 +68,7 @@ return {
       },
       -- (Default) Only show the documentation popup when manually triggered
       completion = {
+        trigger = { show_on_blocked_trigger_characters = { ' ', '\n', '\t', ':' } },
         documentation = { auto_show = true, auto_show_delay_ms = 200 },
         list = {
           selection = { preselect = false, auto_insert = true },
