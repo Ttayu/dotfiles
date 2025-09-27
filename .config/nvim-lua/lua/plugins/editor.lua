@@ -84,4 +84,17 @@ return {
   {
     "simeji/winresizer",
   },
+  {
+    "christoomey/vim-tmux-navigator",
+    init = function()
+      vim.g.tmux_navigator_no_mappings = 1
+      vim.g.tmux_navigator_preserve_zoom = 1
+    end,
+    keys = {
+      { "<C-t>h", "<CMD>:TmuxNavigateLeft<CR>",  desc = "Move Left" },
+      { "<C-t>j", "<CMD>:TmuxNavigateDown<CR>",  desc = "Move Down" },
+      { "<C-t>k", "<CMD>:TmuxNavigateUp<CR>",    desc = "Move Up" },
+      { "<C-t>l", "<CMD>:TmuxNavigateRight<CR>", desc = "Move Right" },
+    }
+  },
 }
