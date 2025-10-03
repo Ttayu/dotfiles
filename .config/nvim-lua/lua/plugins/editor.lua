@@ -97,4 +97,17 @@ return {
       { "<C-t>l", "<CMD>:TmuxNavigateRight<CR>", desc = "Move Right" },
     }
   },
+  {
+    "gbprod/yanky.nvim",
+    dependencies = { "folke/snacks.nvim" },
+    opts = {},
+    keys = {
+      { "<Leader>fy", function() Snacks.picker.yanky() end, mode = { "n", "x" },                                desc = "Open Yank History" },
+      { "y",          "<Plug>(YankyYank)",                  mode = { "n", "x" },                                desc = "Yank text" },
+      { "p",          "<Plug>(YankyPutAfter)",              mode = { "n", "x" },                                desc = "Put yanked text after cursor" },
+      { "P",          "<Plug>(YankyPutBefore)",             mode = { "n", "x" },                                desc = "Put yanked text before cursor" },
+      { "<c-p>",      "<Plug>(YankyPreviousEntry)",         desc = "Select previous entry through yank history" },
+      { "<c-n>",      "<Plug>(YankyNextEntry)",             desc = "Select next entry through yank history" },
+    }
+  },
 }
