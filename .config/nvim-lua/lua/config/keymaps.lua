@@ -91,9 +91,6 @@ vim.keymap.set("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
 vim.keymap.set("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
 vim.keymap.set("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
 
--- Paste blockwise in visual mode
-vim.keymap.set("x", "r", "<C-v>", opts)
-
 -- Terminal toggling and navigation
 vim.keymap.set("n", "<leader>t", "<cmd>vsplit<CR><cmd>terminal<CR><cmd>setlocal nonumber norelativenumber<CR>",
   opts_with({ desc = "Terminal toggling" }))
