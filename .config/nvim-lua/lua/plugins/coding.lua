@@ -213,18 +213,17 @@ return {
     },
     event = "VeryLazy",
     opts = {
-      auto_suggestions_provider = "ollama",
-      cursor_applying_provider = "ollama",
-      memory_summary_provider = "ollama",
+      instructions_file = "avante.md",
       provider = "ollama",
+      auto_suggestions_provider = "ollama",
       providers = {
         ollama = {
-          endpoint = "http://127.0.0.1:11434",
-          model = "devstral:latest"
-        }
-      },
-      behaviour = {
-        enable_cursor_planning_mode = false,
+          model = "gpt-oss",
+          is_env_set = function() return true end,
+          extra_request_body = {
+            max_tokens = 81919,
+          }
+        },
       },
     },
   },
