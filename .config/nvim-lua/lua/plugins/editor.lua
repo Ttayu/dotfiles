@@ -77,7 +77,7 @@ return {
     lazy = false,
     opts = {
       sections = {
-        lualine_x = { "overseer" },
+        lualine_x = { "overseer", "encoding", "fileformat", "filetype" },
       }
     }
   },
