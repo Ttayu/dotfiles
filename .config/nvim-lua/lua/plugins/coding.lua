@@ -168,6 +168,31 @@ return {
       })
 
       require("overseer").setup(opts)
+      -- Close the overseer.nvim window if it is the last one remaining
+      vim.api.nvim_create_autocmd("QuitPre", {
+        callback = function()
+          local current_tabpage = vim.api.nvim_get_current_tabpage()
+          local wins = vim.api.nvim_tabpage_list_wins(current_tabpage)
+          ---@param winid integer
+          ---@return boolean
+          local function is_overseer_window(winid)
+            local bufnr = vim.api.nvim_win_get_buf(winid)
+            if vim.bo[bufnr].filetype == "OverseerList" then
+              return true
+            elseif vim.b[bufnr].overseer_task then
+              return true
+            end
+            return false
+          end
+          local overseer_wins = vim.tbl_filter(is_overseer_window, wins)
+          if (#wins - #overseer_wins) == 1 then
+            vim.tbl_map(
+              function(winid) vim.api.nvim_win_close(winid, false) end,
+              overseer_wins
+            )
+          end
+        end,
+      })
     end
   },
   {
