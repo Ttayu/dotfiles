@@ -40,5 +40,13 @@ return {
     keys = {
       { "J", "<Cmd>TSJToggle<CR>", desc = "Toggle TSJ" },
     },
+  },
+  {
+    "andymass/vim-matchup",
+    opts = {
+      treesitter = {
+        stopline = 500,
+      }
+    }
   }
 }
