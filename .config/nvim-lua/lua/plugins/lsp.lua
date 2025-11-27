@@ -20,39 +20,6 @@ return {
         update_in_insert = false,
         underline = true,
       })
-
-      function PrintDiagnostics(opts, bufnr, line_nr)
-        opts = opts or {}
-
-        bufnr = bufnr or 0
-        line_nr = line_nr or (vim.api.nvim_win_get_cursor(0)[1] - 1)
-        local line_diagnostics = vim.diagnostic.get(bufnr, { lnum = line_nr })
-        if vim.tbl_isempty(line_diagnostics) then
-          return
-        end
-
-        for _, diagnostic in ipairs(line_diagnostics) do
-          local output = string.format(
-            "[%s] %s [%s]",
-            diagnostic.source or "",
-            diagnostic.message or "",
-            vim.diagnostic.severity[diagnostic.severity] or ""
-          )
-          local lines = vim.split(output, '\n')
-
-          if #lines > 2 then
-            output = table.concat({ lines[1], lines[2] .. " ..." }, "\n")
-          end
-          local winwidth = vim.fn.winwidth(0)
-          if #output > winwidth * 2 then
-            output = output:sub(0, math.floor(winwidth * 2 * 0.9)) .. " ..."
-          end
-          vim.api.nvim_echo({ { output } }, false, {})
-          break
-        end
-      end
-
-      vim.cmd([[ autocmd CursorHold * lua PrintDiagnostics() ]])
     end
   },
   {
