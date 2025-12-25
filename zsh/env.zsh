@@ -1,4 +1,4 @@
-export PATH=$HOME/.local/bin:$PATH
+setxkbmap -layout us
 export EDITOR=`which nvim`
 
 : "fzf settings" && {

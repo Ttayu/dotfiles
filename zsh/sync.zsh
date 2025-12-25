@@ -1,9 +1,20 @@
+typeset -gU path PATH
+path=(
+  /usr/local/bin(N-/)
+  /usr/bin
+  /bin
+  /usr/local/sbin(N-/)
+  /usr/sbin
+  /sbin
+  "$HOME/.local/bin"(N-/)
+  "$path[@]"
+)
+export XDG_RUNTIME_DIR=/tmp/
+
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 
-typeset -U path PATH
-bindkey -e
 if [[ ! -d $HOME/.zfunc ]]; then
   mkdir $HOME/.zfunc
 fi
@@ -11,8 +22,9 @@ fpath+=~/.zfunc # for poetry (python)
 
 setopt share_history
 # 重複を記録しない
-setopt hist_ignore_dups
-setopt hist_ignore_space
+setopt hist_find_no_dups
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
 setopt hist_reduce_blanks
 # ディレクトリ名の補完で末尾の/を自動的に付加
 setopt auto_param_slash
@@ -29,9 +41,12 @@ setopt complete_in_word
 # cdを使わずに移動
 setopt auto_cd
 setopt auto_pushd
+setopt pushd_ignore_dups
 # 補完候補が複数あるときに一覧表示
 setopt auto_list
 # 補完候補が複数あるときに自動的に一覧表示
 setopt auto_menu
 setopt no_beep
 setopt nonomatch
+setopt no_flow_control
+bindkey -e
