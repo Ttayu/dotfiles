@@ -1,3 +1,6 @@
+export PATH=$HOME/.local/bin:$PATH
+export EDITOR=`which nvim`
+
 : "fzf settings" && {
   if [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
     export FZF_DEFAULT_OPTS='--height 40% --reverse --border'

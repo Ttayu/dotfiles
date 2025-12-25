@@ -1,8 +1,8 @@
 bindkey '^[[Z' reverse-menu-complete
 bindkey "^[[A" history-search-backward
 bindkey "^[[B" history-search-forward
-bindkey "^P" history-search-backward
-bindkey "^N" history-search-forward
+bindkey "^P" history-beginning-search-backward
+bindkey "^N" history-beginning-search-forward
 # ctrl + <-/->
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
