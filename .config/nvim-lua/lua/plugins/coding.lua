@@ -169,6 +169,22 @@ return {
           filetype = { "python" },
         },
       })
+      overseer.register_template({
+        name = "Run pytest with uv",
+        builder = function()
+          return {
+            cmd = { "uv", "run", "pytest" },
+            name = "uv run pytest",
+            components = {
+              "open_output",
+              "default",
+            },
+          }
+        end,
+        condition = {
+          filetype = { "python" },
+        },
+      })
 
       require("overseer").setup(opts)
       -- Close the overseer.nvim window if it is the last one remaining
