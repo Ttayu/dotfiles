@@ -299,4 +299,18 @@ return {
       },
     }
   },
+  {
+    "monaqa/dial.nvim",
+    event = "VeryLazy",
+    keys = {
+      { "<C-a>",  function() require("dial.map").manipulate("increment", "normal") end,  mode = "n", desc = "dial: increment" },
+      { "<C-x>",  function() require("dial.map").manipulate("decrement", "normal") end,  mode = "n", desc = "dial: decrement" },
+      { "g<C-a>", function() require("dial.map").manipulate("increment", "gnormal") end, mode = "n", desc = "dial: g-increment (range)" },
+      { "g<C-x>", function() require("dial.map").manipulate("decrement", "gnormal") end, mode = "n", desc = "dial: g-decrement (range)" },
+      { "<C-a>",  function() require("dial.map").manipulate("increment", "visual") end,  mode = "v", desc = "dial: increment (visual)" },
+      { "<C-x>",  function() require("dial.map").manipulate("decrement", "visual") end,  mode = "v", desc = "dial: decrement (visual)" },
+      { "g<C-a>", function() require("dial.map").manipulate("increment", "gvisual") end, mode = "v", desc = "dial: g-increment (visual range)" },
+      { "g<C-x>", function() require("dial.map").manipulate("decrement", "gvisual") end, mode = "v", desc = "dial: g-decrement (visual range)" },
+    },
+  }
 }
