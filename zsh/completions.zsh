@@ -8,22 +8,20 @@ zstyle ':completion:*' matcher-list '' \
   'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
   'r:|?=** m:{a-z\-}={A-Z\_}'
 
-# 補完方法の設定．指定した順番に実行する
+# Set completion methods. Execute in specified order
 zstyle ':completion:*' completer \
   _oldlist _complete _match _history _ignored _approximate _prefix
 
-# ファイル補完候補に色を付ける
-zstyle ':completion:*:default' list-colors ""
-# 補完候補をメニューから選択
+# Select completion candidates from menu
 zstyle ':completion:*:default' menu select=2
-# 補完候補をキャッシュ
+# Cache completion candidates
 zstyle ':completion:*' use-cache yes
 export WORDCHARS='*?_.[]~-&;!#$%^(){}<>' 
 
 zmodload zsh/complist
+# Color file completion candidates
 LS_COLORS="${LS_COLORS}:ow=01;34"; export LS_COLORS
-_ls_colors="ow=01;34"
-zstyle ':completion:*:default' list-colors "${(s.:.)_ls_colors}"
+zstyle ':completion:*:default' list-colors "${(s.:.)LS_COLORS}"
 
 # Override _vim_files to add oil-ssh
 _vim_files() {
@@ -42,7 +40,7 @@ _vim_files() {
 () {
   autoload +X _urls 2>/dev/null
   local body="$functions[_urls]"
-  # 正確なパターンのみ置換 (前後の文字で区切る)
+  # Replace only exact patterns (separated by surrounding characters)
   body="${body//\$scheme = \(scp\|sftp\)/\$scheme = (scp|sftp|oil-ssh)}"
   body="${body//\(http\(\|s\)\|\(\|s\)ftp\|scp\|gopher\)/(http(|s)|(|s)ftp|scp|gopher|oil-ssh)}"
   functions[_urls]="$body"
