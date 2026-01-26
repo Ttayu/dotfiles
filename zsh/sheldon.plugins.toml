@@ -77,14 +77,6 @@ github = "pierpo/fzf-docker"
 [plugins.fzf-docker-post]
 inline = 'plugins=(... fzf-docker ...)'
 
-[plugins.zsh-pyenv-lazy]
-github = "davidparsson/zsh-pyenv-lazy"
-apply = ["source"]
-
-[plugins.zsh-jenv-lazy]
-github = "shihyuho/zsh-jenv-lazy"
-apply = ["source"]
-
 [plugins.dotfiles-defers]
 local = "~/dotfiles/zsh"
 use = ["{!sync,*}.zsh"]
