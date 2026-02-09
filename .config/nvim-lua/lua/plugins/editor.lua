@@ -81,6 +81,7 @@ return {
     lazy = false,
     opts = {
       sections = {
+        lualine_c = { { "filename", path = 1 } },
         lualine_x = { "overseer", "encoding", "fileformat", "filetype" },
       }
     }
