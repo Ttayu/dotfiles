@@ -77,4 +77,22 @@ return {
       }
     },
   },
+  {
+    "bassamsdata/namu.nvim",
+    opts = {
+      global = {},
+      namu_symbols = { -- Specific Module options
+        options = {
+          movement = {
+            next = { "<C-j>", "<C-n>", "<DOWN>" },
+            previous = { "<C-k>", "<C-p>", "<UP>" },
+          }
+        },
+      },
+    },
+    keys = {
+      { "<Leader>ls", "<CMD>Namu symbols<CR>",  desc = "LSP Symbols" },
+      { "<Leader>lS", "<CMD>Nam workspace<CR>", desc = "LSP Workspace Symbols" },
+    }
+  }
 }
