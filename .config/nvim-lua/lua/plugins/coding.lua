@@ -16,7 +16,6 @@ return {
       "rafamadriz/friendly-snippets",
       { "saghen/blink.compat", opts = {} },
       "dmitmel/cmp-cmdline-history",
-      "Kaiser-Yang/blink-cmp-avante",
     },
     event = { "InsertEnter", "CmdLineEnter" },
 
@@ -76,7 +75,7 @@ return {
       -- Default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
-        default = { "path", "avante", "lsp", "snippets", "buffer" },
+        default = { "path", "lsp", "snippets", "buffer" },
         per_filetype = {
           lua = { inherit_defaults = true, "lazydev" },
         },
@@ -99,10 +98,6 @@ return {
             module = 'blink.compat.source',
             score_offset = -3,
           },
-          avante = {
-            name = "Avante",
-            module = "blink-cmp-avante",
-          }
         },
       },
       -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
@@ -213,74 +208,6 @@ return {
         end,
       })
     end
-  },
-  {
-    "yetone/avante.nvim",
-    build = "make",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      "folke/snacks.nvim", -- for input provider snacks
-      {
-        -- Make sure to set this up properly if you have lazy=true
-        'MeanderingProgrammer/render-markdown.nvim',
-        opts = {
-          file_types = { "markdown", "Avante" },
-        },
-        ft = { "markdown", "Avante" },
-      },
-      {
-        "ravitemer/mcphub.nvim",
-        build = "npm install -g mcp-hub@latest", -- Installs `mcp-hub` node binary globally
-        opts = {
-          auto_approve = true,
-          extensions = {
-            avante = {
-              make_slash_commands = true,
-            }
-          }
-        }
-      }
-    },
-    event = "VeryLazy",
-    opts = {
-      mode = "legacy",
-      system_prompt = function()
-        local hub = require("mcphub").get_hub_instance()
-        return hub and hub:get_active_servers_prompt() or ""
-      end,
-      -- Using function prevents requiring mcphub before it's loaded
-      custom_tools = function()
-        return {
-          require("mcphub.extensions.avante").mcp_tool(),
-        }
-      end,
-      disabled_tools = {
-        "list_files", -- Built-in file operations
-        "search_files",
-        "read_file",
-        "create_file",
-        "rename_file",
-        "delete_file",
-        "create_dir",
-        "rename_dir",
-        "delete_dir",
-        "bash", -- Built-in terminal access
-        "python",
-      },
-      instructions_file = "avante.md",
-      provider = "ollama",
-      auto_suggestions_provider = "ollama",
-      providers = {
-        ollama = {
-          model = "gpt-oss-32k",
-          is_env_set = function() return true end,
-          extra_request_body = {
-            max_tokens = 65535,
-          }
-        },
-      },
-    },
   },
   {
     {
