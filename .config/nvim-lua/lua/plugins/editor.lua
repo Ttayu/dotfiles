@@ -115,4 +115,20 @@ return {
       { "<c-n>",      "<Plug>(YankyNextEntry)",             desc = "Select next entry through yank history" },
     }
   },
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {
+      heading = {
+        width = "block",
+        left_pad = 0,
+        right_pad = 4,
+      },
+      code = {
+        width = "block"
+      }
+    },
+  }
 }
